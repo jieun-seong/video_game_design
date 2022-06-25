@@ -86,6 +86,15 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Jump", false);
         }
 
+        if (Input.GetKey(KeyCode.Q))
+        {
+            anim.SetBool("isAttacking", true);
+        }
+        else
+        {
+            anim.SetBool("isAttacking", false);
+        }
+
         Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         targetDir.Normalize();
         currentDir = Vector2.SmoothDamp(currentDir, targetDir, ref currentDirVelocity, moveSmoothTime);
