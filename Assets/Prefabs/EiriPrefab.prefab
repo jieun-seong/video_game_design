@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7997811951055582166}
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0, y: 6.8, z: -3.96}
+  m_LocalPosition: {x: 0, y: 7.35, z: -5.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5203027022715338576}
@@ -256,7 +256,9 @@ MonoBehaviour:
   SmallPlantClip: {fileID: 8300000, guid: 3f301f70322bf474687f0c5643e7b921, type: 3}
   SmallPlantVolume: 0.5
   ChoppingWoodClip: {fileID: 8300000, guid: 1bbab4aa19f5a4a03baffb6ed84b7842, type: 3}
-  ChoppingWoodClips: []
+  ChoppingWoodClips:
+  - {fileID: 8300000, guid: 1bbab4aa19f5a4a03baffb6ed84b7842, type: 3}
+  - {fileID: 8300000, guid: 96c17363b6a514543b216c436e9c9b96, type: 3}
   ChoppingWoodVolume: 0.5
   PickUpBagClip: {fileID: 8300000, guid: f673784d742f94a9bae3ceb406f035d3, type: 3}
   PickUpBagVolume: 0.1
