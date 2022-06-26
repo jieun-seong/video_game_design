@@ -7,6 +7,7 @@ public class PlayerController2 : MonoBehaviour
     private Animator anim;
     private CharacterController controller;
     public Transform playerCamera = null;
+    public Transform cameraRoot = null;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 2.0f;
@@ -43,10 +44,11 @@ public class PlayerController2 : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         offset = playerCamera.transform.position - transform.position;
-        //offsetAngle = playerCamera.transform.eulerAngles - transform.eulerAngles;
     }
 
     void Update()
@@ -110,26 +112,12 @@ public class PlayerController2 : MonoBehaviour
 
     void LateUpdate()
     {
-        ////Vector3 back = -transform.forward;
-        ////back.y = 1f;
-        ////playerCamera.transform.position = transform.position + back * 3f;
+        float rotationSpeed = 2.5f;
+        float rotateHorizontal = Input.GetAxis("Mouse X");
+        float rotateVertical = -Input.GetAxis("Mouse Y");
 
-        ////playerCamera.transform.forward = transform.position - playerCamera.transform.position;
-
-        //Vector2 targetMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        //currentMouseDelta = Vector2.SmoothDamp(currentMouseDelta, targetMouseDelta, ref currentMouseDeltaVelocity, mouseSmoothTime);
-
-        Vector2 targetMouseDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        currentMouseDelta = Vector2.SmoothDamp(currentMouseDelta, targetMouseDelta, ref currentMouseDeltaVelocity, mouseSmoothTime);
-
-        //cameraPitch -= currentMouseDelta.y * mouseSensitivity;
-        pitch = Mathf.Clamp(pitch, -90.0f, 90.0f);
-
-        yaw += cameraSpeedH * Input.GetAxis("Mouse X");
-        pitch -= cameraSpeedV * Input.GetAxis("Mouse Y");
-
-        playerCamera.transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
-        playerCamera.transform.position = transform.position + offset;
+        playerCamera.transform.RotateAround(cameraRoot.position, Vector3.up, rotateHorizontal * rotationSpeed);
+        playerCamera.transform.RotateAround(cameraRoot.position, playerCamera.right, rotateVertical * rotationSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
