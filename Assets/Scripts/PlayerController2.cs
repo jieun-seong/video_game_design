@@ -30,6 +30,7 @@ public class PlayerController2 : MonoBehaviour
 
     //health bar stuff
     private float attackTime = 0f;
+    private float deathTime = 0f;
     private int maxHealth = 100;
     private int currentHealth;
     public GameObject healthBar;
@@ -67,6 +68,15 @@ public class PlayerController2 : MonoBehaviour
     void Update()
     {
         CheckDamage();
+        // player dying if no health
+        if (currentHealth == 0 && !anim.GetBool("Dead")) {
+            anim.SetBool("Dead", true);
+            deathTime = Time.time;
+        }
+        if (anim.GetBool("Dead") && Time.time > deathTime + 2) {
+            Destroy(this.gameObject); // destroy after playing death animation
+        }
+
         groundedPlayer = controller.isGrounded;
         anim.SetBool("Grounded", groundedPlayer);
 
