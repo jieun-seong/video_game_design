@@ -9,11 +9,12 @@ public class ZombieControlScript : MonoBehaviour
     public Transform character;
     public GameObject zombie;
     Rigidbody rb;
-    public int maxHealth = 100;
-    public int currentHealth;
     public GameObject healthBar;
-    public HealthBarScript hbs;
-    public float deathTime = 0f;
+    private int maxHealth = 100;
+    private int currentHealth;
+    private HealthBarScript hbs;
+    private float attackTime = 0f;
+    private float deathTime = 0f;
 
     // Start is called before the first frame update
     private void Awake() {
@@ -40,8 +41,9 @@ public class ZombieControlScript : MonoBehaviour
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 6.5) {
             Destroy(zombie); // destroy after playing death animation
-        } else if (distance < 8) { //fight player
-            if (Input.GetKeyDown(KeyCode.Q)) {
+        } else if (distance < 5) { //fight player
+            if (Input.GetKeyDown(KeyCode.Q) && Time.time > attackTime + 2.0) {
+                attackTime = Time.time;
                 TakeDamage(20);
             }
         }
@@ -50,7 +52,7 @@ public class ZombieControlScript : MonoBehaviour
     {
         if (!anim.GetBool("Dead")) {
             float distance = Vector3.Distance(character.position, transform.position);
-            if (distance < 7) { //fight player
+            if (distance < 5) { //fight player
                 //transform.LookAt(character);
                 anim.SetBool("Attacking", true);
                 // if (Input.GetKeyDown(KeyCode.Q)) {
