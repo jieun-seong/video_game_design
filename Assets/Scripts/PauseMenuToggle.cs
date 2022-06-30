@@ -7,7 +7,7 @@ public class PauseMenuToggle : MonoBehaviour
 {
 	private CanvasGroup canvasGroup;
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
     {
 		canvasGroup = GetComponent<CanvasGroup>();
 	}

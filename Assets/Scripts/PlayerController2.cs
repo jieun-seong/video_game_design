@@ -56,8 +56,8 @@ public class PlayerController2 : MonoBehaviour
     }
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         offset = playerCamera.transform.position - transform.position;
