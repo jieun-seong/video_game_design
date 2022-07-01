@@ -4,29 +4,22 @@ using UnityEngine;
 
 public class PlayerController2 : MonoBehaviour
 {
+    private GameObject character;
     private Animator anim;
     private CharacterController controller;
+    private Rigidbody rb;
     public Transform playerCamera = null;
     public Transform cameraRoot = null;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 1.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     private Vector3 offset;
-    private Vector3 offsetAngle;
     public float cameraSpeedH = 2.0f;
     public float cameraSpeedV = 2.0f;
-    private float yaw = 0.0f;
-    private float pitch = 0.0f;
-    private float speedMultiplier = 1.0f;
-    public float walkSpeed = 2.0f;
-    Vector2 currentDir = Vector2.zero;
-    Vector2 currentDirVelocity = Vector2.zero;
-    Vector2 currentMouseDelta = Vector2.zero;
-    Vector2 currentMouseDeltaVelocity = Vector2.zero;
-    float moveSmoothTime = 0.01f;
-    float mouseSmoothTime = 0.03f;
+    private float speedMultiplier = 2.0f;
+    public float walkSpeed = 1.0f;
 
     //health bar stuff
     private float attackTime = 0f;
@@ -38,9 +31,6 @@ public class PlayerController2 : MonoBehaviour
     //
 
     // Audio
-    public AudioClip[] FootstepAudioClips;
-    [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
-
     public AudioClip SmallPlantClip;
     [Range(0, 1)] public float SmallPlantVolume = 0.5f;
 
@@ -58,8 +48,10 @@ public class PlayerController2 : MonoBehaviour
     {
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
+        character = transform.GetChild(0).gameObject;
         controller = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
+        anim = character.GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
         offset = playerCamera.transform.position - transform.position;
         currentHealth = maxHealth;
         hbs.SetMaxHealth(maxHealth);
@@ -80,7 +72,7 @@ public class PlayerController2 : MonoBehaviour
         groundedPlayer = controller.isGrounded;
         anim.SetBool("Grounded", groundedPlayer);
 
-        if (groundedPlayer && playerVelocity.y < 0)
+        if (groundedPlayer && playerVelocity.y < 0.0f)
         {
             playerVelocity.y = 0.0f;
         }
@@ -92,14 +84,6 @@ public class PlayerController2 : MonoBehaviour
         else
         {
             speedMultiplier = 1.0f;
-        }
-
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * playerSpeed * speedMultiplier);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
         }
 
         if (Input.GetKey("space") && groundedPlayer)
@@ -121,17 +105,16 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("isAttacking", false);
         }
 
-        Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        targetDir.Normalize();
-        currentDir = Vector2.SmoothDamp(currentDir, targetDir, ref currentDirVelocity, moveSmoothTime);
-        Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * walkSpeed * speedMultiplier + Vector3.up * playerVelocity.y;
-        controller.Move(velocity * Time.deltaTime);
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-
-        anim.SetFloat("Speed", (new Vector3(velocity.x, 0f, velocity.z)).magnitude);
+        Vector3 dir = Vector3.zero;
+        dir.x = Input.GetAxis("Horizontal");
+        dir.z = Input.GetAxis("Vertical");
+        Vector3 camDirection = playerCamera.transform.rotation * dir;
+        Vector3 targetDirection = new Vector3(camDirection.x, 0, camDirection.z);
+        character.transform.forward = targetDirection;
+        controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier);
+        anim.SetFloat("Speed", (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude);
     }
+
 
     void LateUpdate()
     {
@@ -162,18 +145,6 @@ public class PlayerController2 : MonoBehaviour
             AudioSource.PlayClipAtPoint(ChoppingWoodClip, transform.TransformPoint(controller.center), ChoppingWoodVolume);
         }
 
-    }
-
-    private void OnFootstep(AnimationEvent animationEvent)
-    {
-        if (animationEvent.animatorClipInfo.weight > 0.5f)
-        {
-            if (FootstepAudioClips.Length > 0)
-            {
-                var index = Random.Range(0, FootstepAudioClips.Length);
-                AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(controller.center), FootstepAudioVolume);
-            }
-        }
     }
 
     void CheckDamage() {
