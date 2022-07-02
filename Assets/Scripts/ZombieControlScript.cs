@@ -15,6 +15,7 @@ public class ZombieControlScript : MonoBehaviour
     private HealthBarScript hbs;
     private float attackTime = 0f;
     private float deathTime = 0f;
+    //public GameObject[] drops;
 
     // Start is called before the first frame update
     private void Awake() {
@@ -41,6 +42,7 @@ public class ZombieControlScript : MonoBehaviour
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 6.5) {
             Destroy(zombie); // destroy after playing death animation
+            spawnDrops(); // drop items after the death animation and 
         } else if (distance < 5) { //fight player
             if (Input.GetKeyDown(KeyCode.Q) && Time.time > attackTime + 2.0) {
                 attackTime = Time.time;
@@ -90,6 +92,10 @@ public class ZombieControlScript : MonoBehaviour
             currentHealth = 0;
         }
         hbs.SetHealth(currentHealth);
+    }
+
+    void spawnDrops() { 
+
     }
 
 }
