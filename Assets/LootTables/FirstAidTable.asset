@@ -17,12 +17,12 @@ MonoBehaviour:
     drop: {fileID: 7037420870178142398, guid: 3ff6d2f87ab63a04c846466883253325, type: 3}
     dropChance: 10
     minCount: 1
-    maxCount: 2
+    maxCount: 3
   - name: Bullet
     drop: {fileID: 2241122350448844410, guid: 6b82974a4b9859748beaa33b9d09ac46, type: 3}
     dropChance: 10
     minCount: 1
-    maxCount: 3
+    maxCount: 4
   - name: Fuel
     drop: {fileID: 4206771743062118497, guid: 5dad442d1ef55e54a9740a4f90b994a9, type: 3}
     dropChance: 20
