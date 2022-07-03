@@ -13,7 +13,9 @@ TagManager:
   - Water
   - UI
   - Zombie
-  - 
+  - ignorePlayer
+  - Player
+  - Terrain
   - 
   - 
   - 
