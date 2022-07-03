@@ -14,8 +14,8 @@ TagManager:
   - UI
   - Zombie
   - Terrain
-  - 
-  - 
+  - Player
+  - ignorePlayer
   - 
   - 
   - 

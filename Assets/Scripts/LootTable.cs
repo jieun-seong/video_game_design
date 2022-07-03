@@ -11,7 +11,7 @@ public class Loot
     public int minCount;
     public int maxCount;
 
-    public int Count { get; set; }
+    public int count { get; set; }
 }
 
 [CreateAssetMenu]
@@ -28,7 +28,7 @@ public class LootTable : ScriptableObject
         {
             if (rng <= l.dropChance)
             {
-                l.Count = getQuantity(l);
+                l.count = getQuantity(l);
                 dropList.Add(l);
             }
         }

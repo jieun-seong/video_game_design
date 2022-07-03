@@ -15,7 +15,7 @@ public class ZombieControlScript : MonoBehaviour
     private HealthBarScript hbs;
     private float attackTime = 0f;
     private float deathTime = 0f;
-    //public GameObject[] drops;
+    public LootTable dropTable;
 
     // Start is called before the first frame update
     private void Awake() {
@@ -42,7 +42,7 @@ public class ZombieControlScript : MonoBehaviour
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 6.5) {
             Destroy(zombie); // destroy after playing death animation
-            spawnDrops(); // drop items after the death animation and 
+            spawnDrops(); // drop items after the death animation 
         } else if (distance < 5) { //fight player
             if (Input.GetKeyDown(KeyCode.Q) && Time.time > attackTime + 2.0) {
                 attackTime = Time.time;
@@ -94,8 +94,23 @@ public class ZombieControlScript : MonoBehaviour
         hbs.SetHealth(currentHealth);
     }
 
-    void spawnDrops() { 
+    void spawnDrops()
+    {
+        if (dropTable != null)
+        {
+            ArrayList dropList = dropTable.getLoot();
 
+            //for (int i = 0; i < dropList.Count; i++)
+            foreach (Loot l in dropList)
+            { // iterate through the items in the dropList
+                int spawnCount = l.count;
+
+                for (int j = 0; j < spawnCount; j++)
+                { // spawn item for each count of each item in dropList
+                    Instantiate(l.drop, transform.position, Quaternion.identity);
+                }
+            }
+        }
     }
 
 }
