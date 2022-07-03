@@ -30,6 +30,12 @@ public class PlayerController2 : MonoBehaviour
     private HealthBarScript hbs;
     //
 
+    //dialogue stuff
+    //private DialogueUI dialogueui;
+    //public Canvas dialogueCanvas;
+    //[SerializeField] private DialogueObject pressEDialogue;
+    //public GameObject waypointForDialogue;
+
     // Audio
     public AudioClip SmallPlantClip;
     [Range(0, 1)] public float SmallPlantVolume = 0.5f;
@@ -55,6 +61,7 @@ public class PlayerController2 : MonoBehaviour
         offset = playerCamera.transform.position - transform.position;
         currentHealth = maxHealth;
         hbs.SetMaxHealth(maxHealth);
+        //dialogueui = dialogueCanvas.GetComponent<DialogueUI>();
     }
 
     void Update()
@@ -68,6 +75,11 @@ public class PlayerController2 : MonoBehaviour
         if (anim.GetBool("Dead") && Time.time > deathTime + 2) {
             Destroy(this.gameObject); // destroy after playing death animation
         }
+
+        //dialogue box if close to interaction
+        //if (!Input.GetKeyUp(KeyCode.E) && Vector3.Distance(transform.position, waypointForDialogue.transform.position) < 5) {
+            //dialogueui.ShowDialogue(pressEDialogue);
+        //}
 
         groundedPlayer = controller.isGrounded;
         anim.SetBool("Grounded", groundedPlayer);
