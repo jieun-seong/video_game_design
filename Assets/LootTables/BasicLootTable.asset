@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fef05edd431c14e4884916a0a59c8653, type: 3}
-  m_Name: FirstAidTable
+  m_Name: BasicLootTable
   m_EditorClassIdentifier: 
   drops:
   - name: Battery
     drop: {fileID: 7037420870178142398, guid: 3ff6d2f87ab63a04c846466883253325, type: 3}
-    dropChance: 10
+    dropChance: 40
     minCount: 1
     maxCount: 2
   - name: Bullet
     drop: {fileID: 2241122350448844410, guid: 6b82974a4b9859748beaa33b9d09ac46, type: 3}
-    dropChance: 10
+    dropChance: 40
     minCount: 1
-    maxCount: 3
+    maxCount: 2
   - name: Fuel
     drop: {fileID: 4206771743062118497, guid: 5dad442d1ef55e54a9740a4f90b994a9, type: 3}
-    dropChance: 20
+    dropChance: 40
     minCount: 1
     maxCount: 2
   - name: FirstAid
     drop: {fileID: 8692006727745743838, guid: 0b9047e0aaae8e44389c6e68a69188f9, type: 3}
-    dropChance: 70
+    dropChance: 15
     minCount: 1
-    maxCount: 3
+    maxCount: 2
