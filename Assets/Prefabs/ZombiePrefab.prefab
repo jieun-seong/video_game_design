@@ -235,6 +235,7 @@ MonoBehaviour:
   character: {fileID: 0}
   zombie: {fileID: 3107982808739925801}
   healthBar: {fileID: 880334222375156544}
+  dropTable: {fileID: 11400000, guid: 838a3a452db442d408e75c47846c4eb9, type: 2}
 --- !u!1001 &3073974900442037475
 PrefabInstance:
   m_ObjectHideFlags: 0

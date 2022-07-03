@@ -22,7 +22,7 @@ MonoBehaviour:
     drop: {fileID: 2241122350448844410, guid: 6b82974a4b9859748beaa33b9d09ac46, type: 3}
     dropChance: 80
     minCount: 1
-    maxCount: 7
+    maxCount: 5
   - name: Fuel
     drop: {fileID: 4206771743062118497, guid: 5dad442d1ef55e54a9740a4f90b994a9, type: 3}
     dropChance: 12
