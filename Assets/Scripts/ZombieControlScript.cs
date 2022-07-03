@@ -94,15 +94,20 @@ public class ZombieControlScript : MonoBehaviour
         hbs.SetHealth(currentHealth);
     }
 
-    void spawnDrops() {
-        if (dropTable != null) {
+    void spawnDrops()
+    {
+        if (dropTable != null)
+        {
             ArrayList dropList = dropTable.getLoot();
 
-            for (int i = 0; i < dropList.Count; i++) { // iterate through the items in the dropList
-                int spawnCount = dropList[i].Count;
+            //for (int i = 0; i < dropList.Count; i++)
+            foreach (Loot l in dropList)
+            { // iterate through the items in the dropList
+                int spawnCount = l.count;
 
-                for (int j = 0; j < spawnCount; j++) { // spawn item for each count of each item in dropList
-                    Instantiate(dropList[i].drop, transform.position, Quaternion.identity);
+                for (int j = 0; j < spawnCount; j++)
+                { // spawn item for each count of each item in dropList
+                    Instantiate(l.drop, transform.position, Quaternion.identity);
                 }
             }
         }
