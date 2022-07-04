@@ -10,7 +10,7 @@ public class PlayerController2 : MonoBehaviour
     private Rigidbody rb;
     public Transform playerCamera = null;
     public Transform cameraRoot = null;
-    private Vector3 playerVelocity;
+    //private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 1.0f;
     private float jumpHeight = 1.0f;
@@ -20,6 +20,9 @@ public class PlayerController2 : MonoBehaviour
     public float cameraSpeedV = 2.0f;
     private float speedMultiplier = 2.0f;
     public float walkSpeed = 1.0f;
+    private float currSpeed = 0.0f;
+    Vector3 targetDirection;
+    float threshold = 0.01f;
 
     //health bar stuff
     private float attackTime = 0f;
@@ -37,15 +40,15 @@ public class PlayerController2 : MonoBehaviour
     //public GameObject waypointForDialogue;
 
     // Audio
-    public AudioClip SmallPlantClip;
-    [Range(0, 1)] public float SmallPlantVolume = 0.5f;
+    //public AudioClip SmallPlantClip;
+    //[Range(0, 1)] public float SmallPlantVolume = 0.5f;
 
-    public AudioClip ChoppingWoodClip;
-    public AudioClip[] ChoppingWoodClips;
-    [Range(0, 1)] public float ChoppingWoodVolume = 0.5f;
+    //public AudioClip ChoppingWoodClip;
+    //public AudioClip[] ChoppingWoodClips;
+    //[Range(0, 1)] public float ChoppingWoodVolume = 0.5f;
 
-    public AudioClip PickUpBagClip;
-    [Range(0, 1)] public float PickUpBagVolume = 0.1f;
+    //public AudioClip PickUpBagClip;
+    //[Range(0, 1)] public float PickUpBagVolume = 0.1f;
 
     private void Awake() {
         hbs = healthBar.GetComponent<HealthBarScript>();
@@ -84,11 +87,6 @@ public class PlayerController2 : MonoBehaviour
         groundedPlayer = controller.isGrounded;
         anim.SetBool("Grounded", groundedPlayer);
 
-        if (groundedPlayer && playerVelocity.y < 0.0f)
-        {
-            playerVelocity.y = 0.0f;
-        }
-
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             speedMultiplier = 2.0f;
@@ -101,7 +99,7 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKey("space") && groundedPlayer)
         {
             anim.SetBool("Jump", true);
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            //playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
         else
         {
@@ -117,47 +115,40 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("isAttacking", false);
         }
 
-        Vector3 dir = Vector3.zero;
-        dir.x = Input.GetAxis("Horizontal");
-        dir.z = Input.GetAxis("Vertical");
-        Vector3 camDirection = playerCamera.transform.rotation * dir;
-        Vector3 targetDirection = new Vector3(camDirection.x, 0, camDirection.z);
-        character.transform.forward = targetDirection;
-        controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier);
-        anim.SetFloat("Speed", (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude);
-    }
-
-
-    void LateUpdate()
-    {
-        float rotationSpeed = 2.5f;
-        float rotateHorizontal = Input.GetAxis("Mouse X");
-        float rotateVertical = -Input.GetAxis("Mouse Y");
-
-        playerCamera.transform.RotateAround(cameraRoot.position, Vector3.up, rotateHorizontal * rotationSpeed);
-        playerCamera.transform.RotateAround(cameraRoot.position, playerCamera.right, rotateVertical * rotationSpeed);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Collectible"))
+        if (Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f)
         {
-            other.gameObject.SetActive(false);
-            AudioSource.PlayClipAtPoint(SmallPlantClip, transform.TransformPoint(controller.center), SmallPlantVolume);
-            //anim.SetBool(_animIDPickUp, true);
+            targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal") + playerCamera.transform.forward * Input.GetAxis("Vertical");
+            controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier);
+            currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
         }
-        if (other.gameObject.CompareTag("Weapon"))
+        else
         {
-            other.gameObject.SetActive(false);
-            AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
-        }
-        if (other.gameObject.CompareTag("Tree"))
-        {
-            other.gameObject.SetActive(false);
-            AudioSource.PlayClipAtPoint(ChoppingWoodClip, transform.TransformPoint(controller.center), ChoppingWoodVolume);
+            currSpeed = 0.0f;
         }
 
+        transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
+        anim.SetFloat("Speed", currSpeed);
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Collectible"))
+    //    {
+    //        other.gameObject.SetActive(false);
+    //        AudioSource.PlayClipAtPoint(SmallPlantClip, transform.TransformPoint(controller.center), SmallPlantVolume);
+    //        //anim.SetBool(_animIDPickUp, true);
+    //    }
+    //    if (other.gameObject.CompareTag("Weapon"))
+    //    {
+    //        other.gameObject.SetActive(false);
+    //        AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
+    //    }
+    //    if (other.gameObject.CompareTag("Tree"))
+    //    {
+    //        other.gameObject.SetActive(false);
+    //        AudioSource.PlayClipAtPoint(ChoppingWoodClip, transform.TransformPoint(controller.center), ChoppingWoodVolume);
+    //    }
+    //}
 
     void CheckDamage() {
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");
