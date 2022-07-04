@@ -750,6 +750,7 @@ GameObject:
   - component: {fileID: 439313573}
   - component: {fileID: 439313572}
   - component: {fileID: 439313571}
+  - component: {fileID: 439313574}
   m_Layer: 5
   m_Name: Button (quit)
   m_TagString: Untagged
@@ -820,7 +821,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 439313572}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 439313574}
+        m_TargetAssemblyTypeName: EndGame, Assembly-CSharp
+        m_MethodName: ExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &439313572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,6 +872,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439313569}
   m_CullTransparentMesh: 1
+--- !u!114 &439313574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439313569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9c09a4f804b564f9fd218d14d30ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &490308131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,6 +1449,7 @@ GameObject:
   - component: {fileID: 969493159}
   - component: {fileID: 969493158}
   - component: {fileID: 969493157}
+  - component: {fileID: 969493160}
   m_Layer: 5
   m_Name: Button (restart)
   m_TagString: Untagged
@@ -1494,7 +1520,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 969493158}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 969493160}
+        m_TargetAssemblyTypeName: StartGame, Assembly-CSharp
+        m_MethodName: StartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &969493158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1533,6 +1571,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969493155}
   m_CullTransparentMesh: 1
+--- !u!114 &969493160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969493155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5af6a21e63eb8545b8f6964ecca03ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &974962433
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,6 +3511,8 @@ GameObject:
   - component: {fileID: 2059629397}
   - component: {fileID: 2059629399}
   - component: {fileID: 2059629398}
+  - component: {fileID: 2059629401}
+  - component: {fileID: 2059629400}
   m_Layer: 5
   m_Name: Panel (menu)
   m_TagString: Untagged
@@ -3490,7 +3542,7 @@ RectTransform:
   m_AnchorMin: {x: 0.1, y: 0.1}
   m_AnchorMax: {x: 0.9, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -500, y: -100}
+  m_SizeDelta: {x: -550, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2059629398
 MonoBehaviour:
@@ -3530,6 +3582,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059629396}
   m_CullTransparentMesh: 1
+--- !u!114 &2059629400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059629396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc36d6d4efd2c54884f076f9cae4bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &2059629401
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059629396}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2116443599
 GameObject:
   m_ObjectHideFlags: 0
