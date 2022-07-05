@@ -30,6 +30,14 @@ public class PlayerController2 : MonoBehaviour
     private int currentHealth;
     public GameObject healthBar;
     private HealthBarScript hbs;
+
+    //gravity
+    private bool isGrounded;
+    public Transform groundCheck;
+    private float groundDistance = 1.5f;
+    public LayerMask groundMask;
+    private float gravity;
+    private Vector3 velocity;
     //
 
     //dialogue stuff
@@ -51,6 +59,9 @@ public class PlayerController2 : MonoBehaviour
 
     private void Awake() {
         hbs = healthBar.GetComponent<HealthBarScript>();
+        groundDistance = 1.5f;
+        gravity = -98;
+        playerSpeed = 10;
     }
     private void Start()
     {
@@ -68,6 +79,7 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         CheckDamage();
         // player dying if no health
         if (currentHealth == 0 && !anim.GetBool("Dead")) {
@@ -85,7 +97,7 @@ public class PlayerController2 : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            speedMultiplier = 2.0f;
+            speedMultiplier = 2.6f;
         }
         else
         {
@@ -101,10 +113,10 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("isAttacking", false);
         }
 
-        if (Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f)
+        if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f) && isGrounded)
         {
             targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal")/10.0f + playerCamera.transform.forward * Input.GetAxis("Vertical");
-            controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier);
+            controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
             currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
         }
         else
@@ -122,6 +134,8 @@ public class PlayerController2 : MonoBehaviour
     private void updateY()
     {
         groundedPlayer = controller.isGrounded;
+        velocity.y = gravity * Time.deltaTime;
+        controller.Move(velocity);
         //anim.SetBool("Grounded", groundedPlayer);
         //playerVelocity.y = 0.0f;
         //if (Input.GetKey("space") && groundedPlayer)
