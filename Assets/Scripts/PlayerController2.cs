@@ -10,7 +10,7 @@ public class PlayerController2 : MonoBehaviour
     private Rigidbody rb;
     public Transform playerCamera = null;
     public Transform cameraRoot = null;
-    //private Vector3 playerVelocity;
+    private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 0.5f;
     private float jumpHeight = 1.0f;
@@ -83,9 +83,6 @@ public class PlayerController2 : MonoBehaviour
             //dialogueui.ShowDialogue(pressEDialogue);
         //}
 
-        groundedPlayer = controller.isGrounded;
-        anim.SetBool("Grounded", groundedPlayer);
-
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             speedMultiplier = 2.0f;
@@ -93,16 +90,6 @@ public class PlayerController2 : MonoBehaviour
         else
         {
             speedMultiplier = 1.0f;
-        }
-
-        if (Input.GetKey("space") && groundedPlayer)
-        {
-            anim.SetBool("Jump", true);
-            //playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-        else
-        {
-            anim.SetBool("Jump", false);
         }
 
         if (Input.GetKey(KeyCode.Q))
@@ -128,6 +115,28 @@ public class PlayerController2 : MonoBehaviour
 
         transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         anim.SetFloat("Speed", currSpeed);
+
+        updateY();
+    }
+
+    private void updateY()
+    {
+        groundedPlayer = controller.isGrounded;
+        anim.SetBool("Grounded", groundedPlayer);
+
+        if (Input.GetKey("space") && groundedPlayer)
+        {
+            anim.SetBool("Jump", true);
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+        else
+        {
+            anim.SetBool("Jump", false);
+            playerVelocity.y += gravityValue * Time.deltaTime;
+        }
+
+        controller.Move(playerVelocity);
+        
     }
 
     //private void OnTriggerEnter(Collider other)
