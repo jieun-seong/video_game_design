@@ -6,16 +6,31 @@ using UnityEngine;
 public class PauseMenuToggle : MonoBehaviour
 {
 	private CanvasGroup canvasGroup;
+	public GameStatus gameStatus;
+
 	// Start is called before the first frame update
 	void Awake()
     {
 		canvasGroup = GetComponent<CanvasGroup>();
+		gameStatus.menuVisible = false;
 	}
 
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyUp(KeyCode.Escape))
+		if (gameStatus.inventoryVisible)
+		{
+			canvasGroup.interactable = false;
+			canvasGroup.blocksRaycasts = false;
+			canvasGroup.alpha = 0f;
+		}
+		if (gameStatus.menuVisible && !gameStatus.inventoryVisible)
+		{
+			canvasGroup.interactable = true;
+			canvasGroup.blocksRaycasts = true;
+			canvasGroup.alpha = 1f;
+		}
+		if (Input.GetKeyUp(KeyCode.Escape) && !gameStatus.inventoryVisible)
 		{
 			if (canvasGroup.interactable)
 			{
@@ -23,6 +38,7 @@ public class PauseMenuToggle : MonoBehaviour
 				canvasGroup.interactable = false;
 				canvasGroup.blocksRaycasts = false;
 				canvasGroup.alpha = 0f;
+				gameStatus.menuVisible = false;
 			}
 			else
 			{
@@ -30,6 +46,7 @@ public class PauseMenuToggle : MonoBehaviour
 				canvasGroup.interactable = true;
 				canvasGroup.blocksRaycasts = true;
 				canvasGroup.alpha = 1f;
+				gameStatus.menuVisible = true;
 			}
 		}
 	}
