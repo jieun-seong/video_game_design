@@ -12,7 +12,7 @@ public class PlayerController2 : MonoBehaviour
     public Transform cameraRoot = null;
     //private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private float playerSpeed = 1.0f;
+    private float playerSpeed = 0.5f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     private Vector3 offset;
@@ -116,12 +116,13 @@ public class PlayerController2 : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f)
         {
-            targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal") + playerCamera.transform.forward * Input.GetAxis("Vertical");
+            targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal")/10.0f + playerCamera.transform.forward * Input.GetAxis("Vertical");
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier);
             currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
         }
         else
         {
+            targetDirection = transform.forward;
             currSpeed = 0.0f;
         }
 
