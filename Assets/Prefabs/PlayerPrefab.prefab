@@ -56,15 +56,6 @@ MonoBehaviour:
   cameraSpeedV: 2
   walkSpeed: 2
   healthBar: {fileID: 0}
-  SmallPlantClip: {fileID: 8300000, guid: 3f301f70322bf474687f0c5643e7b921, type: 3}
-  SmallPlantVolume: 0.5
-  ChoppingWoodClip: {fileID: 8300000, guid: 1bbab4aa19f5a4a03baffb6ed84b7842, type: 3}
-  ChoppingWoodClips:
-  - {fileID: 8300000, guid: 1bbab4aa19f5a4a03baffb6ed84b7842, type: 3}
-  - {fileID: 8300000, guid: 96c17363b6a514543b216c436e9c9b96, type: 3}
-  ChoppingWoodVolume: 0.5
-  PickUpBagClip: {fileID: 8300000, guid: f673784d742f94a9bae3ceb406f035d3, type: 3}
-  PickUpBagVolume: 0.1
 --- !u!143 &782087390804819605
 CharacterController:
   m_ObjectHideFlags: 0
@@ -434,7 +425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f55247aac3977c4fb992b4fb2c6366e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f55247aac3977c4fb992b4fb2c6366e, type: 3}
       propertyPath: m_LocalPosition.z

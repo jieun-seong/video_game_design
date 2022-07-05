@@ -122,21 +122,21 @@ public class PlayerController2 : MonoBehaviour
     private void updateY()
     {
         groundedPlayer = controller.isGrounded;
-        anim.SetBool("Grounded", groundedPlayer);
+        //anim.SetBool("Grounded", groundedPlayer);
+        //playerVelocity.y = 0.0f;
+        //if (Input.GetKey("space") && groundedPlayer)
+        //{
+        //    anim.SetBool("Jump", true);
+        //    playerVelocity.y = Mathf.Sqrt(jumpHeight * gravityValue);
+        //}
+        //else
+        //{
+        //    anim.SetBool("Jump", false);
+        //    playerVelocity.y = gravityValue * Time.deltaTime;
+        //}
 
-        if (Input.GetKey("space") && groundedPlayer)
-        {
-            anim.SetBool("Jump", true);
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-        else
-        {
-            anim.SetBool("Jump", false);
-            playerVelocity.y += gravityValue * Time.deltaTime;
-        }
+        //controller.Move(playerVelocity);
 
-        controller.Move(playerVelocity);
-        
     }
 
     //private void OnTriggerEnter(Collider other)
