@@ -22,7 +22,6 @@ public class PlayerController2 : MonoBehaviour
     public float walkSpeed = 1.0f;
     private float currSpeed = 0.0f;
     Vector3 targetDirection;
-    float threshold = 0.01f;
 
     //health bar stuff
     private float attackTime = 0f;
