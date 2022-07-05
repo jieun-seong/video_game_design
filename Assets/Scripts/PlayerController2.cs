@@ -10,9 +10,9 @@ public class PlayerController2 : MonoBehaviour
     private Rigidbody rb;
     public Transform playerCamera = null;
     public Transform cameraRoot = null;
-    //private Vector3 playerVelocity;
+    private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private float playerSpeed = 1.0f;
+    private float playerSpeed = 0.5f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     private Vector3 offset;
@@ -83,9 +83,6 @@ public class PlayerController2 : MonoBehaviour
             //dialogueui.ShowDialogue(pressEDialogue);
         //}
 
-        groundedPlayer = controller.isGrounded;
-        anim.SetBool("Grounded", groundedPlayer);
-
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             speedMultiplier = 2.0f;
@@ -93,16 +90,6 @@ public class PlayerController2 : MonoBehaviour
         else
         {
             speedMultiplier = 1.0f;
-        }
-
-        if (Input.GetKey("space") && groundedPlayer)
-        {
-            anim.SetBool("Jump", true);
-            //playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-        else
-        {
-            anim.SetBool("Jump", false);
         }
 
         if (Input.GetKey(KeyCode.Q))
@@ -116,17 +103,40 @@ public class PlayerController2 : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f)
         {
-            targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal") + playerCamera.transform.forward * Input.GetAxis("Vertical");
+            targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal")/10.0f + playerCamera.transform.forward * Input.GetAxis("Vertical");
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier);
             currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
         }
         else
         {
+            targetDirection = transform.forward;
             currSpeed = 0.0f;
         }
 
         transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         anim.SetFloat("Speed", currSpeed);
+
+        updateY();
+    }
+
+    private void updateY()
+    {
+        groundedPlayer = controller.isGrounded;
+        anim.SetBool("Grounded", groundedPlayer);
+
+        if (Input.GetKey("space") && groundedPlayer)
+        {
+            anim.SetBool("Jump", true);
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+        else
+        {
+            anim.SetBool("Jump", false);
+            playerVelocity.y += gravityValue * Time.deltaTime;
+        }
+
+        controller.Move(playerVelocity);
+        
     }
 
     //private void OnTriggerEnter(Collider other)
