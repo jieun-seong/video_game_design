@@ -141,7 +141,7 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Spell", false);
         }
 
-        if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f) && isGrounded)
+        if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f))// && isGrounded)
         {
             targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal")/10.0f + playerCamera.transform.forward * Input.GetAxis("Vertical");
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
