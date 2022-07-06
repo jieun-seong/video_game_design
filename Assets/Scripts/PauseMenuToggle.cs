@@ -30,7 +30,7 @@ public class PauseMenuToggle : MonoBehaviour
 			canvasGroup.blocksRaycasts = true;
 			canvasGroup.alpha = 1f;
 		}
-		if (Input.GetKeyUp(KeyCode.Escape) && !gameStatus.inventoryVisible)
+		if (Input.GetKeyUp(KeyCode.Escape) && !gameStatus.inventoryVisible && !gameStatus.playerDead)
 		{
 			if (canvasGroup.interactable)
 			{

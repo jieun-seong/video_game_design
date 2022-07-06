@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class InventoryToggle : MonoBehaviour
+public class InventoryPanel : MonoBehaviour
 {
 	private CanvasGroup canvasGroup;
-	public GameStatus gameStatus;
+	[SerializeField] private GameStatus gameStatus;
 
     // Start is called before the first frame update
     void Awake()

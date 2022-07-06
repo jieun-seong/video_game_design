@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerController2 : MonoBehaviour
 {
+    [SerializeField] private GameStatus gameStatus;
+
+    //inventory
+    [SerializeField] private InventoryPanel playerInventory;
+
     private GameObject character;
     private Animator anim;
     private CharacterController controller;
@@ -13,8 +18,8 @@ public class PlayerController2 : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 0.5f;
-    private float jumpHeight = 1.0f;
-    private float gravityValue = -9.81f;
+    //private float jumpHeight = 1.0f;
+    //private float gravityValue = -9.81f;
     private Vector3 offset;
     public float cameraSpeedH = 2.0f;
     public float cameraSpeedV = 2.0f;
@@ -58,6 +63,7 @@ public class PlayerController2 : MonoBehaviour
     //[Range(0, 1)] public float PickUpBagVolume = 0.1f;
 
     private void Awake() {
+        gameStatus.playerDead = false;
         hbs = healthBar.GetComponent<HealthBarScript>();
         groundDistance = 1.5f;
         gravity = -98;
@@ -87,7 +93,8 @@ public class PlayerController2 : MonoBehaviour
             deathTime = Time.time;
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 2) {
-            Destroy(this.gameObject); // destroy after playing death animation
+            //Destroy(this.gameObject); // destroy after playing death animation
+            gameStatus.playerDead = true;
         }
 
         //dialogue box if close to interaction
