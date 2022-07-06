@@ -15,11 +15,10 @@ public class PlayerController2 : MonoBehaviour
     private Rigidbody rb;
     public Transform playerCamera = null;
     public Transform cameraRoot = null;
-    private Vector3 playerVelocity;
+    //private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private float playerSpeed = 0.5f;
+    private float playerSpeed = 10.0f;
     //private float jumpHeight = 1.0f;
-    //private float gravityValue = -9.81f;
     private Vector3 offset;
     public float cameraSpeedH = 2.0f;
     public float cameraSpeedV = 2.0f;
@@ -41,7 +40,7 @@ public class PlayerController2 : MonoBehaviour
     public Transform groundCheck;
     private float groundDistance = 1.5f;
     public LayerMask groundMask;
-    private float gravity;
+    private float gravity = -98f;
     private Vector3 velocity;
     //
 
@@ -65,9 +64,6 @@ public class PlayerController2 : MonoBehaviour
     private void Awake() {
         gameStatus.playerDead = false;
         hbs = healthBar.GetComponent<HealthBarScript>();
-        groundDistance = 1.5f;
-        gravity = -98;
-        playerSpeed = 10;
     }
     private void Start()
     {
@@ -99,8 +95,24 @@ public class PlayerController2 : MonoBehaviour
 
         //dialogue box if close to interaction
         //if (!Input.GetKeyUp(KeyCode.E) && Vector3.Distance(transform.position, waypointForDialogue.transform.position) < 5) {
-            //dialogueui.ShowDialogue(pressEDialogue);
+        //dialogueui.ShowDialogue(pressEDialogue);
         //}
+
+        groundedPlayer = controller.isGrounded;
+        anim.SetBool("Grounded", groundedPlayer);
+        //playerVelocity.y = 0.0f;
+
+        if (Input.GetKey("space") && groundedPlayer)
+        {
+            anim.SetBool("Jump", true);
+            //rb.AddForce(Vector3.up * 40f);
+            //playerVelocity.y = Mathf.Sqrt(jumpHeight * -5.0f * gravityValue);
+        }
+        else
+        {
+            anim.SetBool("Jump", false);
+            //playerVelocity.y = gravityValue * Time.deltaTime;
+        }
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
@@ -113,17 +125,27 @@ public class PlayerController2 : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q))
         {
-            anim.SetBool("isAttacking", true);
+            anim.SetBool("Punch", true);
         }
         else
         {
-            anim.SetBool("isAttacking", false);
+            anim.SetBool("Punch", false);
+        }
+
+        if (Input.GetKey(KeyCode.V))
+        {
+            anim.SetBool("Spell", true);
+        }
+        else
+        {
+            anim.SetBool("Spell", false);
         }
 
         if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f) && isGrounded)
         {
             targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal")/10.0f + playerCamera.transform.forward * Input.GetAxis("Vertical");
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
+            //controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier + playerVelocity);
             currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
         }
         else
@@ -135,7 +157,6 @@ public class PlayerController2 : MonoBehaviour
         transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         anim.SetFloat("Speed", currSpeed);
 
-        updateY();
     }
 
     private void updateY()
