@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerController2 : MonoBehaviour
 {
+    [SerializeField] private GameStatus gameStatus;
+
+    //inventory
+    [SerializeField] private InventoryPanel playerInventory;
+
     private GameObject character;
     private Animator anim;
     private CharacterController controller;
@@ -12,14 +17,16 @@ public class PlayerController2 : MonoBehaviour
     public Transform cameraRoot = null;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private float playerSpeed = 1.0f;
-    private float jumpHeight = 1.0f;
-    private float gravityValue = -9.81f;
+    private float playerSpeed = 0.5f;
+    //private float jumpHeight = 1.0f;
+    //private float gravityValue = -9.81f;
     private Vector3 offset;
     public float cameraSpeedH = 2.0f;
     public float cameraSpeedV = 2.0f;
     private float speedMultiplier = 2.0f;
     public float walkSpeed = 1.0f;
+    private float currSpeed = 0.0f;
+    Vector3 targetDirection;
 
     //health bar stuff
     private float attackTime = 0f;
@@ -28,6 +35,14 @@ public class PlayerController2 : MonoBehaviour
     private int currentHealth;
     public GameObject healthBar;
     private HealthBarScript hbs;
+
+    //gravity
+    private bool isGrounded;
+    public Transform groundCheck;
+    private float groundDistance = 1.5f;
+    public LayerMask groundMask;
+    private float gravity;
+    private Vector3 velocity;
     //
 
     //dialogue stuff
@@ -37,18 +52,22 @@ public class PlayerController2 : MonoBehaviour
     //public GameObject waypointForDialogue;
 
     // Audio
-    public AudioClip SmallPlantClip;
-    [Range(0, 1)] public float SmallPlantVolume = 0.5f;
+    //public AudioClip SmallPlantClip;
+    //[Range(0, 1)] public float SmallPlantVolume = 0.5f;
 
-    public AudioClip ChoppingWoodClip;
-    public AudioClip[] ChoppingWoodClips;
-    [Range(0, 1)] public float ChoppingWoodVolume = 0.5f;
+    //public AudioClip ChoppingWoodClip;
+    //public AudioClip[] ChoppingWoodClips;
+    //[Range(0, 1)] public float ChoppingWoodVolume = 0.5f;
 
-    public AudioClip PickUpBagClip;
-    [Range(0, 1)] public float PickUpBagVolume = 0.1f;
+    //public AudioClip PickUpBagClip;
+    //[Range(0, 1)] public float PickUpBagVolume = 0.1f;
 
     private void Awake() {
+        gameStatus.playerDead = false;
         hbs = healthBar.GetComponent<HealthBarScript>();
+        groundDistance = 1.5f;
+        gravity = -98;
+        playerSpeed = 10;
     }
     private void Start()
     {
@@ -66,6 +85,7 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         CheckDamage();
         // player dying if no health
         if (currentHealth == 0 && !anim.GetBool("Dead")) {
@@ -73,7 +93,8 @@ public class PlayerController2 : MonoBehaviour
             deathTime = Time.time;
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 2) {
-            Destroy(this.gameObject); // destroy after playing death animation
+            //Destroy(this.gameObject); // destroy after playing death animation
+            gameStatus.playerDead = true;
         }
 
         //dialogue box if close to interaction
@@ -81,31 +102,13 @@ public class PlayerController2 : MonoBehaviour
             //dialogueui.ShowDialogue(pressEDialogue);
         //}
 
-        groundedPlayer = controller.isGrounded;
-        anim.SetBool("Grounded", groundedPlayer);
-
-        if (groundedPlayer && playerVelocity.y < 0.0f)
-        {
-            playerVelocity.y = 0.0f;
-        }
-
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            speedMultiplier = 2.0f;
+            speedMultiplier = 2.6f;
         }
         else
         {
             speedMultiplier = 1.0f;
-        }
-
-        if (Input.GetKey("space") && groundedPlayer)
-        {
-            anim.SetBool("Jump", true);
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-        else
-        {
-            anim.SetBool("Jump", false);
         }
 
         if (Input.GetKey(KeyCode.Q))
@@ -117,46 +120,72 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("isAttacking", false);
         }
 
-        Vector3 dir = Vector3.zero;
-        dir.x = Input.GetAxis("Horizontal");
-        dir.z = Input.GetAxis("Vertical");
-        Vector3 camDirection = playerCamera.transform.rotation * dir;
-        Vector3 targetDirection = new Vector3(camDirection.x, 0, camDirection.z);
-        character.transform.forward = targetDirection;
-        controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier);
-        anim.SetFloat("Speed", (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude);
+        if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f) && isGrounded)
+        {
+            targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal")/10.0f + playerCamera.transform.forward * Input.GetAxis("Vertical");
+            controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
+            currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
+        }
+        else
+        {
+            targetDirection = transform.forward;
+            currSpeed = 0.0f;
+        }
+
+        transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
+        anim.SetFloat("Speed", currSpeed);
+
+        updateY();
     }
 
-
-    void LateUpdate()
+    private void updateY()
     {
-        float rotationSpeed = 2.5f;
-        float rotateHorizontal = Input.GetAxis("Mouse X");
-        float rotateVertical = -Input.GetAxis("Mouse Y");
+        groundedPlayer = controller.isGrounded;
+        velocity.y = gravity * Time.deltaTime;
+        controller.Move(velocity);
+        //anim.SetBool("Grounded", groundedPlayer);
+        //playerVelocity.y = 0.0f;
+        //if (Input.GetKey("space") && groundedPlayer)
+        //{
+        //    anim.SetBool("Jump", true);
+        //    playerVelocity.y = Mathf.Sqrt(jumpHeight * gravityValue);
+        //}
+        //else
+        //{
+        //    anim.SetBool("Jump", false);
+        //    playerVelocity.y = gravityValue * Time.deltaTime;
+        //}
 
-        playerCamera.transform.RotateAround(cameraRoot.position, Vector3.up, rotateHorizontal * rotationSpeed);
-        playerCamera.transform.RotateAround(cameraRoot.position, playerCamera.right, rotateVertical * rotationSpeed);
+        //controller.Move(playerVelocity);
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Collectible"))
+        if (other.transform.root.gameObject.CompareTag("inventory"))
         {
-            other.gameObject.SetActive(false);
-            AudioSource.PlayClipAtPoint(SmallPlantClip, transform.TransformPoint(controller.center), SmallPlantVolume);
-            //anim.SetBool(_animIDPickUp, true);
-        }
-        if (other.gameObject.CompareTag("Weapon"))
-        {
-            other.gameObject.SetActive(false);
-            AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
-        }
-        if (other.gameObject.CompareTag("Tree"))
-        {
-            other.gameObject.SetActive(false);
-            AudioSource.PlayClipAtPoint(ChoppingWoodClip, transform.TransformPoint(controller.center), ChoppingWoodVolume);
+            playerInventory.AddItem(other.transform.root.gameObject);
+
+            other.transform.root.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
         }
 
+        //    if (other.gameObject.CompareTag("Collectible"))
+        //    {
+        //        other.gameObject.SetActive(false);
+        //        AudioSource.PlayClipAtPoint(SmallPlantClip, transform.TransformPoint(controller.center), SmallPlantVolume);
+        //        //anim.SetBool(_animIDPickUp, true);
+        //    }
+        //    if (other.gameObject.CompareTag("Weapon"))
+        //    {
+        //        other.gameObject.SetActive(false);
+        //        AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
+        //    }
+        //    if (other.gameObject.CompareTag("Tree"))
+        //    {
+        //        other.gameObject.SetActive(false);
+        //        AudioSource.PlayClipAtPoint(ChoppingWoodClip, transform.TransformPoint(controller.center), ChoppingWoodVolume);
+        //    }
     }
 
     void CheckDamage() {
