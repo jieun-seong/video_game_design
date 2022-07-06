@@ -160,25 +160,33 @@ public class PlayerController2 : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Collectible"))
-    //    {
-    //        other.gameObject.SetActive(false);
-    //        AudioSource.PlayClipAtPoint(SmallPlantClip, transform.TransformPoint(controller.center), SmallPlantVolume);
-    //        //anim.SetBool(_animIDPickUp, true);
-    //    }
-    //    if (other.gameObject.CompareTag("Weapon"))
-    //    {
-    //        other.gameObject.SetActive(false);
-    //        AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
-    //    }
-    //    if (other.gameObject.CompareTag("Tree"))
-    //    {
-    //        other.gameObject.SetActive(false);
-    //        AudioSource.PlayClipAtPoint(ChoppingWoodClip, transform.TransformPoint(controller.center), ChoppingWoodVolume);
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.root.gameObject.CompareTag("inventory"))
+        {
+            playerInventory.AddItem(other.transform.root.gameObject);
+
+            other.transform.root.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
+        }
+
+        //    if (other.gameObject.CompareTag("Collectible"))
+        //    {
+        //        other.gameObject.SetActive(false);
+        //        AudioSource.PlayClipAtPoint(SmallPlantClip, transform.TransformPoint(controller.center), SmallPlantVolume);
+        //        //anim.SetBool(_animIDPickUp, true);
+        //    }
+        //    if (other.gameObject.CompareTag("Weapon"))
+        //    {
+        //        other.gameObject.SetActive(false);
+        //        AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
+        //    }
+        //    if (other.gameObject.CompareTag("Tree"))
+        //    {
+        //        other.gameObject.SetActive(false);
+        //        AudioSource.PlayClipAtPoint(ChoppingWoodClip, transform.TransformPoint(controller.center), ChoppingWoodVolume);
+        //    }
+    }
 
     void CheckDamage() {
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");

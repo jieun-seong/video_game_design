@@ -81,6 +81,8 @@ public class InventoryPanel : MonoBehaviour
                 {
 					itemAdded = true;
 					slotScript.itemCount = 1;
+					slotScript.itemID = thisItem.itemID;
+					slotScript.empty = false;
 					itemRepresentation[a].transform.GetComponent<Image>().sprite = thisItem.itemPNG;
 					itemRepresentation[a].transform.GetChild(0).GetComponent<Text>().text = slotScript.itemCount + "";
 				}
