@@ -68,6 +68,8 @@ public class NPCAI : MonoBehaviour
             break;
             case AIState.talkToFriends:
                 anim.SetFloat("Blend", 0f);
+                Vector3 targetDirection = player.transform.position - transform.position;
+                transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
                 if (talking) {
                     if (transform.name == "Break" && check) {
                         dialogueui.ShowDialogue(friendDialogue);
