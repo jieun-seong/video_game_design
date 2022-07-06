@@ -4535,7 +4535,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345376270}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -7881,6 +7881,10 @@ PrefabInstance:
     - target: {fileID: 102112500446554709, guid: 9f050159f3fb7c34e8b1e8d714510f16, type: 3}
       propertyPath: m_Name
       value: Image (item)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566225020738097767, guid: 9f050159f3fb7c34e8b1e8d714510f16, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7500780174686557214, guid: 9f050159f3fb7c34e8b1e8d714510f16, type: 3}
       propertyPath: m_Pivot.x
