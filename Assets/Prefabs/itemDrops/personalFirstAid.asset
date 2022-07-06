@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 3
   itemName: Mini first aid kit
-  itemPNG: {fileID: 0}
+  itemPNG: {fileID: 21300000, guid: ae01ef968d86db140a1eac6416d13def, type: 3}
   itemDescription: smallest first aid kit
   consumableType: 0
   statOne: 15
