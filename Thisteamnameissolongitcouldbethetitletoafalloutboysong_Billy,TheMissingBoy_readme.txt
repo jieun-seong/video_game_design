@@ -23,6 +23,47 @@ Known Problem Areas:
 Team Member Breakdown:
 Jacquelyn - 
 Linsey - 
-Jieun -
+
+Jieun:
+Assets/Scripts/CharAnimScript.cs
+Assets/Scripts/CharAnimScript.cs.meta
+Assets/Scripts/FaceCameraScript.cs
+Assets/Scripts/PlayerController.cs
+Assets/Scripts/PlayerController.cs.meta
+Assets/Scripts/PlayerController2.cs
+Assets/Scripts/QuaternionUtil.cs
+Assets/Scripts/QuaternionUtil.cs.meta
+Assets/Scripts/ThirdPersonCamera.cs
+Assets/Scripts/ThirdPersonCamera.cs.meta
+Assets/Animations/Jumping.fbx.meta
+Assets/Animations/PlayerAnimationController.controller
+Assets/Animations/PlayerAnimations.meta
+Assets/Animations/PlayerAnimations/Cross Punch.fbx
+Assets/Animations/PlayerAnimations/Cross Punch.fbx.meta
+Assets/Animations/PlayerAnimations/Falling Forward Death.fbx
+Assets/Animations/PlayerAnimations/Falling Forward Death.fbx.meta
+Assets/Animations/PlayerAnimations/Fast Run.fbx
+Assets/Animations/PlayerAnimations/Fast Run.fbx.meta
+Assets/Animations/PlayerAnimations/Idle.fbx
+Assets/Animations/PlayerAnimations/Idle.fbx.meta
+Assets/Animations/PlayerAnimations/Jumping.fbx
+Assets/Animations/PlayerAnimations/Jumping.fbx.meta
+Assets/Animations/PlayerAnimations/Running.fbx
+Assets/Animations/PlayerAnimations/Running.fbx.meta
+Assets/Animations/PlayerAnimations/Standing 1H Magic Attack 01.fbx
+Assets/Animations/PlayerAnimations/Standing 1H Magic Attack 01.fbx.meta
+Assets/Animations/PlayerAnimations/Walking.fbx
+Assets/Animations/PlayerAnimations/Walking.fbx.meta
+Assets/Eiri.fbx.meta
+Assets/New Terrain.asset
+Assets/Prefabs/EiriPrefab.prefab
+Assets/Prefabs/EiriPrefab.prefab.meta
+Assets/Prefabs/PlayerPrefab.prefab
+Assets/Prefabs/PlayerPrefab.prefab.meta
+Assets/Prefabs/player.prefab
+Assets/Scenes/just_character.unity
+Assets/Scenes/just_character.unity.meta
+Assets/Scenes/project.unity
+
 Kaitlyn - 
 Eduardo - 
