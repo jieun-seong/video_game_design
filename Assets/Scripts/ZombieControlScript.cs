@@ -68,7 +68,11 @@ public class ZombieControlScript : MonoBehaviour
                 anim.SetBool("Attacking", true);
                 if (Input.GetKeyDown(KeyCode.Q) && Time.time > attackTime + 2.0) {
                     attackTime = Time.time;
-                    TakeDamage(20);
+                    TakeDamage(15);
+                }
+                if (Input.GetKeyDown(KeyCode.V) && Time.time > attackTime + 2.0) {
+                    attackTime = Time.time;
+                    TakeDamage(30);
                 }
             } else if (distance < 30) { // make zombie go towards player fast
                 anim.SetBool("Attacking", false);
