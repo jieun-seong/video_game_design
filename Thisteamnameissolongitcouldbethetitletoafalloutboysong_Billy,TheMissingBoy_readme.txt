@@ -261,11 +261,38 @@ Assets/Scripts/ThirdPersonCamera.cs
 Assets/Scripts/ThirdPersonCamera.cs.meta
 
 Kaitlyn - 
-Eduardo - 
 
-
---
+Eduardo:
 Assets/Prefabs/itemDrops/BatteryDrop Variant.prefab
 Assets/Prefabs/itemDrops/BulletDrop Variant.prefab
 Assets/Prefabs/itemDrops/FirstAidBox Variant.prefab
 Assets/Prefabs/itemDrops/FuelDrop Variant.prefab
+Assets/Prefabs/itemDrops/Image (item).prefab
+Assets/Prefabs/itemDrops/battery.png
+Assets/Prefabs/itemDrops/battery_D.asset
+Assets/Prefabs/itemDrops/bullet.png
+Assets/Prefabs/itemDrops/empty.png
+Assets/Prefabs/itemDrops/firstAid.png
+Assets/Prefabs/itemDrops/fuel.png
+Assets/Prefabs/itemDrops/gasoline.asset
+Assets/Prefabs/itemDrops/personalFirstAid.asset
+Assets/Scenes/startGame.unity
+Assets/Scripts/gameData/MyGameStatus.asset
+--- SCRIPT FILES ---
+Assets/Scripts/gameData/GameStatus.cs
+Assets/Scripts/DeathToggle.cs
+Assets/Scripts/InventoryPanel.cs
+Assets/Scripts/InventoryToggle.cs
+Assets/Scripts/PauseMenuToggle.cs
+Assets/Scripts/PlayerController2.cs
+Assets/Scripts/buttons/DeathRestart.cs
+Assets/Scripts/buttons/EndGame.cs
+Assets/Scripts/buttons/InventoryAccess.cs
+Assets/Scripts/buttons/InventoryExit.cs
+Assets/Scripts/buttons/StartGame.cs
+Assets/Scripts/items/ConsumableItem.cs
+Assets/Scripts/items/GearItem.cs
+Assets/Scripts/items/InventoryItem.cs
+Assets/Scripts/items/ItemSlot.cs
+Assets/Scripts/items/WeaponItem.cs
+Assets/Scripts/items/objectAsItem.cs
