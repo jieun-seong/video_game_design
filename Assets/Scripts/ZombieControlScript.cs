@@ -70,6 +70,7 @@ public class ZombieControlScript : MonoBehaviour
                     attackTime = Time.time;
                     TakeDamage(15);
                 }
+            } else if (distance < 15) {
                 if (Input.GetKeyDown(KeyCode.V) && Time.time > attackTime + 2.0) {
                     attackTime = Time.time;
                     TakeDamage(30);

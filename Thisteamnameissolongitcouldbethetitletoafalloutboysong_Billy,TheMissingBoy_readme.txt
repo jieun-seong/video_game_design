@@ -48,9 +48,12 @@ Assets/HealthBarSprites/Bar.png
 Assets/HealthBarSprites/Heart.png
 Assets/Prefabs/HealthBarPrefab.prefab
 Assets/Prefabs/ZombiePrefab.prefab
+Assets/Scenes/gameMenu.unity
 Assets/Scenes/project.unity
 Assets/Scenes/project/NavMesh.asset
-Assets/Sounds/POL-owl-woods-short.wav
+Assets/Template/ExampleAssets/Materials/Plastic_Yellow_Mat.mat
+Assets/Template/Presets/NormalTexture.preset
+Assets/Template/Presets/UtilityTexture.preset
 Assets/Zombie/Materials/RetopoPantsUV_TXTR.mat
 Assets/Zombie/Materials/ZombieHQ_material4_Albedo.mat
 Assets/Zombie/Materials/ZombieHQ_material5_AlbedoTransparency.mat
