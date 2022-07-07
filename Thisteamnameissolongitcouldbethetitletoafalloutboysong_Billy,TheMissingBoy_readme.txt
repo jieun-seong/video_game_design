@@ -23,6 +23,8 @@ Known Problem Areas:
 
 Team Member Breakdown:
 Jacquelyn: 
+I was responsible for creating the NPC AI, the zombie (avatar and animations are from unity asset store, zombie controller script and animator controller were made by me), the health bars, and the fighting functionality between the player and enemies.
+
 Assets/Animations/Etc_Walk_Zombi_01.anim
 Assets/Animations/Etc_Walk_Zombi_01.anim.meta
 Assets/Animations/Fast Run.fbx.meta
@@ -89,23 +91,6 @@ Assets/Scenes/project.meta
 Assets/Scenes/project.unity
 Assets/Scenes/project/NavMesh.asset
 Assets/Scenes/project/NavMesh.asset.meta
-Assets/Scripts/DialogueObject.cs
-Assets/Scripts/DialogueObject.cs.meta
-Assets/Scripts/DialogueUI.cs
-Assets/Scripts/DialogueUI.cs.meta
-Assets/Scripts/FaceCamera.cs
-Assets/Scripts/FaceCamera.cs.meta
-Assets/Scripts/FaceCameraScript.cs
-Assets/Scripts/FaceCameraScript.cs.meta
-Assets/Scripts/HealthBarScript.cs
-Assets/Scripts/HealthBarScript.cs.meta
-Assets/Scripts/NPCAI.cs
-Assets/Scripts/NPCAI.cs.meta
-Assets/Scripts/PlayerController2.cs
-Assets/Scripts/Typewriter.cs
-Assets/Scripts/Typewriter.cs.meta
-Assets/Scripts/ZombieControlScript.cs
-Assets/Scripts/ZombieControlScript.cs.meta
 Assets/Sounds.meta
 Assets/Sounds/POL-owl-woods-short.wav
 Assets/Sounds/POL-owl-woods-short.wav.meta
@@ -185,19 +170,27 @@ Assets/Zombie/ZombieRig.prefab.meta
 ProjectSettings/TagManager.asset
 Thisteamnameissolongitcouldbethetitletoafalloutboysong_Billy,TheMissingBoy_readme.txt
 
+Assets/Scripts/DialogueObject.cs
+Assets/Scripts/DialogueObject.cs.meta
+Assets/Scripts/DialogueUI.cs
+Assets/Scripts/DialogueUI.cs.meta
+Assets/Scripts/FaceCamera.cs
+Assets/Scripts/FaceCamera.cs.meta
+Assets/Scripts/FaceCameraScript.cs
+Assets/Scripts/FaceCameraScript.cs.meta
+Assets/Scripts/HealthBarScript.cs
+Assets/Scripts/HealthBarScript.cs.meta
+Assets/Scripts/NPCAI.cs
+Assets/Scripts/NPCAI.cs.meta
+Assets/Scripts/PlayerController2.cs
+Assets/Scripts/Typewriter.cs
+Assets/Scripts/Typewriter.cs.meta
+Assets/Scripts/ZombieControlScript.cs
+Assets/Scripts/ZombieControlScript.cs.meta
+
 Linsey - 
 
 Jieun:
-Assets/Scripts/CharAnimScript.cs
-Assets/Scripts/CharAnimScript.cs.meta
-Assets/Scripts/FaceCameraScript.cs
-Assets/Scripts/PlayerController.cs
-Assets/Scripts/PlayerController.cs.meta
-Assets/Scripts/PlayerController2.cs
-Assets/Scripts/QuaternionUtil.cs
-Assets/Scripts/QuaternionUtil.cs.meta
-Assets/Scripts/ThirdPersonCamera.cs
-Assets/Scripts/ThirdPersonCamera.cs.meta
 Assets/Animations/Jumping.fbx.meta
 Assets/Animations/PlayerAnimationController.controller
 Assets/Animations/PlayerAnimations.meta
@@ -227,6 +220,17 @@ Assets/Prefabs/player.prefab
 Assets/Scenes/just_character.unity
 Assets/Scenes/just_character.unity.meta
 Assets/Scenes/project.unity
+
+Assets/Scripts/CharAnimScript.cs
+Assets/Scripts/CharAnimScript.cs.meta
+Assets/Scripts/FaceCameraScript.cs
+Assets/Scripts/PlayerController.cs
+Assets/Scripts/PlayerController.cs.meta
+Assets/Scripts/PlayerController2.cs
+Assets/Scripts/QuaternionUtil.cs
+Assets/Scripts/QuaternionUtil.cs.meta
+Assets/Scripts/ThirdPersonCamera.cs
+Assets/Scripts/ThirdPersonCamera.cs.meta
 
 Kaitlyn - 
 Eduardo - 
