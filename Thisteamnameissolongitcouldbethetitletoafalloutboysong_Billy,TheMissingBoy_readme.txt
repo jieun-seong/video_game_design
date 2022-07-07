@@ -2192,7 +2192,47 @@ Assets/Scripts/PlayerController2.cs
 Assets/Scripts/QuaternionUtil.cs
 Assets/Scripts/ThirdPersonCamera.cs
 
-Kaitlyn - 
+Kaitlyn:
+I was responsible for creating the map, and debugging the player script.
+
+Assets/_TerrainAutoUpgrade/layer_Grass1Grass1_nb956af97c33fc3d7.terrainlayer
+Assets/_TerrainAutoUpgrade/layer_Grass1Grass1_nb956af97c33fc3d7.terrainlayer.meta
+Assets/_TerrainAutoUpgrade/layer_Grass2Grass2_n2023054508611406.terrainlayer
+Assets/_TerrainAutoUpgrade/layer_Grass2Grass2_n2023054508611406.terrainlayer.meta
+Assets/_TerrainAutoUpgrade/layer_Ground1Ground1_nb956af97c33fc3d7.terrainlayer
+Assets/_TerrainAutoUpgrade/layer_Ground1Ground1_nb956af97c33fc3d7.terrainlayer.meta
+Assets/New Terrain.asset
+Assets/New Terrain.asset.meta
+Assets/Medieval village.meta
+Assets/Medieval village/Houses.meta
+Assets/Medieval village/Houses/Prefabs/Houses1.prefab
+Assets/Medieval village/Houses/Prefabs/Houses1.prefab.meta
+Assets/Medieval village/Houses/Prefabs/Houses2.prefab
+Assets/Medieval village/Houses/Prefabs/Houses2.prefab.meta
+Assets/Medieval village/Houses/Prefabs/Houses3.prefab
+Assets/Medieval village/Houses/Prefabs/Houses3.prefab.meta
+Assets/Medieval village/Houses/Prefabs/Houses4.prefab
+Assets/Medieval village/Houses/Prefabs/Houses4.prefab.meta
+Assets/Medieval village/Houses/Prefabs/Houses5.prefab
+Assets/Medieval village/Houses/Prefabs/Houses5.prefab.meta
+Assets/Medieval village/Houses/Prefabs/Houses6.prefab
+Assets/Medieval village/Houses/Prefabs/Houses6.prefab.meta
+Assets/Medieval village/Houses/Prefabs/Houses7.prefab
+Assets/Medieval village/Houses/Prefabs/Houses7.prefab.meta
+Assets/Medieval village/Houses/Prefabs/Houses8.prefab
+Assets/Medieval village/Houses/Prefabs/Houses8.prefab.meta
+Assets/Medieval village/Houses/Prefabs/Houses9.prefab
+Assets/Medieval village/Houses/Prefabs/Houses9.prefab.meta
+Assets/Medieval village/Houses/Materials/FV_houses.mat
+Assets/Medieval village/Houses/Materials/FV_houses.mat.meta
+Assets/Medieval village/Houses/Textures/FV_Houses_Emission.png
+Assets/Medieval village/Houses/Textures/FV_Houses_Emission.png.meta
+Assets/Medieval village/Houses/Textures/FV_Houses_L.png
+Assets/Medieval village/Houses/Textures/FV_Houses_L.png.meta
+Assets/Medieval village/Houses/Textures/FV_Houses_nrml_L.png
+Assets/Medieval village/Houses/Textures/FV_Houses_nrml_L.png.meta
+Assets/Medieval village/Houses/Ground_Textures_Ground1.png
+Assets/Medieval village/Houses/Ground_Textures_Ground1.png.meta 
 
 Eduardo:
 I was responsible for menuing and inventory systems.
