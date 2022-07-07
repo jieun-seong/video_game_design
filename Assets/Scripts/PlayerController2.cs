@@ -61,8 +61,8 @@ public class PlayerController2 : MonoBehaviour
     //public AudioClip[] ChoppingWoodClips;
     //[Range(0, 1)] public float ChoppingWoodVolume = 0.5f;
 
-    //public AudioClip PickUpBagClip;
-    //[Range(0, 1)] public float PickUpBagVolume = 0.1f;
+    public AudioClip PickUpBagClip;
+    [Range(0, 1)] public float PickUpBagVolume = 0.1f;
 
     private void Awake() {
         gameStatus.playerDead = false;
@@ -196,6 +196,8 @@ public class PlayerController2 : MonoBehaviour
 
             other.transform.root.gameObject.SetActive(false);
             //other.gameObject.SetActive(false);
+
+            AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
         }
 
         //    if (other.gameObject.CompareTag("Collectible"))
