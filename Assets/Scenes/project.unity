@@ -1713,6 +1713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6e6fe00b62644a47ad8d61e4f17fb47, type: 3}
+--- !u!198 &301925617 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3584894082821136674, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+  m_PrefabInstance: {fileID: 1651827664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &302418060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7717,7 +7722,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 548066435}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1586408316
 BoxCollider:
@@ -8077,6 +8082,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: ps
+      value: 
+      objectReference: {fileID: 301925617}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: gravity
       value: -98
