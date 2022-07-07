@@ -44,6 +44,9 @@ public class PlayerController2 : MonoBehaviour
     private Vector3 velocity;
     //
 
+    //spell
+    public ParticleSystem ps;
+
     //dialogue stuff
     //private DialogueUI dialogueui;
     //public Canvas dialogueCanvas;
@@ -76,6 +79,7 @@ public class PlayerController2 : MonoBehaviour
         offset = playerCamera.transform.position - transform.position;
         currentHealth = maxHealth;
         hbs.SetMaxHealth(maxHealth);
+        //ps = GetComponent<ParticleSystem>();
         //dialogueui = dialogueCanvas.GetComponent<DialogueUI>();
     }
 
@@ -135,10 +139,13 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKey(KeyCode.V))
         {
             anim.SetBool("Spell", true);
+            // initiate particle effect
+            ps.Play();
         }
         else
         {
             anim.SetBool("Spell", false);
+            //ps.Stop();
         }
 
         if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f))// && isGrounded)
