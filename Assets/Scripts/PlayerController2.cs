@@ -81,7 +81,6 @@ public class PlayerController2 : MonoBehaviour
         offset = playerCamera.transform.position - transform.position;
         currentHealth = maxHealth;
         hbs.SetMaxHealth(maxHealth);
-        //ps = GetComponent<ParticleSystem>();
         //dialogueui = dialogueCanvas.GetComponent<DialogueUI>();
     }
 
@@ -142,13 +141,11 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKey(KeyCode.V) && !dead)
         {
             anim.SetBool("Spell", true);
-            // initiate particle effect
             ps.Play();
         }
         else
         {
             anim.SetBool("Spell", false);
-            //ps.Stop();
         }
 
         if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f) && !dead)// && isGrounded)
@@ -156,7 +153,6 @@ public class PlayerController2 : MonoBehaviour
             targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal")/10.0f + playerCamera.transform.forward * Input.GetAxis("Vertical");
             targetDirection.y = 0.0f;
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
-            //controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier + playerVelocity);
             currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
         }
         else
@@ -198,10 +194,7 @@ public class PlayerController2 : MonoBehaviour
         if (other.transform.root.gameObject.CompareTag("inventory"))
         {
             playerInventory.AddItem(other.transform.root.gameObject);
-
             other.transform.root.gameObject.SetActive(false);
-            //other.gameObject.SetActive(false);
-
             AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
         }
 
