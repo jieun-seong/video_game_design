@@ -8103,8 +8103,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1586408315}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: PickUpBagClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f673784d742f94a9bae3ceb406f035d3, type: 3}
+    - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: groundDistance
       value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: PickUpBagVolume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: playerInventory
