@@ -262,7 +262,7 @@ Assets/Scripts/ThirdPersonCamera.cs.meta
 
 Kaitlyn - 
 
-Eduardo:
+Eduardo: I was responsible for menuing and inventory systems
 Assets/Prefabs/itemDrops/BatteryDrop Variant.prefab
 Assets/Prefabs/itemDrops/BulletDrop Variant.prefab
 Assets/Prefabs/itemDrops/FirstAidBox Variant.prefab
