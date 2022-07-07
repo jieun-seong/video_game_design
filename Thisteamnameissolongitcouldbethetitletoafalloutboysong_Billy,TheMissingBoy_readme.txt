@@ -19,6 +19,7 @@ Known Problem Areas:
 - Dialogue system needs to be further refined in various ways. For example, if the player does not click through the dialogue at the beginning, the dialogue with the friends will not function correctly. Additionally, the NPC friends will eventually leave without finishing dialogue if the player does not click through the dialogue with them. Finally, we would also like to add buttons to the dialogue box so that the player can influence the dialogue and narrative.
 - Inventory and items are not yet fully operational yet. Currently, the items will be added to inventory upon player collision, but we have not yet implemented the functionality for the items to be clicked from inventory and used. Additionally, we still need to add audio effects for colliding with/picking up items.
 - Camera shakes slightly while backing up
+- Player character animation needs improvement. It looks like the character is sliding on the ground. However, when we enable root motion, it doesn't move or moves very fast. 
 
 
 Team Member Breakdown:
