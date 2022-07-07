@@ -2154,7 +2154,7 @@ ProjectSettings/TagManager.asset
 
 
 Jieun:
-I was responsible for character controller, input, locomotion animations, attack animations, third person camera, particle effect, ambience noise, character audio
+I was responsible for character controller, input, locomotion animations, attack animations, third person camera, particle effect, sound effect, ambience noise
 Assets/Animations/PlayerAnimationController.controller
 Assets/Animations/PlayerAnimations/Cross Punch.fbx
 Assets/Animations/PlayerAnimations/Falling Forward Death.fbx
