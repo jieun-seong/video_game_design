@@ -34,6 +34,7 @@ public class PlayerController2 : MonoBehaviour
     private int currentHealth;
     public GameObject healthBar;
     private HealthBarScript hbs;
+    private bool dead;
 
     //gravity
     private bool isGrounded;
@@ -71,7 +72,8 @@ public class PlayerController2 : MonoBehaviour
     private void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         character = transform.GetChild(0).gameObject;
         controller = GetComponent<CharacterController>();
         anim = character.GetComponent<Animator>();
@@ -79,7 +81,6 @@ public class PlayerController2 : MonoBehaviour
         offset = playerCamera.transform.position - transform.position;
         currentHealth = maxHealth;
         hbs.SetMaxHealth(maxHealth);
-        //ps = GetComponent<ParticleSystem>();
         //dialogueui = dialogueCanvas.GetComponent<DialogueUI>();
     }
 
@@ -88,9 +89,10 @@ public class PlayerController2 : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         CheckDamage();
         // player dying if no health
-        if (currentHealth == 0 && !anim.GetBool("Dead")) {
+        if (currentHealth <= 0 && !anim.GetBool("Dead")) {
             anim.SetBool("Dead", true);
             deathTime = Time.time;
+            dead = true;
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 2) {
             //Destroy(this.gameObject); // destroy after playing death animation
@@ -106,7 +108,7 @@ public class PlayerController2 : MonoBehaviour
         anim.SetBool("Grounded", groundedPlayer);
         //playerVelocity.y = 0.0f;
 
-        if (Input.GetKey("space") && groundedPlayer)
+        if (Input.GetKey("space") && groundedPlayer && !dead)
         {
             anim.SetBool("Jump", true);
             //rb.AddForce(Vector3.up * 40f);
@@ -127,7 +129,7 @@ public class PlayerController2 : MonoBehaviour
             speedMultiplier = 1.0f;
         }
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) && !dead)
         {
             anim.SetBool("Punch", true);
         }
@@ -136,24 +138,21 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Punch", false);
         }
 
-        if (Input.GetKey(KeyCode.V))
+        if (Input.GetKey(KeyCode.V) && !dead)
         {
             anim.SetBool("Spell", true);
-            // initiate particle effect
             ps.Play();
         }
         else
         {
             anim.SetBool("Spell", false);
-            //ps.Stop();
         }
 
-        if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f))// && isGrounded)
+        if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f) && !dead)// && isGrounded)
         {
             targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal")/10.0f + playerCamera.transform.forward * Input.GetAxis("Vertical");
             targetDirection.y = 0.0f;
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
-            //controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier + playerVelocity);
             currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
         }
         else
@@ -164,6 +163,7 @@ public class PlayerController2 : MonoBehaviour
 
         transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         anim.SetFloat("Speed", currSpeed);
+        updateY();
 
     }
 
@@ -194,10 +194,7 @@ public class PlayerController2 : MonoBehaviour
         if (other.transform.root.gameObject.CompareTag("inventory"))
         {
             playerInventory.AddItem(other.transform.root.gameObject);
-
             other.transform.root.gameObject.SetActive(false);
-            //other.gameObject.SetActive(false);
-
             AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
         }
 
