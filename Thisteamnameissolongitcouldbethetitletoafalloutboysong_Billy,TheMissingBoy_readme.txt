@@ -23,6 +23,8 @@ Known Problem Areas:
 
 Team Member Breakdown:
 Jacquelyn: 
+I was responsible for creating the NPC AI, the zombie (avatar and animations are from unity asset store, zombie controller script and animator controller were made by me), the health bars, and the fighting functionality between the player and enemies.
+
 Assets/Animations/Etc_Walk_Zombi_01.anim
 Assets/Animations/Etc_Walk_Zombi_01.anim.meta
 Assets/Animations/Fast Run.fbx.meta
@@ -89,23 +91,6 @@ Assets/Scenes/project.meta
 Assets/Scenes/project.unity
 Assets/Scenes/project/NavMesh.asset
 Assets/Scenes/project/NavMesh.asset.meta
-Assets/Scripts/DialogueObject.cs
-Assets/Scripts/DialogueObject.cs.meta
-Assets/Scripts/DialogueUI.cs
-Assets/Scripts/DialogueUI.cs.meta
-Assets/Scripts/FaceCamera.cs
-Assets/Scripts/FaceCamera.cs.meta
-Assets/Scripts/FaceCameraScript.cs
-Assets/Scripts/FaceCameraScript.cs.meta
-Assets/Scripts/HealthBarScript.cs
-Assets/Scripts/HealthBarScript.cs.meta
-Assets/Scripts/NPCAI.cs
-Assets/Scripts/NPCAI.cs.meta
-Assets/Scripts/PlayerController2.cs
-Assets/Scripts/Typewriter.cs
-Assets/Scripts/Typewriter.cs.meta
-Assets/Scripts/ZombieControlScript.cs
-Assets/Scripts/ZombieControlScript.cs.meta
 Assets/Sounds.meta
 Assets/Sounds/POL-owl-woods-short.wav
 Assets/Sounds/POL-owl-woods-short.wav.meta
@@ -185,19 +170,28 @@ Assets/Zombie/ZombieRig.prefab.meta
 ProjectSettings/TagManager.asset
 Thisteamnameissolongitcouldbethetitletoafalloutboysong_Billy,TheMissingBoy_readme.txt
 
+Assets/Scripts/DialogueObject.cs
+Assets/Scripts/DialogueObject.cs.meta
+Assets/Scripts/DialogueUI.cs
+Assets/Scripts/DialogueUI.cs.meta
+Assets/Scripts/FaceCamera.cs
+Assets/Scripts/FaceCamera.cs.meta
+Assets/Scripts/FaceCameraScript.cs
+Assets/Scripts/FaceCameraScript.cs.meta
+Assets/Scripts/HealthBarScript.cs
+Assets/Scripts/HealthBarScript.cs.meta
+Assets/Scripts/NPCAI.cs
+Assets/Scripts/NPCAI.cs.meta
+Assets/Scripts/PlayerController2.cs
+Assets/Scripts/Typewriter.cs
+Assets/Scripts/Typewriter.cs.meta
+Assets/Scripts/ZombieControlScript.cs
+Assets/Scripts/ZombieControlScript.cs.meta
+
 Linsey - 
 
 Jieun:
-Assets/Scripts/CharAnimScript.cs
-Assets/Scripts/CharAnimScript.cs.meta
-Assets/Scripts/FaceCameraScript.cs
-Assets/Scripts/PlayerController.cs
-Assets/Scripts/PlayerController.cs.meta
-Assets/Scripts/PlayerController2.cs
-Assets/Scripts/QuaternionUtil.cs
-Assets/Scripts/QuaternionUtil.cs.meta
-Assets/Scripts/ThirdPersonCamera.cs
-Assets/Scripts/ThirdPersonCamera.cs.meta
+I was responsible for character controller, input, locomotion animations, attack animations, third person camera, particle effect, ambience noise, character audio
 Assets/Animations/Jumping.fbx.meta
 Assets/Animations/PlayerAnimationController.controller
 Assets/Animations/PlayerAnimations.meta
@@ -218,6 +212,9 @@ Assets/Animations/PlayerAnimations/Standing 1H Magic Attack 01.fbx.meta
 Assets/Animations/PlayerAnimations/Walking.fbx
 Assets/Animations/PlayerAnimations/Walking.fbx.meta
 Assets/Eiri.fbx.meta
+Assets/Nature - Essentials.meta
+Assets/Nature - Essentials/Ambiance_Forest_Birds_Loop_Stereo.wav
+Assets/Nature - Essentials/Ambiance_Forest_Birds_Loop_Stereo.wav.meta
 Assets/New Terrain.asset
 Assets/Prefabs/EiriPrefab.prefab
 Assets/Prefabs/EiriPrefab.prefab.meta
@@ -227,6 +224,40 @@ Assets/Prefabs/player.prefab
 Assets/Scenes/just_character.unity
 Assets/Scenes/just_character.unity.meta
 Assets/Scenes/project.unity
+Assets/StarterAssets/ThirdPersonController/Character/Sfx.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_01.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_01.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_02.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_02.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_03.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_03.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_04.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_04.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_05.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_05.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_06.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_06.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_07.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_07.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_08.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_08.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_09.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_09.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_10.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Footstep_10.wav.meta
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Land.wav
+Assets/StarterAssets/ThirdPersonController/Character/Sfx/Player_Land.wav.meta
+
+Assets/Scripts/CharAnimScript.cs
+Assets/Scripts/CharAnimScript.cs.meta
+Assets/Scripts/FaceCameraScript.cs
+Assets/Scripts/PlayerController.cs
+Assets/Scripts/PlayerController.cs.meta
+Assets/Scripts/PlayerController2.cs
+Assets/Scripts/QuaternionUtil.cs
+Assets/Scripts/QuaternionUtil.cs.meta
+Assets/Scripts/ThirdPersonCamera.cs
+Assets/Scripts/ThirdPersonCamera.cs.meta
 
 Kaitlyn - 
 Eduardo - 
