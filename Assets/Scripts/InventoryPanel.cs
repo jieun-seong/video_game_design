@@ -67,6 +67,7 @@ public class InventoryPanel : MonoBehaviour
 					itemAdded = true;
 					slotScript.itemCount++;
 					itemRepresentation[a].transform.GetChild(0).GetComponent<Text>().text = slotScript.itemCount + "";
+					//itemRepresentation[a].transform.GetChild(1).GetComponent<Text>().text = slotScript.itemName + ": " + thisItem.itemDescription;
 				}
             }
 			a++;
@@ -83,8 +84,11 @@ public class InventoryPanel : MonoBehaviour
 					slotScript.itemCount = 1;
 					slotScript.itemID = thisItem.itemID;
 					slotScript.empty = false;
+					slotScript.itemName = thisItem.itemName;
+					slotScript.itemDescription = thisItem.itemDescription;
 					itemRepresentation[a].transform.GetComponent<Image>().sprite = thisItem.itemPNG;
 					itemRepresentation[a].transform.GetChild(0).GetComponent<Text>().text = slotScript.itemCount + "";
+					itemRepresentation[a].transform.GetChild(1).GetComponent<Text>().text = slotScript.itemName + ": " + thisItem.itemDescription;
 				}
 				a++;
 			}
