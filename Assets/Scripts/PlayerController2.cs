@@ -30,6 +30,7 @@ public class PlayerController2 : MonoBehaviour
     //health bar stuff
     private float attackTime = 0f;
     private float deathTime = 0f;
+    private float manaTime = 0f;
     private int maxHealth = 100;
     private int maxMana = 100;
     private int currentHealth;
@@ -151,6 +152,7 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Spell", true);
             currentMana -= 30;
             mbs.SetMana(currentMana);
+            manaTime = Time.time;
             //Debug.Log("Mana now: " + currentMana);
             ps.Play();
         }
@@ -174,6 +176,14 @@ public class PlayerController2 : MonoBehaviour
 
         transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         anim.SetFloat("Speed", currSpeed);
+
+        //mana replenishes over time
+        if (currentMana < maxMana && Time.time - manaTime >= 1f)
+        {
+            currentMana += Mathf.RoundToInt((maxMana / 100));
+            mbs.SetMana(currentMana);
+            manaTime = Time.time;
+        }
         updateY();
 
     }
