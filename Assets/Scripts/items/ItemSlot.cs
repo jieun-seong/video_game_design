@@ -12,13 +12,16 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [TextArea(2, 4)]
     public string itemDescription;
     GameObject itemText;
+    GameObject itemButton;
 
     // Start is called before the first frame update
     void Start()
     {
         empty = true;
         itemText = this.transform.GetChild(1).gameObject;
+        itemButton = this.transform.GetChild(2).gameObject;
         itemText.SetActive(false);
+        itemButton.SetActive(false);
 
     }
 
@@ -30,11 +33,16 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData e)
     {
-        itemText.SetActive(true);
+        if (!empty)
+        {
+            itemText.SetActive(true);
+            itemButton.SetActive(true);
+        }
     }
 
     public void OnPointerExit(PointerEventData e)
     {
         itemText.SetActive(false);
+        itemButton.SetActive(false);
     }
 }
