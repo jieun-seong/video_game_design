@@ -31,9 +31,13 @@ public class PlayerController2 : MonoBehaviour
     private float attackTime = 0f;
     private float deathTime = 0f;
     private int maxHealth = 100;
+    private int maxMana = 100;
     private int currentHealth;
+    private int currentMana;
     public GameObject healthBar;
+    public GameObject manaBar;
     private HealthBarScript hbs;
+    private ManaBarScript mbs;
     private bool dead;
 
     //gravity
@@ -68,6 +72,7 @@ public class PlayerController2 : MonoBehaviour
     private void Awake() {
         gameStatus.playerDead = false;
         hbs = healthBar.GetComponent<HealthBarScript>();
+        mbs = manaBar.GetComponent<ManaBarScript>();
     }
     private void Start()
     {
@@ -80,7 +85,10 @@ public class PlayerController2 : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         offset = playerCamera.transform.position - transform.position;
         currentHealth = maxHealth;
+        currentMana = maxMana;
         hbs.SetMaxHealth(maxHealth);
+        mbs.SetMaxMana(maxMana);
+        //Debug.Log("Mana set to: " + currentMana);
         //dialogueui = dialogueCanvas.GetComponent<DialogueUI>();
     }
 
@@ -138,9 +146,12 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Punch", false);
         }
 
-        if (Input.GetKey(KeyCode.V) && !dead)
+        if (Input.GetKey(KeyCode.V) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
         {
             anim.SetBool("Spell", true);
+            currentMana -= 30;
+            mbs.SetMana(currentMana);
+            //Debug.Log("Mana now: " + currentMana);
             ps.Play();
         }
         else

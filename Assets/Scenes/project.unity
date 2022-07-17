@@ -8134,6 +8134,10 @@ PrefabInstance:
       value: -98
       objectReference: {fileID: 0}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: manaBar
+      value: 
+      objectReference: {fileID: 6611393467000088332}
+    - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 625297628}
@@ -11383,19 +11387,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6611393467000088323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6611393467000088332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82581dffb9cb4459496fc22801bb10ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 6611393467000088322}
 --- !u!1 &6611393467000088332
 GameObject:
   m_ObjectHideFlags: 0
@@ -11406,7 +11397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6611393467000088333}
   - component: {fileID: 6611393467000088322}
-  - component: {fileID: 6611393467000088323}
+  - component: {fileID: 6611393467000088334}
   m_Layer: 5
   m_Name: ManaBar
   m_TagString: Untagged
@@ -11435,3 +11426,16 @@ RectTransform:
   m_AnchoredPosition: {x: 75, y: -10}
   m_SizeDelta: {x: 50.5, y: 7.5}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &6611393467000088334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6611393467000088332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796df09c55eaf344794a7f0844dd55df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 6611393467000088322}
