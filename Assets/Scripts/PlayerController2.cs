@@ -51,7 +51,10 @@ public class PlayerController2 : MonoBehaviour
     //
 
     //spell
-    public ParticleSystem ps;
+    public ParticleSystem ps_spell;
+    public ParticleSystem ps_healing;
+    public ParticleSystem ps_death;
+    public ParticleSystem ps_blood;
 
     //dialogue stuff
     //private DialogueUI dialogueui;
@@ -102,6 +105,7 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Dead", true);
             deathTime = Time.time;
             dead = true;
+            ps_death.Play();
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 2) {
             //Destroy(this.gameObject); // destroy after playing death animation
@@ -154,9 +158,9 @@ public class PlayerController2 : MonoBehaviour
             //mana consumed when casting spell - ed209uardo
             currentMana -= 30;
             mbs.SetMana(currentMana);
+            //Debug.Log("Mana now: " + currentMana);
             manaTime = Time.time;
-
-            ps.Play();
+            ps_spell.Play();
         }
         else
         {
@@ -245,6 +249,7 @@ public class PlayerController2 : MonoBehaviour
         foreach (GameObject z in zombies) {
             float distance = Vector3.Distance(transform.position, z.transform.position);
             if (distance < 5 && Time.time > attackTime + 2.5) {
+                ps_blood.Play();
                 attackTime = Time.time; //give enough time for zombie fighting anim to play
                 if (currentHealth - 10 >= 0) { //10 is preset damage
                     currentHealth -= 10; //change damage amount later when zombies have levels
