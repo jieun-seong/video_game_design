@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public bool empty;
     public int itemID;
@@ -10,14 +11,14 @@ public class ItemSlot : MonoBehaviour
     public string itemName;
     [TextArea(2, 4)]
     public string itemDescription;
-    //GameObject itemText;
+    GameObject itemText;
 
     // Start is called before the first frame update
     void Start()
     {
         empty = true;
-        //itemText = this.transform.GetChild(1).gameObject;
-        //itemText.SetActive(false);
+        itemText = this.transform.GetChild(1).gameObject;
+        itemText.SetActive(false);
 
     }
 
@@ -27,13 +28,13 @@ public class ItemSlot : MonoBehaviour
         
     }
 
-    public void OnMouseOver()
+    public void OnPointerEnter(PointerEventData e)
     {
-        //itemText.SetActive(true);
+        itemText.SetActive(true);
     }
 
-    public void OnMouseExit()
+    public void OnPointerExit(PointerEventData e)
     {
-        //itemText.SetActive(false);
+        itemText.SetActive(false);
     }
 }
