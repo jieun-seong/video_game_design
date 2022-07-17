@@ -27,9 +27,10 @@ public class PlayerController2 : MonoBehaviour
     private float currSpeed = 0.0f;
     Vector3 targetDirection;
 
-    //health bar stuff
+    //health & mana bar stuff
     private float attackTime = 0f;
     private float deathTime = 0f;
+    private float manaTime = 0f;
     private int maxHealth = 100;
     private int maxMana = 100;
     private int currentHealth;
@@ -153,9 +154,12 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKey(KeyCode.V) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
         {
             anim.SetBool("Spell", true);
+
+            //mana consumed when casting spell - ed209uardo
             currentMana -= 30;
             mbs.SetMana(currentMana);
             //Debug.Log("Mana now: " + currentMana);
+            manaTime = Time.time;
             ps_spell.Play();
         }
         else
@@ -178,6 +182,15 @@ public class PlayerController2 : MonoBehaviour
 
         transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         anim.SetFloat("Speed", currSpeed);
+
+        //mana replenishes over time - ed209uardo
+        if (currentMana < maxMana && Time.time - manaTime >= 1f)
+        {
+            currentMana += Mathf.RoundToInt((maxMana / 100));
+            mbs.SetMana(currentMana);
+            manaTime = Time.time;
+        }
+
         updateY();
 
     }
