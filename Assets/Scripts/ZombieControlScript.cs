@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ZombieControlScript : MonoBehaviour
 {
     private Animator anim;
-    public Transform character;
+    public GameObject character;
     public GameObject zombie;
     Rigidbody rb;
     public GameObject healthBar;
@@ -15,9 +15,11 @@ public class ZombieControlScript : MonoBehaviour
     private HealthBarScript hbs;
     private float attackTime = 0f;
     private float deathTime = 0f;
+    private float zombieAttackTime = 0f;
     public LootTable dropTable;
     private GameObject child;
     private CharacterController controller;
+    private PlayerController2 playerScript;
 
     //gravity
     private bool isGrounded;
@@ -47,16 +49,17 @@ public class ZombieControlScript : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = child.GetComponent<Animator>();
         anim.SetFloat("Blend", 0f);
-        transform.LookAt(character);
+        transform.LookAt(character.transform);
         currentHealth = maxHealth;
         hbs.SetMaxHealth(maxHealth);
+        playerScript = character.GetComponent<PlayerController2>();
     }
 
     // Update is called once per frame
     void Update() {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         healthBar.transform.position = transform.position + new Vector3(0f,6f,0f);
-        float distance = Vector3.Distance(character.position, transform.position);
+        float distance = Vector3.Distance(character.transform.position, transform.position);
         if (currentHealth == 0 && !anim.GetBool("Dead")) {
             anim.SetBool("Dead", true);
             deathTime = Time.time;
@@ -68,19 +71,33 @@ public class ZombieControlScript : MonoBehaviour
             spawnDrops(); // drop items after the death animation 
         }
         if (!anim.GetBool("Dead")) {
-            Vector3 targetDirection = character.position - transform.position;
-            if (distance < 5) { //fight player
+            Vector3 targetDirection = character.transform.position - transform.position;
+            if (distance < 7) { //fight player
                 //transform.LookAt(character);
                 anim.SetBool("Attacking", true);
-                if (Input.GetKeyDown(KeyCode.Q) && Time.time > attackTime + 2.0) {
+                if (zombieAttackTime <= 0f) { //first zombie attack, wait slightly for animation
+                    zombieAttackTime = Time.time;
+                }
+                if (zombieAttackTime + 2.5 < Time.time) {
+                    zombieAttackTime = Time.time;
+                    playerScript.TakeDamage();// player take damage
+                }
+                if (Input.GetKeyDown(KeyCode.Q) && Time.time > attackTime + 2.0) { //player punch
                     attackTime = Time.time;
                     TakeDamage(15);
                 }
-            } else if (distance < 15) {
+            } else if (distance < 15) { //magic attack
                 if (Input.GetKeyDown(KeyCode.V) && Time.time > attackTime + 2.0) {
                     attackTime = Time.time;
                     TakeDamage(30);
                 }
+                zombieAttackTime = 0f;
+                anim.SetBool("Attacking", false);
+                //transform.position = Vector3.MoveTowards(transform.position, character.position, 2.0f * Time.deltaTime);
+                controller.Move(targetDirection.normalized * 4 * Time.deltaTime);
+                transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
+                //transform.LookAt(character.position);
+                anim.SetFloat("Blend", 1f);
             } else if (distance < 30) { // make zombie go towards player fast
                 anim.SetBool("Attacking", false);
                 //transform.position = Vector3.MoveTowards(transform.position, character.position, 2.0f * Time.deltaTime);
@@ -96,9 +113,11 @@ public class ZombieControlScript : MonoBehaviour
                 controller.Move(targetDirection.normalized * 2 * Time.deltaTime);
                 transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
                 anim.SetFloat("Blend", distance);
+                zombieAttackTime = 0f;
             } else { // zombie stand still
                 anim.SetFloat("Blend", 0f);
-                transform.LookAt(character);
+                transform.LookAt(character.transform);
+                zombieAttackTime = 0f;
             }
         }
         updateY();
