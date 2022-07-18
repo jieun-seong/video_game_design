@@ -18,7 +18,14 @@ public class InventoryPanel : MonoBehaviour
 	void Awake()
     {
 		canvasGroup = GetComponent<CanvasGroup>();
+		gameStatus.itemID = -1;
+		gameStatus.itemName = "";
+		gameStatus.itemSelected = false;
+		gameStatus.itemActivated = false;
 		gameStatus.inventoryVisible = false;
+		gameStatus.itemUsed = false;
+		gameStatus.healthAdded = 0;
+		gameStatus.manaAdded = 0;
 
 		inventorySpace = panelSpot.transform.childCount;
 		itemRepresentation = new GameObject[inventorySpace];
@@ -34,19 +41,26 @@ public class InventoryPanel : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (gameStatus.inventoryVisible)
+		if (!gameStatus.itemSelected)
 		{
-			canvasGroup.interactable = true;
-			canvasGroup.blocksRaycasts = true;
-			canvasGroup.alpha = 1f;
+			if (gameStatus.inventoryVisible)
+			{
+				canvasGroup.interactable = true;
+				canvasGroup.blocksRaycasts = true;
+				canvasGroup.alpha = 1f;
+			}
+			else
+			{
+				canvasGroup.interactable = false;
+				canvasGroup.blocksRaycasts = false;
+				canvasGroup.alpha = 0f;
+			}
 		}
-		else
-		{
+        else
+        {
 			canvasGroup.interactable = false;
 			canvasGroup.blocksRaycasts = false;
-			canvasGroup.alpha = 0f;
 		}
-
 	}
 
 	public void AddItem(GameObject item)

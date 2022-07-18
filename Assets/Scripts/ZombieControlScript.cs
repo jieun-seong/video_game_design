@@ -29,6 +29,11 @@ public class ZombieControlScript : MonoBehaviour
     private bool groundedPlayer;
     //
 
+    //particle effects
+    public ParticleSystem ps_death;
+    public ParticleSystem ps_blood;
+    //
+
     // Start is called before the first frame update
     private void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -56,6 +61,7 @@ public class ZombieControlScript : MonoBehaviour
             anim.SetBool("Dead", true);
             deathTime = Time.time;
             //Destroy(zombie);
+            ps_death.Play();
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 6.5) {
             Destroy(zombie); // destroy after playing death animation
@@ -161,6 +167,7 @@ public class ZombieControlScript : MonoBehaviour
             currentHealth = 0;
         }
         hbs.SetHealth(currentHealth);
+        ps_blood.Play();
     }
 
     void spawnDrops()

@@ -12,14 +12,11 @@ public class PlayerController2 : MonoBehaviour
     private GameObject character;
     private Animator anim;
     private CharacterController controller;
-    private Rigidbody rb;
     public Transform playerCamera = null;
     public Transform cameraRoot = null;
     //private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 10.0f;
-    //private float jumpHeight = 1.0f;
-    private Vector3 offset;
     public float cameraSpeedH = 2.0f;
     public float cameraSpeedV = 2.0f;
     private float speedMultiplier = 2.0f;
@@ -27,13 +24,18 @@ public class PlayerController2 : MonoBehaviour
     private float currSpeed = 0.0f;
     Vector3 targetDirection;
 
-    //health bar stuff
+    //health & mana bar stuff
     private float attackTime = 0f;
     private float deathTime = 0f;
+    private float manaTime = 0f;
     private int maxHealth = 100;
+    private int maxMana = 100;
     private int currentHealth;
+    private int currentMana;
     public GameObject healthBar;
+    public GameObject manaBar;
     private HealthBarScript hbs;
+    private ManaBarScript mbs;
     private bool dead;
 
     //gravity
@@ -46,7 +48,10 @@ public class PlayerController2 : MonoBehaviour
     //
 
     //spell
-    public ParticleSystem ps;
+    public ParticleSystem ps_spell;
+    public ParticleSystem ps_healing;
+    public ParticleSystem ps_death;
+    public ParticleSystem ps_blood;
 
     //dialogue stuff
     //private DialogueUI dialogueui;
@@ -55,6 +60,14 @@ public class PlayerController2 : MonoBehaviour
     //public GameObject waypointForDialogue;
 
     // Audio
+    public AudioClip SpellClip;
+    [Range(0, 1)] public float SpellVolume = 1f;
+
+    
+
+    public AudioClip PickUpBagClip;
+    [Range(0, 1)] public float PickUpBagVolume = 1f;
+
     //public AudioClip SmallPlantClip;
     //[Range(0, 1)] public float SmallPlantVolume = 0.5f;
 
@@ -62,37 +75,69 @@ public class PlayerController2 : MonoBehaviour
     //public AudioClip[] ChoppingWoodClips;
     //[Range(0, 1)] public float ChoppingWoodVolume = 0.5f;
 
-    public AudioClip PickUpBagClip;
-    [Range(0, 1)] public float PickUpBagVolume = 0.1f;
 
     private void Awake() {
         gameStatus.playerDead = false;
         hbs = healthBar.GetComponent<HealthBarScript>();
+        mbs = manaBar.GetComponent<ManaBarScript>();
     }
+
     private void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         character = transform.GetChild(0).gameObject;
         controller = GetComponent<CharacterController>();
         anim = character.GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
-        offset = playerCamera.transform.position - transform.position;
         currentHealth = maxHealth;
+        currentMana = maxMana;
         hbs.SetMaxHealth(maxHealth);
+        mbs.SetMaxMana(maxMana);
+        //Debug.Log("Mana set to: " + currentMana);
         //dialogueui = dialogueCanvas.GetComponent<DialogueUI>();
     }
 
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        //if health or mana potion used since last update, status applied - ed209uardo
+        if (gameStatus.itemUsed)
+        {
+            if (gameStatus.healthAdded > 0)
+            {
+                currentHealth += gameStatus.healthAdded;
+                if (currentHealth > maxHealth)
+                {
+                    currentHealth = maxHealth;
+                }
+                hbs.SetHealth(currentHealth);
+                gameStatus.healthAdded = 0;
+
+                // play the healing animation
+                ps_healing.Play();
+            }
+            if (gameStatus.manaAdded > 0)
+            {
+                currentMana += gameStatus.manaAdded;
+                if (currentMana > maxMana)
+                {
+                    currentMana = maxMana;
+                }
+                mbs.SetMana(currentMana);
+                gameStatus.manaAdded = 0;
+
+                // play the healing animation
+                ps_healing.Play();
+            }
+            gameStatus.itemUsed = false;
+        }
+
         CheckDamage();
         // player dying if no health
         if (currentHealth <= 0 && !anim.GetBool("Dead")) {
             anim.SetBool("Dead", true);
             deathTime = Time.time;
             dead = true;
+            ps_death.Play();
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 2) {
             //Destroy(this.gameObject); // destroy after playing death animation
@@ -104,20 +149,17 @@ public class PlayerController2 : MonoBehaviour
         //dialogueui.ShowDialogue(pressEDialogue);
         //}
 
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         groundedPlayer = controller.isGrounded;
         anim.SetBool("Grounded", groundedPlayer);
-        //playerVelocity.y = 0.0f;
 
-        if (Input.GetKey("space") && groundedPlayer && !dead)
+        if (Input.GetKeyDown("space") && groundedPlayer && !dead)
         {
             anim.SetBool("Jump", true);
-            //rb.AddForce(Vector3.up * 40f);
-            //playerVelocity.y = Mathf.Sqrt(jumpHeight * -5.0f * gravityValue);
         }
         else
         {
             anim.SetBool("Jump", false);
-            //playerVelocity.y = gravityValue * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -129,7 +171,7 @@ public class PlayerController2 : MonoBehaviour
             speedMultiplier = 1.0f;
         }
 
-        if (Input.GetKey(KeyCode.Q) && !dead)
+        if (Input.GetKeyDown(KeyCode.Q) && !dead)
         {
             anim.SetBool("Punch", true);
         }
@@ -138,10 +180,17 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Punch", false);
         }
 
-        if (Input.GetKey(KeyCode.V) && !dead)
+        if (Input.GetKeyDown(KeyCode.V) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
         {
             anim.SetBool("Spell", true);
-            ps.Play();
+
+            //mana consumed when casting spell - ed209uardo
+            currentMana -= 30;
+            mbs.SetMana(currentMana);
+            //Debug.Log("Mana now: " + currentMana);
+            manaTime = Time.time;
+            ps_spell.Play();
+            AudioSource.PlayClipAtPoint(SpellClip, transform.TransformPoint(controller.center), SpellVolume);
         }
         else
         {
@@ -163,6 +212,15 @@ public class PlayerController2 : MonoBehaviour
 
         transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         anim.SetFloat("Speed", currSpeed);
+
+        //mana replenishes over time - ed209uardo
+        if (currentMana < maxMana && Time.time - manaTime >= 1f)
+        {
+            currentMana += Mathf.RoundToInt((maxMana / 100));
+            mbs.SetMana(currentMana);
+            manaTime = Time.time;
+        }
+
         updateY();
 
     }
@@ -197,23 +255,6 @@ public class PlayerController2 : MonoBehaviour
             other.transform.root.gameObject.SetActive(false);
             AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
         }
-
-        //    if (other.gameObject.CompareTag("Collectible"))
-        //    {
-        //        other.gameObject.SetActive(false);
-        //        AudioSource.PlayClipAtPoint(SmallPlantClip, transform.TransformPoint(controller.center), SmallPlantVolume);
-        //        //anim.SetBool(_animIDPickUp, true);
-        //    }
-        //    if (other.gameObject.CompareTag("Weapon"))
-        //    {
-        //        other.gameObject.SetActive(false);
-        //        AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
-        //    }
-        //    if (other.gameObject.CompareTag("Tree"))
-        //    {
-        //        other.gameObject.SetActive(false);
-        //        AudioSource.PlayClipAtPoint(ChoppingWoodClip, transform.TransformPoint(controller.center), ChoppingWoodVolume);
-        //    }
     }
 
     void CheckDamage() {
@@ -228,6 +269,7 @@ public class PlayerController2 : MonoBehaviour
                     currentHealth = 0;
                 }
                 hbs.SetHealth(currentHealth);
+                ps_blood.Play();
             }
         }
     }

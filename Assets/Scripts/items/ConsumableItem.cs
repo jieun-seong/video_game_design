@@ -8,6 +8,7 @@ public class ConsumableItem : InventoryItem
     public enum ConsumableType
     {
         healing,
+        mana,
         cartridge,
         battery,
         fuel
