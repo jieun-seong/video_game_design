@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4189,6 +4189,7 @@ GameObject:
   - component: {fileID: 894982365}
   - component: {fileID: 894982364}
   - component: {fileID: 894982363}
+  - component: {fileID: 894982366}
   m_Layer: 5
   m_Name: Button (use item)
   m_TagString: Untagged
@@ -4259,7 +4260,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 894982364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 894982366}
+        m_TargetAssemblyTypeName: UseItem, Assembly-CSharp
+        m_MethodName: UseItemButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &894982364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4298,6 +4311,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894982361}
   m_CullTransparentMesh: 1
+--- !u!114 &894982366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894982361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4adbc4a3dbae941ae93f57f3df8e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStatus: {fileID: 11400000, guid: e2c8c0430fb16d54d925d67e0d15bb11, type: 2}
 --- !u!4 &904098375 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464718, guid: 665476c513ab4854aa1f973e09dbed5b, type: 3}

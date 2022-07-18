@@ -21,6 +21,7 @@ public class InventoryPanel : MonoBehaviour
 		gameStatus.itemID = -1;
 		gameStatus.itemName = "";
 		gameStatus.itemSelected = false;
+		gameStatus.itemActivated = false;
 		gameStatus.inventoryVisible = false;
 		gameStatus.itemUsed = false;
 		gameStatus.healthAdded = 0;

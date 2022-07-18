@@ -22,6 +22,7 @@ public class ItemSelectedToggle : MonoBehaviour
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
             canvasGroup.alpha = 1f;
+            //this.transform.GetChild(2).GetComponent<Text>().text = gameStatus.itemName + "\n" + "selected";
         }
         else
         {

@@ -14,6 +14,7 @@ public class GameStatus : ScriptableObject
     public int itemID;
     public string itemName;
     public bool itemSelected;
+    public bool itemActivated;
     public bool itemUsed;
     public int healthAdded;
     public int manaAdded;
