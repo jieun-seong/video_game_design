@@ -19,6 +19,9 @@ public class InventoryPanel : MonoBehaviour
     {
 		canvasGroup = GetComponent<CanvasGroup>();
 		gameStatus.inventoryVisible = false;
+		gameStatus.itemUsed = false;
+		gameStatus.healthAdded = 0;
+		gameStatus.manaAdded = 0;
 
 		inventorySpace = panelSpot.transform.childCount;
 		itemRepresentation = new GameObject[inventorySpace];

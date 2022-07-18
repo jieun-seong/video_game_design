@@ -104,6 +104,31 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
+        //if health or mana potion used since last update, status applied - ed209uardo
+        if (gameStatus.itemUsed)
+        {
+            if (gameStatus.healthAdded > 0)
+            {
+                currentHealth += gameStatus.healthAdded;
+                if (currentHealth > maxHealth)
+                {
+                    currentHealth = maxHealth;
+                }
+                hbs.SetHealth(currentHealth);
+                gameStatus.healthAdded = 0;
+            }
+            if (gameStatus.manaAdded > 0)
+            {
+                currentMana += gameStatus.manaAdded;
+                if (currentMana > maxMana)
+                {
+                    currentMana = maxMana;
+                }
+                mbs.SetMana(currentMana);
+                gameStatus.manaAdded = 0;
+            }
+            gameStatus.itemUsed = false;
+        }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         CheckDamage();
         // player dying if no health
