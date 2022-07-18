@@ -3,8 +3,8 @@ using System.Collections;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    public float positionSmoothTime = 1f;		// a public variable to adjust smoothing of camera motion
-    public float rotationSmoothTime = 1f;
+    public float positionSmoothTime = 10f;		// a public variable to adjust smoothing of camera motion
+    public float rotationSmoothTime = 10f;
     public float positionMaxSpeed = 70f;        //max speed camera can move
     public float rotationMaxSpeed = 70f;
     public Transform desiredPosition;			// the desired pose for the camera, specified by a transform in the game
@@ -30,7 +30,7 @@ public class ThirdPersonCamera : MonoBehaviour
         //transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
 
 
-        float rotationSpeed = 2.5f;
+        float rotationSpeed = 4f;
         float rotateHorizontal = Input.GetAxis("Mouse X");
         float rotateVertical = -Input.GetAxis("Mouse Y");
 

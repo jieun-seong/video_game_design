@@ -3667,42 +3667,6 @@ CapsuleCollider:
   m_Height: 1.9904461
   m_Direction: 1
   m_Center: {x: 0, y: 0.0047769547, z: 0}
---- !u!114 &772359950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772359943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0411be5afa124955864ba4464f57098, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 548066435}
-  zombie: {fileID: 772359943}
-  healthBar: {fileID: 730104128}
-  dropTable: {fileID: 11400000, guid: 838a3a452db442d408e75c47846c4eb9, type: 2}
-  groundCheck: {fileID: 90800672}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 128
-  ps_death: {fileID: 2066841096}
-  ps_blood: {fileID: 953825912}
---- !u!114 &772359951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772359943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04f8a2c5bb9b94b4b945e03c7c15e47c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageClip: {fileID: 8300000, guid: 8ff246051c9244e468dfc02bd7db97f0, type: 3}
-  DamageVolume: 1
 --- !u!1 &779608053
 GameObject:
   m_ObjectHideFlags: 0
@@ -11540,7 +11504,7 @@ PrefabInstance:
     - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: groundCheck
       value: 
-      objectReference: {fileID: 780539344}
+      objectReference: {fileID: 90800672}
     - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: groundMask.m_Bits
       value: 128
@@ -11551,7 +11515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 537854142821473591, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5100
+      value: 5101.03
       objectReference: {fileID: 0}
     - target: {fileID: 537854142821473591, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11559,7 +11523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 537854142821473591, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5290.07
+      value: 5291.71
       objectReference: {fileID: 0}
     - target: {fileID: 537854142821473591, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_LocalRotation.w
