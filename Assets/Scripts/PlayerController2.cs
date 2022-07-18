@@ -201,7 +201,7 @@ public class PlayerController2 : MonoBehaviour
         float vdir = Input.GetAxis("Vertical");
         if (vdir > 0.0f && !dead)
         {
-            targetDirection = transform.right * hdir * 0.4f + transform.forward * vdir;
+            targetDirection = transform.right * hdir * 0.3f + transform.forward * vdir;
             targetDirection.y = 0.0f;
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
             currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
@@ -215,7 +215,7 @@ public class PlayerController2 : MonoBehaviour
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
             currSpeed = playerSpeed;
         }
-        else if (hdir != 0.0f && !dead)// && isGrounded)
+        else if (hdir != 0.0f && !dead)
         {
             targetDirection = transform.right * hdir * Time.deltaTime * 0.01f;
             currSpeed = playerSpeed;
