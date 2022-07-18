@@ -12,6 +12,7 @@ public class GameStatus : ScriptableObject
     public bool inventoryVisible;
     public bool playerDead;
     public int itemID;
+    public string itemName;
     public bool itemSelected;
     public bool itemUsed;
     public int healthAdded;

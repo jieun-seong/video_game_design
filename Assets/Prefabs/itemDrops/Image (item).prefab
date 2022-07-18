@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 7695071739505853958}
   - component: {fileID: 1717089395261398405}
   - component: {fileID: 2684481044926793489}
+  - component: {fileID: 2548428049038335531}
   m_Layer: 5
   m_Name: Button (3 - select item)
   m_TagString: Untagged
@@ -374,7 +375,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1717089395261398405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2548428049038335531}
+        m_TargetAssemblyTypeName: SelectItem, Assembly-CSharp
+        m_MethodName: SelectItemButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2548428049038335531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705996532160970570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90d580a0272cd44bbbbbf633a4fbb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStatus: {fileID: 11400000, guid: e2c8c0430fb16d54d925d67e0d15bb11, type: 2}
 --- !u!1 &6888711219055248486
 GameObject:
   m_ObjectHideFlags: 0

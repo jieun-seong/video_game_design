@@ -18,6 +18,8 @@ public class InventoryPanel : MonoBehaviour
 	void Awake()
     {
 		canvasGroup = GetComponent<CanvasGroup>();
+		gameStatus.itemID = -1;
+		gameStatus.itemName = "";
 		gameStatus.itemSelected = false;
 		gameStatus.inventoryVisible = false;
 		gameStatus.itemUsed = false;
