@@ -14,7 +14,6 @@ public class PlayerController2 : MonoBehaviour
     private CharacterController controller;
     public Transform playerCamera = null;
     public Transform cameraRoot = null;
-    //private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 10.0f;
     public float cameraSpeedH = 2.0f;
