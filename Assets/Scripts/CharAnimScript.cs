@@ -5,7 +5,10 @@ using UnityEngine;
 public class CharAnimScript : MonoBehaviour
 {
     public AudioClip[] FootstepAudioClips;
-    [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
+    [Range(0, 1)] public float FootstepAudioVolume = 1f;
+
+    public AudioClip DamageClip;
+    [Range(0, 1)] public float DamageVolume = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,6 @@ public class CharAnimScript : MonoBehaviour
 
     private void OnPunch(AnimationEvent animationEvent)
     {
-        // play punching audio clip
+        AudioSource.PlayClipAtPoint(DamageClip, transform.position, DamageVolume);
     }
 }
