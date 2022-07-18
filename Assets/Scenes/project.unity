@@ -11518,7 +11518,7 @@ PrefabInstance:
     - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: character
       value: 
-      objectReference: {fileID: 548066435}
+      objectReference: {fileID: 1740214400}
     - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: dropTable
       value: 

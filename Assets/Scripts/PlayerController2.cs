@@ -131,7 +131,7 @@ public class PlayerController2 : MonoBehaviour
             gameStatus.itemUsed = false;
         }
 
-        CheckDamage();
+        //CheckDamage();
         // player dying if no health
         if (currentHealth <= 0 && !anim.GetBool("Dead")) {
             anim.SetBool("Dead", true);
@@ -257,20 +257,29 @@ public class PlayerController2 : MonoBehaviour
         }
     }
 
-    void CheckDamage() {
-        GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");
-        foreach (GameObject z in zombies) {
-            float distance = Vector3.Distance(transform.position, z.transform.position);
-            if (distance < 5 && Time.time > attackTime + 2.5) {
-                attackTime = Time.time; //give enough time for zombie fighting anim to play
-                if (currentHealth - 10 >= 0) { //10 is preset damage
-                    currentHealth -= 10; //change damage amount later when zombies have levels
-                } else {
-                    currentHealth = 0;
-                }
-                hbs.SetHealth(currentHealth);
-                ps_blood.Play();
-            }
+    public void TakeDamage() {
+        if (currentHealth - 10 >= 0) { //10 is preset damage
+            currentHealth -= 10; //change damage amount later when zombies have levels
+        } else {
+            currentHealth = 0;
         }
+        hbs.SetHealth(currentHealth);
+        ps_blood.Play();
     }
+    // void CheckDamage() {
+    //     GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");
+    //     foreach (GameObject z in zombies) {
+    //         float distance = Vector3.Distance(transform.position, z.transform.position);
+    //         if (distance < 5 && Time.time > attackTime + 2.5) {
+    //             attackTime = Time.time; //give enough time for zombie fighting anim to play
+    //             if (currentHealth - 10 >= 0) { // 10 is preset damage
+    //                 currentHealth -= 10; //change damage amount later when zombies have levels
+    //             } else {
+    //                 currentHealth = 0;
+    //             }
+    //             hbs.SetHealth(currentHealth);
+    //             ps_blood.Play();
+    //         }
+    //     }
+    // }
 }
