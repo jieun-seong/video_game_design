@@ -13,23 +13,13 @@ MonoBehaviour:
   m_Name: BasicDropTable
   m_EditorClassIdentifier: 
   drops:
-  - name: Battery
-    drop: {fileID: 7037420870178142398, guid: 3ff6d2f87ab63a04c846466883253325, type: 3}
+  - name: Mana Potion
+    drop: {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
     dropChance: 18
     minCount: 1
     maxCount: 2
-  - name: Bullet
-    drop: {fileID: 2241122350448844410, guid: 6b82974a4b9859748beaa33b9d09ac46, type: 3}
+  - name: Health Potion
+    drop: {fileID: 173500, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
     dropChance: 20
     minCount: 1
     maxCount: 3
-  - name: Fuel
-    drop: {fileID: 4206771743062118497, guid: 5dad442d1ef55e54a9740a4f90b994a9, type: 3}
-    dropChance: 18
-    minCount: 1
-    maxCount: 2
-  - name: FirstAid
-    drop: {fileID: 8692006727745743838, guid: 0b9047e0aaae8e44389c6e68a69188f9, type: 3}
-    dropChance: 30
-    minCount: 1
-    maxCount: 2
