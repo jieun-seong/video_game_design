@@ -69,6 +69,9 @@ public class PlayerController2 : MonoBehaviour
     public AudioClip DamageClip;
     [Range(0, 1)] public float DamageVolume = 1f;
 
+    public AudioClip PickUpBagClip;
+    [Range(0, 1)] public float PickUpBagVolume = 1f;
+
     //public AudioClip SmallPlantClip;
     //[Range(0, 1)] public float SmallPlantVolume = 0.5f;
 
@@ -76,17 +79,15 @@ public class PlayerController2 : MonoBehaviour
     //public AudioClip[] ChoppingWoodClips;
     //[Range(0, 1)] public float ChoppingWoodVolume = 0.5f;
 
-    public AudioClip PickUpBagClip;
-    [Range(0, 1)] public float PickUpBagVolume = 0.5f;
 
     private void Awake() {
         gameStatus.playerDead = false;
         hbs = healthBar.GetComponent<HealthBarScript>();
         mbs = manaBar.GetComponent<ManaBarScript>();
     }
+
     private void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         character = transform.GetChild(0).gameObject;
@@ -135,7 +136,7 @@ public class PlayerController2 : MonoBehaviour
             }
             gameStatus.itemUsed = false;
         }
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
         CheckDamage();
         // player dying if no health
         if (currentHealth <= 0 && !anim.GetBool("Dead")) {
@@ -154,20 +155,17 @@ public class PlayerController2 : MonoBehaviour
         //dialogueui.ShowDialogue(pressEDialogue);
         //}
 
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         groundedPlayer = controller.isGrounded;
         anim.SetBool("Grounded", groundedPlayer);
-        //playerVelocity.y = 0.0f;
 
-        if (Input.GetKey("space") && groundedPlayer && !dead)
+        if (Input.GetKeyDown("space") && groundedPlayer && !dead)
         {
             anim.SetBool("Jump", true);
-            //rb.AddForce(Vector3.up * 40f);
-            //playerVelocity.y = Mathf.Sqrt(jumpHeight * -5.0f * gravityValue);
         }
         else
         {
             anim.SetBool("Jump", false);
-            //playerVelocity.y = gravityValue * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -179,7 +177,7 @@ public class PlayerController2 : MonoBehaviour
             speedMultiplier = 1.0f;
         }
 
-        if (Input.GetKey(KeyCode.Q) && !dead)
+        if (Input.GetKeyDown(KeyCode.Q) && !dead)
         {
             anim.SetBool("Punch", true);
         }
@@ -188,7 +186,7 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Punch", false);
         }
 
-        if (Input.GetKey(KeyCode.V) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
+        if (Input.GetKeyDown(KeyCode.V) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
         {
             anim.SetBool("Spell", true);
 
