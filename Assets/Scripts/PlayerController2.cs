@@ -12,14 +12,11 @@ public class PlayerController2 : MonoBehaviour
     private GameObject character;
     private Animator anim;
     private CharacterController controller;
-    private Rigidbody rb;
     public Transform playerCamera = null;
     public Transform cameraRoot = null;
     //private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 10.0f;
-    //private float jumpHeight = 1.0f;
-    private Vector3 offset;
     public float cameraSpeedH = 2.0f;
     public float cameraSpeedV = 2.0f;
     private float speedMultiplier = 2.0f;
@@ -66,8 +63,7 @@ public class PlayerController2 : MonoBehaviour
     public AudioClip SpellClip;
     [Range(0, 1)] public float SpellVolume = 1f;
 
-    public AudioClip DamageClip;
-    [Range(0, 1)] public float DamageVolume = 1f;
+    
 
     public AudioClip PickUpBagClip;
     [Range(0, 1)] public float PickUpBagVolume = 1f;
@@ -93,8 +89,6 @@ public class PlayerController2 : MonoBehaviour
         character = transform.GetChild(0).gameObject;
         controller = GetComponent<CharacterController>();
         anim = character.GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
-        offset = playerCamera.transform.position - transform.position;
         currentHealth = maxHealth;
         currentMana = maxMana;
         hbs.SetMaxHealth(maxHealth);
@@ -261,23 +255,6 @@ public class PlayerController2 : MonoBehaviour
             other.transform.root.gameObject.SetActive(false);
             AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
         }
-
-        //    if (other.gameObject.CompareTag("Collectible"))
-        //    {
-        //        other.gameObject.SetActive(false);
-        //        AudioSource.PlayClipAtPoint(SmallPlantClip, transform.TransformPoint(controller.center), SmallPlantVolume);
-        //        //anim.SetBool(_animIDPickUp, true);
-        //    }
-        //    if (other.gameObject.CompareTag("Weapon"))
-        //    {
-        //        other.gameObject.SetActive(false);
-        //        AudioSource.PlayClipAtPoint(PickUpBagClip, transform.TransformPoint(controller.center), PickUpBagVolume);
-        //    }
-        //    if (other.gameObject.CompareTag("Tree"))
-        //    {
-        //        other.gameObject.SetActive(false);
-        //        AudioSource.PlayClipAtPoint(ChoppingWoodClip, transform.TransformPoint(controller.center), ChoppingWoodVolume);
-        //    }
     }
 
     void CheckDamage() {
@@ -286,7 +263,7 @@ public class PlayerController2 : MonoBehaviour
             float distance = Vector3.Distance(transform.position, z.transform.position);
             if (distance < 5 && Time.time > attackTime + 2.5) {
                 ps_blood.Play();
-                AudioSource.PlayClipAtPoint(DamageClip, transform.TransformPoint(controller.center), DamageVolume);
+                //AudioSource.PlayClipAtPoint(DamageClip, transform.TransformPoint(controller.center), DamageVolume);
                 attackTime = Time.time; //give enough time for zombie fighting anim to play
                 if (currentHealth - 10 >= 0) { //10 is preset damage
                     currentHealth -= 10; //change damage amount later when zombies have levels

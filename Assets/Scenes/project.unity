@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1231,6 +1231,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: db5f782838e33458dad72827708eb3a4, type: 3}
   - {fileID: 8300000, guid: 64d9af263287c4aaca24dbc046d8828d, type: 3}
   FootstepAudioVolume: 0.5
+  DamageClip: {fileID: 0}
+  DamageVolume: 1
 --- !u!224 &146016615 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7856240436169684858, guid: 9f050159f3fb7c34e8b1e8d714510f16, type: 3}
@@ -3673,6 +3675,18 @@ MonoBehaviour:
     m_Bits: 128
   ps_death: {fileID: 2066841096}
   ps_blood: {fileID: 953825912}
+--- !u!114 &772359951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772359943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f8a2c5bb9b94b4b945e03c7c15e47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   DamageClip: {fileID: 8300000, guid: 8ff246051c9244e468dfc02bd7db97f0, type: 3}
   DamageVolume: 1
 --- !u!1 &779608053
@@ -5627,6 +5641,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: db5f782838e33458dad72827708eb3a4, type: 3}
   - {fileID: 8300000, guid: 64d9af263287c4aaca24dbc046d8828d, type: 3}
   FootstepAudioVolume: 0.5
+  DamageClip: {fileID: 0}
+  DamageVolume: 1
 --- !u!1 &1176258592
 GameObject:
   m_ObjectHideFlags: 0
@@ -8248,6 +8264,14 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 782087390541622073, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: DamageClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ff246051c9244e468dfc02bd7db97f0, type: 3}
+    - target: {fileID: 782087390541622073, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: DamageVolume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 782087390804816233, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -10396,6 +10420,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: db5f782838e33458dad72827708eb3a4, type: 3}
   - {fileID: 8300000, guid: 64d9af263287c4aaca24dbc046d8828d, type: 3}
   FootstepAudioVolume: 0.5
+  DamageClip: {fileID: 0}
+  DamageVolume: 1
 --- !u!1001 &2015344726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11447,6 +11473,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: zombie
+      value: 
+      objectReference: {fileID: 772359943}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: ps_blood
+      value: 
+      objectReference: {fileID: 953825912}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: ps_death
+      value: 
+      objectReference: {fileID: 2066841096}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 548066435}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: dropTable
+      value: 
+      objectReference: {fileID: 11400000, guid: 838a3a452db442d408e75c47846c4eb9, type: 2}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 730104128}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 780539344}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 537854142821473591, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -11490,6 +11548,10 @@ PrefabInstance:
     - target: {fileID: 537854142821473591, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 726945188747481616, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: DamageVolume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 880334222173641583, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_ApplyRootMotion
