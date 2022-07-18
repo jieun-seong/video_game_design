@@ -19,7 +19,7 @@ public class PlayerController2 : MonoBehaviour
     private float playerSpeed = 10.0f;
     public float cameraSpeedH = 2.0f;
     public float cameraSpeedV = 2.0f;
-    private float speedMultiplier = 2.0f;
+    private float speedMultiplier = 1.7f;
     public float walkSpeed = 1.0f;
     private float currSpeed = 0.0f;
     Vector3 targetDirection;
@@ -197,20 +197,38 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Spell", false);
         }
 
-        if ((Input.GetAxis("Horizontal") != 0.0f || Input.GetAxis("Vertical") != 0.0f) && !dead)// && isGrounded)
+        float hdir = Input.GetAxis("Horizontal");
+        float vdir = Input.GetAxis("Vertical");
+        if (vdir > 0.0f && !dead)
         {
-            targetDirection = playerCamera.transform.right * Input.GetAxis("Horizontal")/10.0f + playerCamera.transform.forward * Input.GetAxis("Vertical");
+            targetDirection = transform.right * hdir * 0.4f + transform.forward * vdir;
             targetDirection.y = 0.0f;
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
             currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
+
+            transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
+        }
+        else if (vdir < 0.0f && !dead)
+        {
+            targetDirection = transform.right * hdir * -0.1f + transform.forward * vdir;
+            targetDirection.y = 0.0f;
+            controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
+            currSpeed = playerSpeed;
+        }
+        else if (hdir != 0.0f && !dead)// && isGrounded)
+        {
+            targetDirection = transform.right * hdir * Time.deltaTime * 0.01f;
+            currSpeed = playerSpeed;
+            transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         }
         else
         {
             targetDirection = transform.forward;
             currSpeed = 0.0f;
+            transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         }
 
-        transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
+        
         anim.SetFloat("Speed", currSpeed);
 
         //mana replenishes over time - ed209uardo
