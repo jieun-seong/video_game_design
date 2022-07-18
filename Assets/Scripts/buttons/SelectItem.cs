@@ -21,8 +21,10 @@ public class SelectItem : MonoBehaviour
     public void SelectItemButton()
     {
         ItemSlot slotScript = transform.parent.GetComponent<ItemSlot>();
+
         gameStatus.itemSelected = true;
         gameStatus.itemID = slotScript.itemID;
         gameStatus.itemName = slotScript.itemName;
+        gameStatus.slotObject = transform.parent.gameObject;
     }
 }
