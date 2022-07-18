@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3fdb2937373d042a65f525a74f23b0, type: 3}
+  m_Name: Potion-Health
+  m_EditorClassIdentifier: 
+  itemID: 10
+  itemName: Health Potion
+  itemPNG: {fileID: 21300000, guid: 1fae4a91f3e64b24dabc962b1065d273, type: 3}
+  itemDescription: Heals 50 points of health
+  consumableType: 0
+  statOne: 50
