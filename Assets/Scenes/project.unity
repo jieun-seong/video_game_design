@@ -3570,6 +3570,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  ps_death: {fileID: 2066841096}
+  ps_blood: {fileID: 953825912}
 --- !u!1 &779608053
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,6 +4086,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 464718, guid: 665476c513ab4854aa1f973e09dbed5b, type: 3}
   m_PrefabInstance: {fileID: 1039510141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &953825912 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2612819008470599939, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+  m_PrefabInstance: {fileID: 880334222269572950}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &963579294 stripped
 Transform:
@@ -5602,6 +5609,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 417656, guid: bed19b2fea4220f4fb74f24b1ab6072f, type: 3}
   m_PrefabInstance: {fileID: 574646100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1185359347 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4779093911563964647, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+  m_PrefabInstance: {fileID: 1651827664}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1251458199
 PrefabInstance:
@@ -8165,7 +8177,7 @@ PrefabInstance:
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: ps_spell
       value: 
-      objectReference: {fileID: 301925617}
+      objectReference: {fileID: 1185359347}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: healthBar
       value: 
@@ -8233,6 +8245,10 @@ PrefabInstance:
     - target: {fileID: 4263541855259471813, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4779093911563964646, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4859722119903683668, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: playOnAwake
@@ -10653,6 +10669,11 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!198 &2066841096 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3058831494109545912, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+  m_PrefabInstance: {fileID: 880334222269572950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2069256749 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7856240436169684858, guid: 9f050159f3fb7c34e8b1e8d714510f16, type: 3}
@@ -11289,6 +11310,22 @@ PrefabInstance:
     - target: {fileID: 3058831494109545895, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058831494109545895, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058831494109545895, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058831494109545895, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3058831494109545912, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3107982808739925801, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_Name
