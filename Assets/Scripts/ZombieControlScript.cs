@@ -34,6 +34,10 @@ public class ZombieControlScript : MonoBehaviour
     public ParticleSystem ps_blood;
     //
 
+    //audio
+    public AudioClip DamageClip;
+    [Range(0, 1)] public float DamageVolume = 1f;
+
     // Start is called before the first frame update
     private void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -167,6 +171,7 @@ public class ZombieControlScript : MonoBehaviour
             currentHealth = 0;
         }
         hbs.SetHealth(currentHealth);
+        AudioSource.PlayClipAtPoint(DamageClip, transform.TransformPoint(controller.center), DamageVolume);
         ps_blood.Play();
     }
 

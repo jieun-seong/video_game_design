@@ -63,6 +63,12 @@ public class PlayerController2 : MonoBehaviour
     //public GameObject waypointForDialogue;
 
     // Audio
+    public AudioClip SpellClip;
+    [Range(0, 1)] public float SpellVolume = 1f;
+
+    public AudioClip DamageClip;
+    [Range(0, 1)] public float DamageVolume = 1f;
+
     //public AudioClip SmallPlantClip;
     //[Range(0, 1)] public float SmallPlantVolume = 0.5f;
 
@@ -71,7 +77,7 @@ public class PlayerController2 : MonoBehaviour
     //[Range(0, 1)] public float ChoppingWoodVolume = 0.5f;
 
     public AudioClip PickUpBagClip;
-    [Range(0, 1)] public float PickUpBagVolume = 0.1f;
+    [Range(0, 1)] public float PickUpBagVolume = 0.5f;
 
     private void Awake() {
         gameStatus.playerDead = false;
@@ -161,6 +167,7 @@ public class PlayerController2 : MonoBehaviour
             //Debug.Log("Mana now: " + currentMana);
             manaTime = Time.time;
             ps_spell.Play();
+            AudioSource.PlayClipAtPoint(SpellClip, transform.TransformPoint(controller.center), SpellVolume);
         }
         else
         {
@@ -250,6 +257,7 @@ public class PlayerController2 : MonoBehaviour
             float distance = Vector3.Distance(transform.position, z.transform.position);
             if (distance < 5 && Time.time > attackTime + 2.5) {
                 ps_blood.Play();
+                AudioSource.PlayClipAtPoint(DamageClip, transform.TransformPoint(controller.center), DamageVolume);
                 attackTime = Time.time; //give enough time for zombie fighting anim to play
                 if (currentHealth - 10 >= 0) { //10 is preset damage
                     currentHealth -= 10; //change damage amount later when zombies have levels

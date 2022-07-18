@@ -3572,6 +3572,8 @@ MonoBehaviour:
     m_Bits: 128
   ps_death: {fileID: 2066841096}
   ps_blood: {fileID: 953825912}
+  DamageClip: {fileID: 8300000, guid: 8ff246051c9244e468dfc02bd7db97f0, type: 3}
+  DamageVolume: 1
 --- !u!1 &779608053
 GameObject:
   m_ObjectHideFlags: 0
@@ -8179,9 +8181,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1185359347}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: PunchClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ff246051c9244e468dfc02bd7db97f0, type: 3}
+    - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: SpellClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4ac62da8b2cca4ab58ae9dd1746a6b5f, type: 3}
+    - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 625297628}
+    - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: DamageClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ff246051c9244e468dfc02bd7db97f0, type: 3}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: gameStatus
       value: 
@@ -8190,6 +8204,10 @@ PrefabInstance:
       propertyPath: ps_healing
       value: 
       objectReference: {fileID: 1900000030}
+    - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: SpellVolume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: groundCheck
       value: 
