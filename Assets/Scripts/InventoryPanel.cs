@@ -41,6 +41,14 @@ public class InventoryPanel : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (gameStatus.itemActivated)
+        {
+			ConsumeItem();
+			gameStatus.itemActivated = false;
+			gameStatus.itemID = -1;
+			gameStatus.itemName = "";
+			gameStatus.itemUsed = true;
+		}
 		if (!gameStatus.itemSelected)
 		{
 			if (gameStatus.inventoryVisible)
@@ -106,6 +114,46 @@ public class InventoryPanel : MonoBehaviour
 				}
 				a++;
 			}
+		}
+	}
+
+	public void ConsumeItem()
+    {
+		int a = System.Array.IndexOf(itemRepresentation, gameStatus.slotObject);
+		ItemSlot slotScript = itemRepresentation[a].GetComponent<ItemSlot>();
+		slotScript.itemCount--;
+
+		if (slotScript.itemID == 10)
+        {
+			gameStatus.healthAdded = 50;
+		}
+
+		if (slotScript.itemID == 11)
+		{
+			gameStatus.manaAdded = 50;
+		}
+
+		foreach (GameObject searchedItem in items)
+        {
+			objectAsItem equipmentScript = searchedItem.GetComponent<objectAsItem>();
+			InventoryItem thisItem = equipmentScript.myItem;
+			if (thisItem.itemID == slotScript.itemID)
+            {
+				RemoveItem(searchedItem);
+				Destroy(searchedItem);
+				break;
+			}
+		}
+		if (slotScript.itemCount == 0)
+		{
+			slotScript.empty = true;
+			slotScript.itemID = -1;
+			itemRepresentation[a].transform.GetComponent<Image>().sprite = empty;
+			itemRepresentation[a].transform.GetChild(0).GetComponent<Text>().text = "";
+		}
+		else
+		{
+			itemRepresentation[a].transform.GetChild(0).GetComponent<Text>().text = slotScript.itemCount + "";
 		}
 	}
 

@@ -187,7 +187,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 24
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -8383,7 +8383,7 @@ PrefabInstance:
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: ps_healing
       value: 
-      objectReference: {fileID: 1900000030}
+      objectReference: {fileID: 1651827665}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: SpellVolume
       value: 1
@@ -8438,7 +8438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4178712396048172155, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4263541855259471813, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: playOnAwake
@@ -8446,7 +8446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4779093911563964646, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4859722119903683668, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: playOnAwake
@@ -8456,9 +8456,13 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6299037678795709475, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6878368733952159306, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6878368733952159317, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: playOnAwake
@@ -8478,6 +8482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+--- !u!198 &1651827665 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6299037678795709474, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+  m_PrefabInstance: {fileID: 1651827664}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1667521850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9865,11 +9874,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!198 &1900000030 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 521060213456813649, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
-  m_PrefabInstance: {fileID: 1651827664}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1901047822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10213,8 +10217,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 85}
-  m_SizeDelta: {x: 160, y: 35}
+  m_AnchoredPosition: {x: 0, y: 90}
+  m_SizeDelta: {x: 180, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1935768077
 MonoBehaviour:
@@ -10238,7 +10242,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

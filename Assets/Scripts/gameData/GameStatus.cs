@@ -11,6 +11,7 @@ public class GameStatus : ScriptableObject
     public bool menuVisible;
     public bool inventoryVisible;
     public bool playerDead;
+    public GameObject slotObject;
     public int itemID;
     public string itemName;
     public bool itemSelected;
