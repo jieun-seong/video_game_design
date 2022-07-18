@@ -116,6 +116,9 @@ public class PlayerController2 : MonoBehaviour
                 }
                 hbs.SetHealth(currentHealth);
                 gameStatus.healthAdded = 0;
+
+                // play the healing animation
+                ps_healing.Play();
             }
             if (gameStatus.manaAdded > 0)
             {
@@ -126,6 +129,9 @@ public class PlayerController2 : MonoBehaviour
                 }
                 mbs.SetMana(currentMana);
                 gameStatus.manaAdded = 0;
+
+                // play the healing animation
+                ps_healing.Play();
             }
             gameStatus.itemUsed = false;
         }
