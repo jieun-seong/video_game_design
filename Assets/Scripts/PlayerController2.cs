@@ -262,8 +262,6 @@ public class PlayerController2 : MonoBehaviour
         foreach (GameObject z in zombies) {
             float distance = Vector3.Distance(transform.position, z.transform.position);
             if (distance < 5 && Time.time > attackTime + 2.5) {
-                ps_blood.Play();
-                //AudioSource.PlayClipAtPoint(DamageClip, transform.TransformPoint(controller.center), DamageVolume);
                 attackTime = Time.time; //give enough time for zombie fighting anim to play
                 if (currentHealth - 10 >= 0) { //10 is preset damage
                     currentHealth -= 10; //change damage amount later when zombies have levels
@@ -271,6 +269,7 @@ public class PlayerController2 : MonoBehaviour
                     currentHealth = 0;
                 }
                 hbs.SetHealth(currentHealth);
+                ps_blood.Play();
             }
         }
     }
