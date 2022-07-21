@@ -34,8 +34,8 @@ public class ThirdPersonCamera : MonoBehaviour
         ////transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
 
 
-        float rotationSpeed = 10f;
-        float limit = 2f;
+        float rotationSpeed = 30f;
+        float limit = 30f;
         float rotateHorizontal = Mathf.Clamp(Input.GetAxis("Mouse X"), -limit, limit);
         float rotateVertical = Mathf.Clamp(-Input.GetAxis("Mouse Y"), -limit, limit);
 
