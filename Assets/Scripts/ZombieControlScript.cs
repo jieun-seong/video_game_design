@@ -6,20 +6,26 @@ using UnityEngine.UI;
 public class ZombieControlScript : MonoBehaviour
 {
     private Animator anim;
+    public AIDirector dir;
     public GameObject character;
     public GameObject zombie;
     Rigidbody rb;
     public GameObject healthBar;
-    private int maxHealth = 100;
-    private int currentHealth;
+    public int maxHealth = 100;
+    public int currentHealth;
     private HealthBarScript hbs;
     private float attackTime = 0f;
     private float deathTime = 0f;
     private float zombieAttackTime = 0f;
+    private float despawnTime = -2f;
+    public float speed = 1f;
     public LootTable dropTable;
     private GameObject child;
     private CharacterController controller;
     private PlayerController2 playerScript;
+    public bool spawned;
+    public bool billy;
+    public bool original;
 
     //gravity
     private bool isGrounded;
@@ -57,16 +63,28 @@ public class ZombieControlScript : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if(original) return;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         healthBar.transform.position = transform.position + new Vector3(0f,6f,0f);
         float distance = Vector3.Distance(character.transform.position, transform.position);
+
+        if(distance > 180 && despawnTime > -1) {
+            if(despawnTime <= 0) {
+                Despawn();
+            } else {
+                despawnTime -= Time.deltaTime;
+            }
+        }
         if (currentHealth == 0 && !anim.GetBool("Dead")) {
             anim.SetBool("Dead", true);
             deathTime = Time.time;
             //Destroy(zombie);
+            if(billy) dir.Enabled = true;
             ps_death.Play();
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 6.5) {
+            dir.zombsTotal--;
+            dir.zombKills++;
             Destroy(zombie); // destroy after playing death animation
             spawnDrops(); // drop items after the death animation 
         }
@@ -94,23 +112,23 @@ public class ZombieControlScript : MonoBehaviour
                 zombieAttackTime = 0f;
                 anim.SetBool("Attacking", false);
                 //transform.position = Vector3.MoveTowards(transform.position, character.position, 2.0f * Time.deltaTime);
-                controller.Move(targetDirection.normalized * 4 * Time.deltaTime);
+                controller.Move(targetDirection.normalized * 4 * Time.deltaTime * speed);
                 transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
                 //transform.LookAt(character.position);
                 anim.SetFloat("Blend", 1f);
-            } else if (distance < 30) { // make zombie go towards player fast
+            } else if (distance < 30 || spawned) { // make zombie go towards player fast
                 anim.SetBool("Attacking", false);
                 //transform.position = Vector3.MoveTowards(transform.position, character.position, 2.0f * Time.deltaTime);
-                controller.Move(targetDirection.normalized * 4 * Time.deltaTime);
+                controller.Move(targetDirection.normalized * 4 * Time.deltaTime * speed);
                 transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
                 //transform.LookAt(character.position);
                 anim.SetFloat("Blend", 1f);
-            } else if (distance < 50) { // make zombie go towards player slowly
+            } else if (distance < 50 && !spawned) { // make zombie go towards player slowly
                 distance = distance - 30;
                 distance = 1.0f - (distance / 20.0f);
                 //transform.position = Vector3.MoveTowards(transform.position, character.position, (distance*2.0f) * Time.deltaTime);
                 //transform.LookAt(character.position);
-                controller.Move(targetDirection.normalized * 2 * Time.deltaTime);
+                controller.Move(targetDirection.normalized * 2 * Time.deltaTime * speed);
                 transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
                 anim.SetFloat("Blend", distance);
                 zombieAttackTime = 0f;
@@ -189,6 +207,11 @@ public class ZombieControlScript : MonoBehaviour
         ps_blood.Play();
     }
 
+    public void setHealth(int health) {
+        maxHealth = health;
+        currentHealth = health;
+    }
+
     void spawnDrops()
     {
         if (dropTable != null)
@@ -208,4 +231,16 @@ public class ZombieControlScript : MonoBehaviour
         }
     }
 
+    void Despawn() {
+        dir.zombsTotal--;
+        Destroy(zombie);
+    }
+
+    public void setDespawn(float des) {
+        despawnTime = des;
+    }
+
+    public void setSpeed(float sp) {
+        speed = sp;
+    }
 }
