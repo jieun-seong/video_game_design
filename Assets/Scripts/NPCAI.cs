@@ -12,6 +12,7 @@ public class NPCAI : MonoBehaviour
     public GameObject lookAtWaypoint;
     public Canvas dialogueCanvas;
     [SerializeField] private DialogueObject friendDialogue;
+    [SerializeField] private GameObject dialogueBox;
     public GameObject[] waypoints;
     public int currWaypoint = -1;
     private float standingTime = 0f;
@@ -53,7 +54,7 @@ public class NPCAI : MonoBehaviour
                 }
             break;
             case AIState.walkAround:
-                if (agent.remainingDistance == 0 && !agent.pathPending) {
+                if (agent.remainingDistance < 1 && !agent.pathPending) {
                     aiState = AIState.stand;
                     standingTime = Time.time;
                     anim.SetFloat("Blend", 0f);
@@ -69,19 +70,19 @@ public class NPCAI : MonoBehaviour
             case AIState.talkToFriends:
                 anim.SetFloat("Blend", 0f);
                 Vector3 targetDirection = player.transform.position - transform.position;
-                transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
-                if (talking) {
-                    if (transform.name == "Break" && check) {
+                transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f); // look at player
+                if (talking) { //player has already clicked E
+                    if (transform.name == "Break" && check) { //show dialogue once
                         dialogueui.ShowDialogue(friendDialogue);
                     }
-                    check = false; //only show dialogue once
-                    if (standingTime + 25 < Time.time) {
+                    check = false; // only show dialogue once
+                    if (!dialogueBox.active) {
                         aiState = AIState.walkAround;
                         anim.SetFloat("Blend", 1f);
                         talking = false;
                         setNextWaypoint();
                     }
-                } else {
+                } else { // player needs to click E still
                     if (Input.GetKey(KeyCode.E) && Vector3.Distance(player.transform.position, lookAtWaypoint.transform.position) < 5) {
                         standingTime = Time.time;
                         talking = true;
