@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6a115e9178ba4072a2e61abb32a3219, type: 3}
-  m_Name: Test
+  m_Name: BeginGame
   m_EditorClassIdentifier: 
   dialogue:
-  - 'Welcome to Tutorial Mode. Press "Z" to end tutorial and begin the game.
+  - 'Welcome!
 
-    (Click
-    to close/continue dialogue)'
+    I hope you''re ready to complete today''s missions. This shouldn''t
+    be too hard...'
+  - 'Mission One:
+
+    Meet up with friends'
