@@ -200,19 +200,23 @@ public class PlayerController2 : MonoBehaviour
         float vdir = Input.GetAxis("Vertical");
         if (vdir > 0.0f && !dead)
         {
-            targetDirection = transform.right * hdir * 0.3f + transform.forward * vdir;
+            //targetDirection = transform.right * hdir * 0.3f + transform.forward * vdir;
+            targetDirection = transform.forward * vdir;
             targetDirection.y = 0.0f;
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
             currSpeed = (targetDirection.normalized * playerSpeed * speedMultiplier).magnitude;
-
+            targetDirection = targetDirection + transform.right * hdir * 20f;
             transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         }
         else if (vdir < 0.0f && !dead)
         {
-            targetDirection = transform.right * hdir * -0.1f + transform.forward * vdir;
+            //targetDirection = transform.right * hdir * -0.1f + transform.forward * vdir;
+            targetDirection = transform.forward * vdir;
             targetDirection.y = 0.0f;
             controller.Move(targetDirection.normalized * playerSpeed * speedMultiplier * Time.deltaTime);
             currSpeed = playerSpeed;
+            targetDirection = targetDirection + transform.right * hdir * 20f;
+            transform.forward = Vector3.Slerp(transform.forward, new Vector3(-targetDirection.x, 0.0f, -targetDirection.z), 0.03f);
         }
         else if (hdir != 0.0f && !dead)
         {
