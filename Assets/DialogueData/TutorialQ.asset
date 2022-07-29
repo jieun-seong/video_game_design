@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TutorialQ
   m_EditorClassIdentifier: 
   dialogue:
-  - 'Press " Q" to punch
+  - 'Press "Q" to punch
 
     (Click to close/continue dialogue)'
