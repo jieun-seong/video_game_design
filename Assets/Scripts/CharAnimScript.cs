@@ -10,6 +10,9 @@ public class CharAnimScript : MonoBehaviour
     public AudioClip DamageClip;
     [Range(0, 1)] public float DamageVolume = 1f;
 
+    public AudioClip DaggerClip;
+    [Range(0, 1)] public float DaggerVolume = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,5 +40,10 @@ public class CharAnimScript : MonoBehaviour
     private void OnPunch(AnimationEvent animationEvent)
     {
         AudioSource.PlayClipAtPoint(DamageClip, transform.position, DamageVolume);
+    }
+
+    private void OnSwing(AnimationEvent animationEvent)
+    {
+        AudioSource.PlayClipAtPoint(DaggerClip, transform.position, DaggerVolume);
     }
 }
