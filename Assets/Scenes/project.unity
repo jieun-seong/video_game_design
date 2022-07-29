@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1475,6 +1475,8 @@ MonoBehaviour:
   FootstepAudioVolume: 0.5
   DamageClip: {fileID: 0}
   DamageVolume: 1
+  DaggerClip: {fileID: 0}
+  DaggerVolume: 1
 --- !u!224 &146016615 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7856240436169684858, guid: 9f050159f3fb7c34e8b1e8d714510f16, type: 3}
@@ -7182,6 +7184,8 @@ MonoBehaviour:
   FootstepAudioVolume: 0.5
   DamageClip: {fileID: 0}
   DamageVolume: 1
+  DaggerClip: {fileID: 0}
+  DaggerVolume: 1
 --- !u!1 &1176258592
 GameObject:
   m_ObjectHideFlags: 0
@@ -10527,6 +10531,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 782087390541622073, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: DaggerClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a903e4ae92c244c2b254d3a0bac8bcb, type: 3}
+    - target: {fileID: 782087390541622073, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: DamageClip
       value: 
       objectReference: {fileID: 8300000, guid: 8ff246051c9244e468dfc02bd7db97f0, type: 3}
@@ -13429,6 +13437,8 @@ MonoBehaviour:
   FootstepAudioVolume: 0.5
   DamageClip: {fileID: 0}
   DamageVolume: 1
+  DaggerClip: {fileID: 0}
+  DaggerVolume: 1
 --- !u!1 &1996925455
 GameObject:
   m_ObjectHideFlags: 0
