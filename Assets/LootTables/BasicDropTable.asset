@@ -15,11 +15,16 @@ MonoBehaviour:
   drops:
   - name: Mana Potion
     drop: {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
-    dropChance: 18
+    dropChance: 25
     minCount: 1
     maxCount: 2
   - name: Health Potion
     drop: {fileID: 173500, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
-    dropChance: 20
+    dropChance: 25
     minCount: 1
     maxCount: 3
+  - name: Dagger
+    drop: {fileID: 110658, guid: a4cd3d5e9967248a69e6203d2ce67874, type: 3}
+    dropChance: 50
+    minCount: 1
+    maxCount: 1
