@@ -7,6 +7,7 @@ public class Tutorial : MonoBehaviour
     public bool inTutorial = true;
     public GameObject player;
     public Canvas dialogueCanvas;
+    public Quest quest;
     [SerializeField] private DialogueObject tutorialE;
     [SerializeField] private DialogueObject tutorialQ;
     [SerializeField] private DialogueObject tutorialV;
@@ -49,6 +50,7 @@ public class Tutorial : MonoBehaviour
     }
 
     public void EndTutorial() {
+        quest.ChangeQuest("Find your friends",1, new Vector3(5195, 39, 5240));
         GameObject tutorial = GameObject.Find("Tutorial");
         inTutorial = false;
         dialogueui.ShowDialogue(beginGame);

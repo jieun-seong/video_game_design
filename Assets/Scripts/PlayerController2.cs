@@ -170,7 +170,7 @@ public class PlayerController2 : MonoBehaviour
             speedMultiplier = 1.0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && !dead)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !dead)
         {
             anim.SetBool("Punch", true);
         }
@@ -179,7 +179,16 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Punch", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.V) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
+        if (Input.GetKeyDown(KeyCode.Alpha2) && !dead)
+        {
+            anim.SetBool("Stab", true);
+        }
+        else
+        {
+            anim.SetBool("Stab", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
         {
             anim.SetBool("Spell", true);
 

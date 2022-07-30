@@ -1138,7 +1138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1377936956}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &130710738 stripped
 Transform:
@@ -1475,6 +1475,8 @@ MonoBehaviour:
   FootstepAudioVolume: 0.5
   DamageClip: {fileID: 0}
   DamageVolume: 1
+  DaggerClip: {fileID: 0}
+  DaggerVolume: 1
 --- !u!224 &146016615 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7856240436169684858, guid: 9f050159f3fb7c34e8b1e8d714510f16, type: 3}
@@ -4729,7 +4731,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1377936956}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &760120140 stripped
 Transform:
@@ -4833,11 +4835,11 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: f629769ce0d9e844397472e05c73e4da, type: 2}
-  m_TreeDistance: 5000
-  m_TreeBillboardDistance: 514
+  m_TreeDistance: 1537
+  m_TreeBillboardDistance: 375
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
+  m_DetailObjectDistance: 25.5
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
@@ -6930,7 +6932,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1377936956}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1141944744 stripped
 RectTransform:
@@ -7182,6 +7184,8 @@ MonoBehaviour:
   FootstepAudioVolume: 0.5
   DamageClip: {fileID: 0}
   DamageVolume: 1
+  DaggerClip: {fileID: 0}
+  DaggerVolume: 1
 --- !u!1 &1176258592
 GameObject:
   m_ObjectHideFlags: 0
@@ -7726,7 +7730,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1377936956}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1287545919 stripped
 Transform:
@@ -8185,7 +8189,7 @@ Transform:
   m_LocalScale: {x: 2, y: 0.1, z: 2}
   m_Children: []
   m_Father: {fileID: 1377936956}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342298057
 GameObject:
@@ -8503,7 +8507,6 @@ Transform:
   m_LocalPosition: {x: 5187.336, y: 40.878426, z: 5177.241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1331312756}
   - {fileID: 127429031}
   - {fileID: 1134742681}
   - {fileID: 1571954531}
@@ -8511,6 +8514,7 @@ Transform:
   - {fileID: 1537461072}
   - {fileID: 1702279772}
   - {fileID: 1283982029}
+  - {fileID: 1331312756}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8743,6 +8747,103 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464718, guid: 665476c513ab4854aa1f973e09dbed5b, type: 3}
   m_PrefabInstance: {fileID: 2025734551}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1434978029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1434978030}
+  - component: {fileID: 1434978032}
+  - component: {fileID: 1434978031}
+  - component: {fileID: 1434978033}
+  m_Layer: 5
+  m_Name: Quest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1434978030
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434978029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1476008727}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -233.15, y: 229.3354}
+  m_SizeDelta: {x: 466.3, y: 40.7292}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1434978031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434978029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Current Objective: Finish Tutorial'
+--- !u!222 &1434978032
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434978029}
+  m_CullTransparentMesh: 1
+--- !u!114 &1434978033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434978029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b154c8d168478c141bab2847569bd8fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInt: 0
+  questString: Finish Tutorial
+  loc: {x: 5187, y: 37, z: 5165}
+  txt: {fileID: 1434978031}
+  player: {fileID: 1740214400}
 --- !u!1 &1437357481
 GameObject:
   m_ObjectHideFlags: 0
@@ -9041,6 +9142,7 @@ RectTransform:
   - {fileID: 1345376271}
   - {fileID: 1686230632}
   - {fileID: 671463014}
+  - {fileID: 1434978030}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9648,7 +9750,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1377936956}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1550136478
 GameObject:
@@ -9970,7 +10072,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1377936956}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1586408314
 GameObject:
@@ -10526,6 +10628,10 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 782087390541622073, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: DaggerClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a903e4ae92c244c2b254d3a0bac8bcb, type: 3}
     - target: {fileID: 782087390541622073, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: DamageClip
       value: 
@@ -11169,7 +11275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1377936956}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1708186882 stripped
 GameObject:
@@ -12958,6 +13064,7 @@ MonoBehaviour:
   inTutorial: 1
   player: {fileID: 1740214400}
   dialogueCanvas: {fileID: 1476008726}
+  quest: {fileID: 1434978033}
   tutorialE: {fileID: 11400000, guid: 9e4b1dae77cbd4d398a61f5b6603e9a3, type: 2}
   tutorialQ: {fileID: 11400000, guid: 03a730d5f333f4a79ad13064c3917509, type: 2}
   tutorialV: {fileID: 11400000, guid: 776a62d0dee414e5f95f424ece3804e0, type: 2}
@@ -13429,6 +13536,8 @@ MonoBehaviour:
   FootstepAudioVolume: 0.5
   DamageClip: {fileID: 0}
   DamageVolume: 1
+  DaggerClip: {fileID: 0}
+  DaggerVolume: 1
 --- !u!1 &1996925455
 GameObject:
   m_ObjectHideFlags: 0
