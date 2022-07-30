@@ -25,6 +25,7 @@ public class ZombieControlScript : MonoBehaviour
     private PlayerController2 playerScript;
     public bool spawned;
     public bool billy;
+    public Quest quest;
     public bool original;
 
     //gravity
@@ -79,7 +80,10 @@ public class ZombieControlScript : MonoBehaviour
             anim.SetBool("Dead", true);
             deathTime = Time.time;
             //Destroy(zombie);
-            if(billy) dir.Enabled = true;
+            if(billy) {
+                dir.Enabled = true;
+                quest.ChangeQuest("Clear out the zombies in the town.",3,new Vector3(5123,47,5391));
+            } 
             ps_death.Play();
         }
         if (anim.GetBool("Dead") && Time.time > deathTime + 6.5) {
