@@ -20,7 +20,15 @@ public class UseItem : MonoBehaviour
 
     public void UseItemButton()
     {
-        gameStatus.itemSelected = false;
-        gameStatus.itemActivated = true;
+        gameStatus.itemSelected = false;        
+        if (gameStatus.itemEquipable)
+        {
+            gameStatus.itemActivated = false;
+            gameStatus.itemEquiped = true;
+        }
+        else
+        {
+            gameStatus.itemActivated = true;
+        }
     }
 }

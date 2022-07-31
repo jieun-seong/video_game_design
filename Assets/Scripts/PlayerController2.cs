@@ -8,6 +8,7 @@ public class PlayerController2 : MonoBehaviour
 
     //inventory
     [SerializeField] private InventoryPanel playerInventory;
+    [SerializeField] private GameObject playerRightHand;
 
     private GameObject character;
     private Animator anim;
@@ -101,31 +102,39 @@ public class PlayerController2 : MonoBehaviour
         //if health or mana potion used since last update, status applied - ed209uardo
         if (gameStatus.itemUsed)
         {
-            if (gameStatus.healthAdded > 0)
+            if (gameStatus.itemEquipable)
             {
-                currentHealth += gameStatus.healthAdded;
-                if (currentHealth > maxHealth)
-                {
-                    currentHealth = maxHealth;
-                }
-                hbs.SetHealth(currentHealth);
-                gameStatus.healthAdded = 0;
-
-                // play the healing animation
-                ps_healing.Play();
+                //equip item
+                gameStatus.itemEquipable = false;
             }
-            if (gameStatus.manaAdded > 0)
+            else
             {
-                currentMana += gameStatus.manaAdded;
-                if (currentMana > maxMana)
+                if (gameStatus.healthAdded > 0)
                 {
-                    currentMana = maxMana;
-                }
-                mbs.SetMana(currentMana);
-                gameStatus.manaAdded = 0;
+                    currentHealth += gameStatus.healthAdded;
+                    if (currentHealth > maxHealth)
+                    {
+                        currentHealth = maxHealth;
+                    }
+                    hbs.SetHealth(currentHealth);
+                    gameStatus.healthAdded = 0;
 
-                // play the healing animation
-                ps_healing.Play();
+                    // play the healing animation
+                    ps_healing.Play();
+                }
+                if (gameStatus.manaAdded > 0)
+                {
+                    currentMana += gameStatus.manaAdded;
+                    if (currentMana > maxMana)
+                    {
+                        currentMana = maxMana;
+                    }
+                    mbs.SetMana(currentMana);
+                    gameStatus.manaAdded = 0;
+
+                    // play the healing animation
+                    ps_healing.Play();
+                }
             }
             gameStatus.itemUsed = false;
         }

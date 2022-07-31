@@ -43,7 +43,15 @@ public class InventoryPanel : MonoBehaviour
 	{
 		if (gameStatus.itemActivated)
         {
-			ConsumeItem();
+			if(gameStatus.itemEquipable)
+            {
+				//EquipItem();
+
+            }
+			else
+			{
+				ConsumeItem();				
+			}
 			gameStatus.itemActivated = false;
 			gameStatus.itemID = -1;
 			gameStatus.itemName = "";
