@@ -1821,6 +1821,7 @@ MonoBehaviour:
   currWaypoint: -1
   hasArrived: 0
   quest: {fileID: 1434978033}
+  billy: {fileID: 772359943}
   aiState: 0
 --- !u!195 &139391527
 NavMeshAgent:
@@ -12559,6 +12560,7 @@ MonoBehaviour:
   currWaypoint: -1
   hasArrived: 0
   quest: {fileID: 1434978033}
+  billy: {fileID: 772359943}
   aiState: 0
 --- !u!195 &1164230037
 NavMeshAgent:
@@ -22820,6 +22822,7 @@ MonoBehaviour:
   currWaypoint: -1
   hasArrived: 0
   quest: {fileID: 1434978033}
+  billy: {fileID: 772359943}
   aiState: 0
 --- !u!195 &1993240270
 NavMeshAgent:
@@ -25252,11 +25255,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 880334222925744720, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 880334222925744720, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2612819008470599938, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_RootOrder
@@ -25285,6 +25288,10 @@ PrefabInstance:
     - target: {fileID: 3107982808739925801, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: m_Name
       value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107982808739925801, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 880334222745771540, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
