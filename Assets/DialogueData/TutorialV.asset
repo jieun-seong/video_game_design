@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TutorialV
   m_EditorClassIdentifier: 
   dialogue:
-  - 'Press "V" to cast a magical attack
+  - 'Press "3" to cast a magical attack
 
     (Click to close/continue dialogue)'
