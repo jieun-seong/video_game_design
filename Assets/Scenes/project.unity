@@ -10773,6 +10773,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1345376275}
     - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+      propertyPath: playerRightHand
+      value: 
+      objectReference: {fileID: 1651827666}
+    - target: {fileID: 782087390804816235, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
       propertyPath: groundMask.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -10853,6 +10857,11 @@ PrefabInstance:
 --- !u!198 &1651827665 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6299037678795709474, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
+  m_PrefabInstance: {fileID: 1651827664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1651827666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 932389667313897975, guid: e6fae4d7cf7c042ce8f899101d5c1b68, type: 3}
   m_PrefabInstance: {fileID: 1651827664}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1667521850

@@ -8,6 +8,7 @@ public class PlayerController2 : MonoBehaviour
 
     //inventory
     [SerializeField] private InventoryPanel playerInventory;
+    public GameObject playerRightHand;
 
     private GameObject character;
     private Animator anim;
