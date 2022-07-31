@@ -20,12 +20,14 @@ public class NPCAI : MonoBehaviour
     private bool talking = false;
     private DialogueUI dialogueui;
     private bool check = true;
+    public Quest quest;
 
     public enum AIState {
         meetFriends,
         walkAround, 
         stand,
         talkToFriends,
+        safe,
     };
 
     public AIState aiState;
@@ -59,12 +61,18 @@ public class NPCAI : MonoBehaviour
                     standingTime = Time.time;
                     anim.SetFloat("Blend", 0f);
                 }
+                if (quest.questString == "Clear out the zombies in the town.") {
+                    aiState = AIState.safe;
+                }
             break;
             case AIState.stand:
                 if (standingTime + 5 < Time.time) {
                     aiState = AIState.walkAround;
                     anim.SetFloat("Blend", 1f);
                     setNextWaypoint();
+                }
+                if (quest.questString == "Clear out the zombies in the town.") {
+                    aiState = AIState.safe;
                 }
             break;
             case AIState.talkToFriends:
@@ -80,6 +88,7 @@ public class NPCAI : MonoBehaviour
                         aiState = AIState.walkAround;
                         anim.SetFloat("Blend", 1f);
                         talking = false;
+                        quest.ChangeQuest("Find Billy", 2, new Vector3(5101, 47, 5291));
                         setNextWaypoint();
                     }
                 } else { // player needs to click E still
@@ -87,6 +96,18 @@ public class NPCAI : MonoBehaviour
                         standingTime = Time.time;
                         talking = true;
                     }
+                }
+            break;
+            case AIState.safe:
+                anim.SetFloat("Blend", 0f);
+                targetDirection = player.transform.position - transform.position;
+                transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f); 
+                if (transform.name == "Break") {
+                    this.transform.position = new Vector3(5177, (float)39.2, 4935);
+                } else if (transform.name == "Ches") {
+                    this.transform.position = new Vector3(5173, (float)40.3, 4939);
+                } else if (transform.name == "March") {
+                    this.transform.position = new Vector3(5177, (float)39.2, 4944);
                 }
             break;
         }
