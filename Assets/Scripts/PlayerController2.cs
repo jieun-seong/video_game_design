@@ -12,6 +12,7 @@ public class PlayerController2 : MonoBehaviour
     private bool meleeEquiped;
 
     private GameObject character;
+    private Rigidbody rb;
     private Animator anim;
     private CharacterController controller;
     public Transform playerCamera = null;
@@ -24,6 +25,7 @@ public class PlayerController2 : MonoBehaviour
     public float walkSpeed = 1.0f;
     private float currSpeed = 0.0f;
     Vector3 targetDirection;
+    private float jumpAmount = 10;
 
     //health & mana bar stuff
     private float attackTime = 0f;
@@ -90,6 +92,7 @@ public class PlayerController2 : MonoBehaviour
         character = transform.GetChild(0).gameObject;
         controller = GetComponent<CharacterController>();
         anim = character.GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
         meleeEquiped = false;
         currentHealth = maxHealth;
         currentMana = maxMana;
@@ -163,7 +166,6 @@ public class PlayerController2 : MonoBehaviour
         //if (!Input.GetKeyUp(KeyCode.E) && Vector3.Distance(transform.position, waypointForDialogue.transform.position) < 5) {
         //dialogueui.ShowDialogue(pressEDialogue);
         //}
-
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         groundedPlayer = controller.isGrounded;
         anim.SetBool("Grounded", groundedPlayer);
