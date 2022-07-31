@@ -10,16 +10,20 @@ public class NPCAI : MonoBehaviour
     public GameObject player;
     public GameObject[] friends;
     public GameObject lookAtWaypoint;
+    public GameObject endingWaypoint;
     public Canvas dialogueCanvas;
     [SerializeField] private DialogueObject friendDialogue;
     [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private DialogueObject endingDialogue;
     public GameObject[] waypoints;
     public int currWaypoint = -1;
     private float standingTime = 0f;
     public bool hasArrived = false;
     private bool talking = false;
+    private bool talking2 = false;
     private DialogueUI dialogueui;
     private bool check = true;
+    private bool check2 = true;
     public Quest quest;
     public GameObject billy;
 
@@ -110,6 +114,16 @@ public class NPCAI : MonoBehaviour
                     this.transform.position = new Vector3(5173, (float)40.3, 4939);
                 } else if (transform.name == "March") {
                     this.transform.position = new Vector3(5177, (float)39.2, 4944);
+                }
+                if (talking2) { //player has already clicked E
+                    if (transform.name == "Break" && check2) { //show dialogue once
+                        dialogueui.ShowDialogue(endingDialogue);
+                    }
+                    check = false; // only show dialogue once
+                } else { // player needs to click E still
+                    if (Input.GetKey(KeyCode.E) && Vector3.Distance(player.transform.position, endingWaypoint.transform.position) < 5) {
+                        talking2 = true;
+                    }
                 }
             break;
         }

@@ -1812,9 +1812,11 @@ MonoBehaviour:
   - {fileID: 1164230032}
   - {fileID: 1993240266}
   lookAtWaypoint: {fileID: 1331312752}
+  endingWaypoint: {fileID: 1410855093}
   dialogueCanvas: {fileID: 1476008726}
   friendDialogue: {fileID: 11400000, guid: a26379c6f81514346a33765fdcf5713c, type: 2}
   dialogueBox: {fileID: 2054741906}
+  endingDialogue: {fileID: 11400000, guid: c0377fd22df13460c8fd1ced32e3c82e, type: 2}
   waypoints:
   - {fileID: 127429027}
   - {fileID: 753360723}
@@ -12551,9 +12553,11 @@ MonoBehaviour:
   - {fileID: 139391522}
   - {fileID: 1993240266}
   lookAtWaypoint: {fileID: 1331312752}
+  endingWaypoint: {fileID: 1410855093}
   dialogueCanvas: {fileID: 1476008726}
   friendDialogue: {fileID: 11400000, guid: a26379c6f81514346a33765fdcf5713c, type: 2}
   dialogueBox: {fileID: 2054741906}
+  endingDialogue: {fileID: 11400000, guid: c0377fd22df13460c8fd1ced32e3c82e, type: 2}
   waypoints:
   - {fileID: 1134742677}
   - {fileID: 1537461068}
@@ -22813,9 +22817,11 @@ MonoBehaviour:
   - {fileID: 139391522}
   - {fileID: 1164230032}
   lookAtWaypoint: {fileID: 1331312752}
+  endingWaypoint: {fileID: 1410855093}
   dialogueCanvas: {fileID: 1476008726}
   friendDialogue: {fileID: 11400000, guid: a26379c6f81514346a33765fdcf5713c, type: 2}
   dialogueBox: {fileID: 2054741906}
+  endingDialogue: {fileID: 11400000, guid: c0377fd22df13460c8fd1ced32e3c82e, type: 2}
   waypoints:
   - {fileID: 1571954527}
   - {fileID: 1702279768}
