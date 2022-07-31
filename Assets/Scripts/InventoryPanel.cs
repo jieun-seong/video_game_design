@@ -53,7 +53,7 @@ public class InventoryPanel : MonoBehaviour
 				ConsumeItem();				
 			}
 			gameStatus.itemActivated = false;
-			gameStatus.itemID = -1;
+			//gameStatus.itemID = -1;
 			gameStatus.itemName = "";
 			gameStatus.itemUsed = true;
 		}
@@ -116,6 +116,14 @@ public class InventoryPanel : MonoBehaviour
 					slotScript.empty = false;
 					slotScript.itemName = thisItem.itemName;
 					slotScript.itemDescription = thisItem.itemDescription;
+					if (thisItem.itemType == InventoryItem.ItemType.gear || thisItem.itemType == InventoryItem.ItemType.weapon)
+                    {
+						slotScript.equipable = true;
+					}
+					else
+                    {
+						slotScript.equipable = false;
+                    }
 					itemRepresentation[a].transform.GetComponent<Image>().sprite = thisItem.itemPNG;
 					itemRepresentation[a].transform.GetChild(0).GetComponent<Text>().text = slotScript.itemCount + "";
 					itemRepresentation[a].transform.GetChild(1).GetComponent<Text>().text = slotScript.itemName + ": " + thisItem.itemDescription;

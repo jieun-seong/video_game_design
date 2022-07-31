@@ -9,6 +9,7 @@ public class PlayerController2 : MonoBehaviour
     //inventory
     [SerializeField] private InventoryPanel playerInventory;
     [SerializeField] private GameObject playerRightHand;
+    private bool meleeEquiped;
 
     private GameObject character;
     private Animator anim;
@@ -89,6 +90,7 @@ public class PlayerController2 : MonoBehaviour
         character = transform.GetChild(0).gameObject;
         controller = GetComponent<CharacterController>();
         anim = character.GetComponent<Animator>();
+        meleeEquiped = false;
         currentHealth = maxHealth;
         currentMana = maxMana;
         hbs.SetMaxHealth(maxHealth);
@@ -99,13 +101,17 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
-        //if health or mana potion used since last update, status applied - ed209uardo
+        //if health or mana potion used since last update, status applied
+        //or if dagger equiped - ed209uardo
         if (gameStatus.itemUsed)
         {
             if (gameStatus.itemEquipable)
-            {
-                //equip item
+            {                
                 gameStatus.itemEquipable = false;
+                if (gameStatus.itemID == 12) //dagger
+                { //equip
+                    meleeEquiped = true;
+                }
             }
             else
             {
@@ -137,6 +143,7 @@ public class PlayerController2 : MonoBehaviour
                 }
             }
             gameStatus.itemUsed = false;
+            gameStatus.itemID = -1;
         }
 
         //CheckDamage();
@@ -188,14 +195,17 @@ public class PlayerController2 : MonoBehaviour
             anim.SetBool("Punch", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && !dead)
+        if (meleeEquiped && !dead)
         {
-            anim.SetBool("Stab", true);
-        }
-        else
-        {
-            anim.SetBool("Stab", false);
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                anim.SetBool("Stab", true);
+            }
+            else
+            {
+                anim.SetBool("Stab", false);
+            }
+        }        
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
         {

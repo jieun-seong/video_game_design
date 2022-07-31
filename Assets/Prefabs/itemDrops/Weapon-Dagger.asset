@@ -16,8 +16,8 @@ MonoBehaviour:
   itemType: 2
   itemName: Dagger
   itemPNG: {fileID: 21300000, guid: b4d913ba043cba14e88e18ba9f677a6d, type: 3}
-  itemDescription: One-handed melee weapon, 15 damage
+  itemDescription: One-handed melee weapon, 25 damage
   weaponType: 0
-  statOne: 15
+  statOne: 25
   statTwo: 0
   statThree: 0
