@@ -25,6 +25,7 @@ public class SelectItem : MonoBehaviour
         gameStatus.itemSelected = true;
         gameStatus.itemID = slotScript.itemID;
         gameStatus.itemName = slotScript.itemName;
+        gameStatus.itemEquipable = slotScript.equipable;
         gameStatus.slotObject = transform.parent.gameObject;
     }
 }
