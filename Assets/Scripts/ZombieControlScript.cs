@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ZombieControlScript : MonoBehaviour
 {
+    [SerializeField] private GameStatus gameStatus;
     private Animator anim;
     public AIDirector dir;
     public GameObject character;
@@ -107,17 +108,27 @@ public class ZombieControlScript : MonoBehaviour
                     playerScript.TakeDamage();// player take damage
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha1) && Time.time > attackTime + 1.0f)
-                { //player punch
+                { //player melee
                     attackTime = Time.time;
-                    TakeDamage(15);
+                    if (gameStatus.weaponEquiped)
+                    {
+                        TakeDamage(25);
+                    }
+                    else
+                    {
+                        TakeDamage(15);
+                    }
+                    
                 }
-                if (Input.GetKeyDown(KeyCode.Alpha2) && Time.time > attackTime + 1.5f)
-                { //player stab
-                    attackTime = Time.time;
-                    TakeDamage(25);
-                }
-            } else if (distance < 15) { //magic attack
-                if (Input.GetKeyDown(KeyCode.Alpha3) && Time.time > attackTime + 2.0f) {
+                //if (Input.GetKeyDown(KeyCode.Alpha2) && Time.time > attackTime + 1.5f)
+                //{ //player stab
+                //    attackTime = Time.time;
+                //    TakeDamage(25);
+                //}
+            } 
+            else if (distance < 15)
+            { //magic attack
+                if (Input.GetKeyDown(KeyCode.Alpha2) && Time.time > attackTime + 1.5f) {
                     attackTime = Time.time;
                     TakeDamage(30);
                 }
