@@ -5,26 +5,22 @@ Start Scene: startGame
 
 How to Play:
 Directional Arrows/WASD: Movement in the given direction
-Q: Punch
-V: Magic attack
+1: Punch/swing dagger (if equipped)
+2: Magic attack
 E: Interact with something (yellow circle on the ground indicates you can interact here)
 Space: Jump
 Mouse Click: Go to next piece of dialogue
 Escape: Open in-game menu screen
 * Note that moving the mouse controls the camera
 
-Upon selecting start new game from the startGame scene, the player will enter the "project" scene, where the gameplay takes place. The dialogue box on the screen will welcome the player and alert them of the first mission: meet up with friends. The player should then find their friends (they are visible upon the start of the scene) and click "E" near the yellow circle on the ground. Note that the player can only interact here if at least one of the friends has already arrived. Upon clicking "E", a dialogue box will open and inform the player of their second mission: find a missing boy. After the dialogue has finished, the NPC friends will eventually leave to go search for him, walking to a variety of waypoints. The missing boy turns out to be a zombie which will follow and attack the player within a certain distance, and he is initially located behind a building on the left. To fight the zombie, the player must use either Q or V to attack, which will lower the zombie's health bar. The zombie will eventually stop following the player if the player gets far enough away. There are also items located on the road near the start of the scene. By colliding with the objects, the player can add them to inventory. To view the inventory, navigate to the in-game menu screen by clicking Escape and then click "Inventory." From the in-game menu screen, one can also restart or close the game. 
+Upon selecting start new game from the startGame scene, the player will enter the "project" scene, where the gameplay takes place. The dialogue box on the screen will welcome the player and introduce them to the "tutorial" at the beginning of the level. After completing the tutorial, the dialogue will alert the player of the first mission: meet up with friends. The player should then find their friends (they are visible upon the start of the scene) and click "E" near the yellow circle on the ground. Note that the player can only interact here if at least one of the friends has already arrived. Upon clicking "E", a dialogue box will open and inform the player of their second mission: find a missing boy. After the dialogue has finished, the NPC friends will eventually leave to go search for him, walking to a variety of waypoints. The missing boy turns out to be a zombie which will follow and attack the player within a certain distance, and he is initially located behind a building on the left. Note that the zombie will only be present if the player has completed speaking with their friends. To fight the zombie, the player must use either 1 or 2 to attack, which will lower the zombie's health bar. There are also items that the player can add to inventory, such as those that are dropped after defeating a zombie or the two bottles found near the friends. By colliding with the objects, the player can add them to inventory. To view the inventory, navigate to the in-game menu screen by clicking Escape and then click "Inventory." In inventory, the player can choose to use an item or just view a description of the item by hovering their mouse over it. From the in-game menu screen, one can also restart or close the game. After defeating the initial zombie, the town will slowly become overrun with zombies and the player must kill a certain amount before being allowed into the safe house, which is a fenced in area located near the start of the level. Note that the safe house will only appear after the initial zombie has been killed. After being let into the safe house, the player will be able to interact with their friends once more before the game ends. The player is successful if they can complete all the missions and enter the safe house.
 
 Known Problem Areas:
-- Dialogue system needs to be further refined in various ways. For example, if the player does not click through the dialogue at the beginning, the dialogue with the friends will not function correctly. Additionally, the NPC friends will eventually leave without finishing dialogue if the player does not click through the dialogue with them. Finally, we would also like to add buttons to the dialogue box so that the player can influence the dialogue and narrative.
-- Inventory and items are not yet fully operational yet. Currently, the items will be added to inventory upon player collision, but we have not yet implemented the functionality for the items to be clicked from inventory and used. Additionally, we still need to add audio effects for colliding with/picking up items.
-- Camera shakes slightly while backing up
-- Player character animation needs improvement. It looks like the character is sliding on the ground. However, when we enable root motion, it doesn't move or moves very fast. 
-
+- We are not aware of any known problems in our submission.
 
 Team Member Breakdown:
 Jacquelyn: 
-I was responsible for creating the NPC AI, the zombie (avatar and animations are from unity asset store, zombie controller script and animator controller were made by me), the health bars, and the fighting functionality between the player and enemies.
+I was responsible for creating the NPC AI, the zombie (avatar and animations are from unity asset store, zombie controller script and animator controller were made by me), the health bars, the dialogue system, the tutorial, and the fighting functionality between the player and enemies.
 
 Assets/Animations/Etc_Walk_Zombi_01.anim
 Assets/Animations/NPCAnimController.controller
