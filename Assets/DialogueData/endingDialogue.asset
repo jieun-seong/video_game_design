@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a115e9178ba4072a2e61abb32a3219, type: 3}
+  m_Name: endingDialogue
+  m_EditorClassIdentifier: 
+  dialogue:
+  - 'March: Eiri! Thank goodness you''re alive. '
+  - 'Ches: Yeah, I can''t believe what happened to Billy. At least we''re safe here.'
