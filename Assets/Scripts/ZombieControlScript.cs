@@ -104,12 +104,18 @@ public class ZombieControlScript : MonoBehaviour
                     zombieAttackTime = Time.time;
                     playerScript.TakeDamage();// player take damage
                 }
-                if (Input.GetKeyDown(KeyCode.Q) && Time.time > attackTime + 1.0f) { //player punch
+                if (Input.GetKeyDown(KeyCode.Alpha1) && Time.time > attackTime + 1.0f)
+                { //player punch
                     attackTime = Time.time;
                     TakeDamage(15);
                 }
+                if (Input.GetKeyDown(KeyCode.Alpha2) && Time.time > attackTime + 1.5f)
+                { //player stab
+                    attackTime = Time.time;
+                    TakeDamage(25);
+                }
             } else if (distance < 15) { //magic attack
-                if (Input.GetKeyDown(KeyCode.V) && Time.time > attackTime) {
+                if (Input.GetKeyDown(KeyCode.Alpha3) && Time.time > attackTime + 2.0f) {
                     attackTime = Time.time;
                     TakeDamage(30);
                 }
