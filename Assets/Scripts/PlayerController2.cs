@@ -113,16 +113,8 @@ public class PlayerController2 : MonoBehaviour
             {                
                 gameStatus.itemEquipable = false;
                 if (gameStatus.itemID == 12) //dagger
-                { //equip
-                    meleeEquiped = true;
-                    meleeItem = gameStatus.inventoryItem;
-                    gameStatus.inventoryItem = null;
-                    meleeItem.GetComponent<BoxCollider>().enabled = false;
-                    meleeItem.GetComponent<CapsuleCollider>().enabled = false;
-                    meleeItem.GetComponent<Rigidbody>().useGravity = false;
-                    meleeItem.SetActive(true);
-                    meleeItem.transform.parent = playerRightHand.transform;
-                    meleeItem.transform.position = playerRightHand.transform.position;
+                {
+                    EquipWeapon();
                 }
             }
             else
@@ -199,26 +191,34 @@ public class PlayerController2 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1) && !dead)
         {
-            anim.SetBool("Punch", true);
-        }
-        else
-        {
-            anim.SetBool("Punch", false);
-        }
-
-        if (meleeEquiped && !dead)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (meleeEquiped)
             {
                 anim.SetBool("Stab", true);
             }
             else
             {
-                anim.SetBool("Stab", false);
+                anim.SetBool("Punch", true);
             }
-        }        
+        }
+        else
+        {
+            anim.SetBool("Punch", false);
+            anim.SetBool("Stab", false);
+        }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
+        //if (meleeEquiped && !dead)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Alpha2))
+        //    {
+        //        anim.SetBool("Stab", true);
+        //    }
+        //    else
+        //    {
+        //        anim.SetBool("Stab", false);
+        //    }
+        //}        
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && (currentMana - 30) >= 0 && !dead) //30 is preset mana cost
         {
             anim.SetBool("Spell", true);
 
@@ -307,6 +307,22 @@ public class PlayerController2 : MonoBehaviour
 
     }
 
+    private void EquipWeapon()
+    {
+        meleeEquiped = true;
+        meleeItem = gameStatus.inventoryItem;
+        gameStatus.inventoryItem = null;
+        meleeItem.GetComponent<BoxCollider>().enabled = false;
+        meleeItem.GetComponent<CapsuleCollider>().enabled = false;
+        meleeItem.GetComponent<Rigidbody>().useGravity = false;
+        meleeItem.SetActive(true);
+        //Vector3 scale = meleeItem.transform.localScale;
+        //meleeItem.transform.localScale = new Vector3(scale.x * 0.2f, scale.y * 0.2f, scale.z * 0.2f);
+        meleeItem.transform.parent = playerRightHand.transform;
+        meleeItem.transform.position = playerRightHand.transform.position;
+        
+        meleeItem.transform.localPosition = new Vector3(0.04f, 0.05f, 0.01f);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.root.gameObject.CompareTag("inventory"))
