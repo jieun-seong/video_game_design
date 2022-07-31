@@ -21,6 +21,7 @@ public class NPCAI : MonoBehaviour
     private DialogueUI dialogueui;
     private bool check = true;
     public Quest quest;
+    public GameObject billy;
 
     public enum AIState {
         meetFriends,
@@ -89,6 +90,7 @@ public class NPCAI : MonoBehaviour
                         anim.SetFloat("Blend", 1f);
                         talking = false;
                         quest.ChangeQuest("Find Billy", 2, new Vector3(5101, 47, 5291));
+                        billy.SetActive(true);
                         setNextWaypoint();
                     }
                 } else { // player needs to click E still
