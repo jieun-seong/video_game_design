@@ -10,6 +10,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField] private InventoryPanel playerInventory;
     [SerializeField] private GameObject playerRightHand;
     private bool meleeEquiped;
+    private GameObject meleeItem;
 
     private GameObject character;
     private Rigidbody rb;
@@ -114,6 +115,14 @@ public class PlayerController2 : MonoBehaviour
                 if (gameStatus.itemID == 12) //dagger
                 { //equip
                     meleeEquiped = true;
+                    meleeItem = gameStatus.inventoryItem;
+                    gameStatus.inventoryItem = null;
+                    meleeItem.GetComponent<BoxCollider>().enabled = false;
+                    meleeItem.GetComponent<CapsuleCollider>().enabled = false;
+                    meleeItem.GetComponent<Rigidbody>().useGravity = false;
+                    meleeItem.SetActive(true);
+                    meleeItem.transform.parent = playerRightHand.transform;
+                    meleeItem.transform.position = playerRightHand.transform.position;
                 }
             }
             else
