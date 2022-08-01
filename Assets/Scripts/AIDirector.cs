@@ -10,6 +10,7 @@ public class AIDirector : MonoBehaviour
     public GameObject[] spawnOutVillage;
     public GameObject zomb;
     public int state;
+    public Quest quest;
 
     public int zombKills = 0;
     public int zombsTotal = 1;
@@ -25,6 +26,11 @@ public class AIDirector : MonoBehaviour
 
     void Update()
     {
+        if (dangerLVL >= 70) {
+            quest.ChangeQuest("Too many zombies! Look for a safe house!",4, new Vector3(5200, 37, 5000));
+            GameObject palettes = GameObject.Find("Palettes");
+            palettes.SetActive(true);
+        }
         switch (state) {
             case 1:
                 if(dangerLVL < absmax) {
