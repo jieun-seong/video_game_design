@@ -3,7 +3,17 @@ guid: a6596d7ec99e3435d8dd67b7a7139355
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameStatus: {fileID: 11400000, guid: e2c8c0430fb16d54d925d67e0d15bb11, type: 2}
+  - player: {instanceID: 0}
+  - lookAtWaypoint: {instanceID: 0}
+  - endingWaypoint: {instanceID: 0}
+  - dialogueCanvas: {instanceID: 0}
+  - friendDialogue: {instanceID: 0}
+  - dialogueBox: {instanceID: 0}
+  - endingDialogue: {instanceID: 0}
+  - quest: {instanceID: 0}
+  - billy: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

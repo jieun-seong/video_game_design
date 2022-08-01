@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class DeathRestart : MonoBehaviour
 {
+    [SerializeField] private GameStatus gameStatus;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +16,14 @@ public class DeathRestart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameStatus.playerDead)
+        {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
     }
 
     public void ContinueButton()

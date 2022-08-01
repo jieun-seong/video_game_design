@@ -129,6 +129,7 @@ public class NPCAI : MonoBehaviour
                         talking2 = true;
                     }
                 }
+                gameStatus.playerWon = true;
             break;
         }
     }

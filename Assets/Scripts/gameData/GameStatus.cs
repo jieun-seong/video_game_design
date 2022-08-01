@@ -10,6 +10,7 @@ public class GameStatus : ScriptableObject
     public bool menuVisible;
     public bool inventoryVisible;
     public bool playerDead;
+    public bool playerWon;
     public GameObject slotObject;
     public GameObject inventoryItem;
     public int itemID;
@@ -21,5 +22,4 @@ public class GameStatus : ScriptableObject
     public bool itemUsed;
     public int healthAdded;
     public int manaAdded;
-    public bool playerWon;
 }
