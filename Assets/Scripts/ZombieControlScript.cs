@@ -91,6 +91,8 @@ public class ZombieControlScript : MonoBehaviour
                 safeHouse.SetActive(true);
                 GameObject palettes = GameObject.Find("Palettes");
                 palettes.SetActive(false);
+                GameObject door1 = GameObject.Find("openFence");
+                door1.SetActive(false);
             }
             ps_death.Play();
         }

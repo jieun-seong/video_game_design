@@ -28,6 +28,9 @@ public class PlayerController2 : MonoBehaviour
     private float currSpeed = 0.0f;
     Vector3 targetDirection;
     private float jumpAmount = 10;
+    [SerializeField] private GameObject point;
+    public GameObject door1;
+    public GameObject door2;
 
     //health & mana bar stuff
     private float attackTime = 0f;
@@ -107,6 +110,11 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
+        float distForDoor = Vector3.Distance(this.transform.position, point.transform.position);
+        if (distForDoor < 7) {
+            door1.SetActive(false);
+            door2.SetActive(true);
+        }
         //if health or mana potion used since last update, status applied
         //or if dagger equiped - ed209uardo
         if (gameStatus.itemUsed)
@@ -151,7 +159,7 @@ public class PlayerController2 : MonoBehaviour
             gameStatus.itemUsed = false;
             gameStatus.itemID = -1;
         }
-
+        
         //CheckDamage();
         // player dying if no health
         if (currentHealth <= 0 && !anim.GetBool("Dead")) {
