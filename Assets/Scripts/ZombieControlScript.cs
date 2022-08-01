@@ -89,6 +89,8 @@ public class ZombieControlScript : MonoBehaviour
                 dir.Enabled = true;
                 quest.ChangeQuest("Clear out the zombies.",3,new Vector3(5123,47,5391));
                 safeHouse.SetActive(true);
+                GameObject palettes = GameObject.Find("Palettes");
+                palettes.SetActive(false);
             }
             ps_death.Play();
         }
