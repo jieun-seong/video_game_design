@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 782087390804819605}
   - component: {fileID: 782087390804819604}
   - component: {fileID: 9136344081929873061}
+  - component: {fileID: 6497057612438171422}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -57,6 +58,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStatus: {fileID: 0}
   playerInventory: {fileID: 0}
+  playerRightHand: {fileID: 0}
   playerCamera: {fileID: 782087392191774627}
   cameraRoot: {fileID: 782087391057011888}
   cameraSpeedH: 2
@@ -124,6 +126,25 @@ CapsuleCollider:
   m_Height: 7.4
   m_Direction: 1
   m_Center: {x: 0, y: 3.7, z: 0}
+--- !u!95 &6497057612438171422
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782087390804816233}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b63b280b9da8e4004a848d5c44956a4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &782087391057011895
 GameObject:
   m_ObjectHideFlags: 0
@@ -5730,6 +5751,8 @@ MonoBehaviour:
   FootstepAudioVolume: 0.5
   DamageClip: {fileID: 0}
   DamageVolume: 1
+  DaggerClip: {fileID: 0}
+  DaggerVolume: 1
 --- !u!1001 &2535283528184768763
 PrefabInstance:
   m_ObjectHideFlags: 0
