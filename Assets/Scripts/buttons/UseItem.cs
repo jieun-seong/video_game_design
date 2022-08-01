@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UseItem : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class UseItem : MonoBehaviour
     {
         if (gameStatus.itemEquipable)
         {
-            //transform.GetChild(0).GetComponent<Text>().text = "Equip Item";
+            transform.GetChild(0).GetComponent<Text>().text = "Equip Item";
         }
     }
 
