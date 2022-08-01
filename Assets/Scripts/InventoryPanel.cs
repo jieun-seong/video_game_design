@@ -45,7 +45,7 @@ public class InventoryPanel : MonoBehaviour
         {
 			if(gameStatus.itemEquipable)
             {
-				//EquipItem();
+				EquipItem();
 
             }
 			else
@@ -129,6 +129,23 @@ public class InventoryPanel : MonoBehaviour
 					itemRepresentation[a].transform.GetChild(1).GetComponent<Text>().text = slotScript.itemName + ": " + thisItem.itemDescription;
 				}
 				a++;
+			}
+		}
+	}
+
+	public void EquipItem()
+    {
+		int a = System.Array.IndexOf(itemRepresentation, gameStatus.slotObject);
+		ItemSlot slotScript = itemRepresentation[a].GetComponent<ItemSlot>();
+
+		foreach (GameObject searchedItem in items)
+		{
+			objectAsItem equipmentScript = searchedItem.GetComponent<objectAsItem>();
+			InventoryItem thisItem = equipmentScript.myItem;
+			if (thisItem.itemID == slotScript.itemID)
+			{
+				gameStatus.inventoryItem = searchedItem;
+				break;
 			}
 		}
 	}

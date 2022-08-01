@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class GameStatus : ScriptableObject
 {
-    //public float currentHP;
-    //public float maxHP;
+    public bool weaponEquiped;
     public bool menuVisible;
     public bool inventoryVisible;
     public bool playerDead;
     public GameObject slotObject;
+    public GameObject inventoryItem;
     public int itemID;
     public string itemName;
     public bool itemSelected;

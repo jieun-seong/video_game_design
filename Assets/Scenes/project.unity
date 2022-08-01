@@ -2631,7 +2631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783049391207840543, guid: b22bd73cc29414f8c8a38daf70b49f9e, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2783049391207840543, guid: b22bd73cc29414f8c8a38daf70b49f9e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8706,7 +8706,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &783006669 stripped
 Transform:
@@ -9342,7 +9342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0b920254ddaa30c4eaa9b3101dac9544, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b920254ddaa30c4eaa9b3101dac9544, type: 3}
       propertyPath: m_LocalScale.x
@@ -10919,7 +10919,7 @@ Transform:
   - {fileID: 2051524255}
   - {fileID: 482687936}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1037806837 stripped
 Transform:
@@ -12176,7 +12176,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a2f7cf0f45aab494a949cad968bf384f, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2f7cf0f45aab494a949cad968bf384f, type: 3}
       propertyPath: m_LocalScale.x
@@ -25031,7 +25031,7 @@ RectTransform:
   - {fileID: 599999138161067139}
   - {fileID: 599999138654384655}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -25175,6 +25175,10 @@ PrefabInstance:
       propertyPath: safeHouse
       value: 
       objectReference: {fileID: 1619048601}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: gameStatus
+      value: 
+      objectReference: {fileID: 11400000, guid: e2c8c0430fb16d54d925d67e0d15bb11, type: 2}
     - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: groundCheck
       value: 
