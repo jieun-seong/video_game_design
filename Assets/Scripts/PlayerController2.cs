@@ -320,14 +320,14 @@ public class PlayerController2 : MonoBehaviour
         meleeItem.GetComponent<CapsuleCollider>().enabled = false;
         meleeItem.GetComponent<Rigidbody>().useGravity = false;
         meleeItem.SetActive(true);
-        //Vector3 scale = meleeItem.transform.localScale;
-        //meleeItem.transform.localScale = new Vector3(scale.x * 0.2f, scale.y * 0.2f, scale.z * 0.2f);
+        Vector3 scale = meleeItem.transform.localScale;
+        meleeItem.transform.localScale = new Vector3(scale.x * 0.5f, scale.y * 0.5f, scale.z * 0.5f);
         meleeItem.transform.parent = playerRightHand.transform;
         meleeItem.transform.localRotation = playerRightHand.transform.localRotation;
         meleeItem.transform.position = playerRightHand.transform.position;
         
         meleeItem.transform.localPosition = new Vector3(0.04f, 0.05f, 0.01f);
-        meleeItem.transform.Rotate(Vector3.up * 45f);
+        meleeItem.transform.Rotate(Vector3.up * 50f);
     }
     private void OnTriggerEnter(Collider other)
     {
