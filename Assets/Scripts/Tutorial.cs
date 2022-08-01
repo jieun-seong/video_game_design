@@ -39,7 +39,7 @@ public class Tutorial : MonoBehaviour
         }
         GameObject pressV = GameObject.Find("PressVCanvas");
         distance = Vector3.Distance(player.transform.position, pressV.transform.position);
-        if (Input.GetKeyDown(KeyCode.Alpha3) && distance < 10) {
+        if (Input.GetKeyDown(KeyCode.Alpha2) && distance < 10) {
             dialogueui.ShowDialogue(tutorialV);
         }
         GameObject pressSpace = GameObject.Find("PressSpaceCanvas");
