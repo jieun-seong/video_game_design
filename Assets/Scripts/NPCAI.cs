@@ -120,7 +120,7 @@ public class NPCAI : MonoBehaviour
                     if (transform.name == "Break" && check2) { //show dialogue once
                         dialogueui.ShowDialogue(endingDialogue);
                     }
-                    check = false; // only show dialogue once
+                    check2 = false; // only show dialogue once
                     if (!dialogueBox.active) {
                         gameStatus.playerWon = true;
                     }
