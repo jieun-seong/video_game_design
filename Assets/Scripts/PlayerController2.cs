@@ -14,6 +14,7 @@ public class PlayerController2 : MonoBehaviour
 
     private GameObject character;
     private Rigidbody rb;
+    private Animator p_anim;
     private Animator anim;
     private CharacterController controller;
     public Transform playerCamera = null;
@@ -92,6 +93,7 @@ public class PlayerController2 : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         character = transform.GetChild(0).gameObject;
         controller = GetComponent<CharacterController>();
+        p_anim = GetComponent<Animator>();
         anim = character.GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         meleeEquiped = false;
@@ -174,10 +176,12 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKeyDown("space") && groundedPlayer && !dead)
         {
             anim.SetBool("Jump", true);
+            p_anim.SetBool("Jump", true);
         }
         else
         {
             anim.SetBool("Jump", false);
+            p_anim.SetBool("Jump", false);
         }
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
