@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class DeathRestart : MonoBehaviour
+[RequireComponent(typeof(CanvasGroup))]
+public class InverseDeathToggle : MonoBehaviour
 {
+    private CanvasGroup canvasGroup;
     [SerializeField] private GameStatus gameStatus;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
     // Update is called once per frame
@@ -18,14 +19,9 @@ public class DeathRestart : MonoBehaviour
     {
         if (gameStatus.playerDead)
         {
-            SceneManager.LoadScene("startGame");
-            Time.timeScale = 1f;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+            canvasGroup.alpha = 0f;
         }
-    }
-
-    public void ContinueButton()
-    {
-        SceneManager.LoadScene("startGame");
-        Time.timeScale = 1f;
     }
 }
