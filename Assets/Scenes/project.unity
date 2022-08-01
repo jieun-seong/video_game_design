@@ -1545,6 +1545,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2011098299}
     - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: mana
+      value: 
+      objectReference: {fileID: 6611393467000088332}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: quest
+      value: 
+      objectReference: {fileID: 1434978033}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: zombie
       value: 
       objectReference: {fileID: 1708186882}
@@ -1576,6 +1584,14 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1800900101}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: safeHouse
+      value: 
+      objectReference: {fileID: 1619048601}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: gameStatus
+      value: 
+      objectReference: {fileID: 11400000, guid: e2c8c0430fb16d54d925d67e0d15bb11, type: 2}
     - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: groundCheck
       value: 
@@ -25131,6 +25147,10 @@ PrefabInstance:
       propertyPath: dir
       value: 
       objectReference: {fileID: 2011098299}
+    - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
+      propertyPath: mana
+      value: 
+      objectReference: {fileID: 6611393467000088332}
     - target: {fileID: 120213141041337605, guid: 729430f9e24e8451cbafb4eab3d4aae3, type: 3}
       propertyPath: billy
       value: 1
