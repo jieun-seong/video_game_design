@@ -10,16 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fef05edd431c14e4884916a0a59c8653, type: 3}
-  m_Name: BasicDropTable
+  m_Name: BillyDropTable
   m_EditorClassIdentifier: 
   drops:
   - name: Mana Potion
     drop: {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
-    dropChance: 35
+    dropChance: 100
     minCount: 1
-    maxCount: 2
+    maxCount: 1
   - name: Health Potion
     drop: {fileID: 173500, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
-    dropChance: 35
+    dropChance: 100
+    minCount: 1
+    maxCount: 1
+  - name: Dagger
+    drop: {fileID: 110658, guid: a4cd3d5e9967248a69e6203d2ce67874, type: 3}
+    dropChance: 100
     minCount: 1
     maxCount: 1

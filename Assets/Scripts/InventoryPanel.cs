@@ -53,7 +53,6 @@ public class InventoryPanel : MonoBehaviour
 				ConsumeItem();				
 			}
 			gameStatus.itemActivated = false;
-			//gameStatus.itemID = -1;
 			gameStatus.itemName = "";
 			gameStatus.itemUsed = true;
 		}
@@ -81,7 +80,6 @@ public class InventoryPanel : MonoBehaviour
 
 	public void AddItem(GameObject item)
     {
-		// need to add check when inventory is full
 		bool itemAdded = false;
 		int a = 0;
 		items.Add(item);
@@ -116,6 +114,7 @@ public class InventoryPanel : MonoBehaviour
 					slotScript.empty = false;
 					slotScript.itemName = thisItem.itemName;
 					slotScript.itemDescription = thisItem.itemDescription;
+					slotScript.equiped = false;
 					if (thisItem.itemType == InventoryItem.ItemType.gear || thisItem.itemType == InventoryItem.ItemType.weapon)
                     {
 						slotScript.equipable = true;
@@ -192,7 +191,7 @@ public class InventoryPanel : MonoBehaviour
 
 	public void RemoveItem(GameObject item)
 	{
-		//incomplete
+		//may need updating
 		items.Remove(item);
 	}
 
@@ -205,36 +204,32 @@ public class InventoryPanel : MonoBehaviour
 		}
 	}
 
-	void UpdateInventoryTest()
-	{
-		for (int a = 0; a < items.Count; a++)
-		{
-			objectAsItem equipmentScript = items[a].GetComponent<objectAsItem>();
-			InventoryItem thisItem = equipmentScript.myItem;
+	//void UpdateInventoryTest()
+	//{
+	//	for (int a = 0; a < items.Count; a++)
+	//	{
+	//		objectAsItem equipmentScript = items[a].GetComponent<objectAsItem>();
+	//		InventoryItem thisItem = equipmentScript.myItem;
 
-			itemRepresentation[a].transform.GetComponent<Image>().sprite = empty;
-			itemRepresentation[a].transform.GetChild(0).GetComponent<Text>().text = "2";
-		}
-	}
+	//		itemRepresentation[a].transform.GetComponent<Image>().sprite = empty;
+	//		itemRepresentation[a].transform.GetChild(0).GetComponent<Text>().text = "2";
+	//	}
+	//}
 
-	void SecondTest()
-	{
-		objectAsItem tempScript = items[0].GetComponent<objectAsItem>();
-		if (tempScript == null)
-		{
-			Debug.Log("null script");
-		}
+	//void SecondTest()
+	//{
+	//	objectAsItem tempScript = items[0].GetComponent<objectAsItem>();
+	//	if (tempScript == null)
+	//	{
+	//		Debug.Log("null script");
+	//	}
 
-		InventoryItem temp2 = tempScript.myItem;
-		if (temp2 == null)
-		{
-			Debug.Log("null scriptable object");
-		}
+	//	InventoryItem temp2 = tempScript.myItem;
+	//	if (temp2 == null)
+	//	{
+	//		Debug.Log("null scriptable object");
+	//	}
 
-		empty = tempScript.myItem.itemPNG;
-		if (empty == null)
-        {
-			Debug.Log("null image");
-        }
-	}
+	//	empty = tempScript.myItem.itemPNG;
+	//}
 }

@@ -92,11 +92,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdce054ebfefe046a2e020d87e9ce79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStatus: {fileID: 11400000, guid: e2c8c0430fb16d54d925d67e0d15bb11, type: 2}
   empty: 0
   itemID: 0
   itemCount: 0
   itemName: 
   itemDescription: 
+  selected: 0
   equipable: 0
   equiped: 0
 --- !u!1 &1201322764971700560

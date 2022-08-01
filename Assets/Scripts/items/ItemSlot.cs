@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private GameStatus gameStatus;
     public bool empty;
     public int itemID;
     public int itemCount;
@@ -14,6 +15,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     GameObject itemText;
     GameObject itemButton;
     GameObject equipText;
+    public bool selected;
     public bool equipable;
     public bool equiped;
 
@@ -21,6 +23,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     void Start()
     {
         empty = true;
+        selected = false;
         equipable = false;
         equiped = false;
         itemText = this.transform.GetChild(1).gameObject;
@@ -35,11 +38,15 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // Update is called once per frame
     void Update()
     {
-        if (equipable && equiped)
+        if (equipable && gameStatus.itemEquiped && selected)
         {
             equipText.SetActive(true);
+            equiped = true;
+            gameStatus.itemEquiped = false;
+            gameStatus.itemActivated = true;
+            selected = false;
         }
-        else
+        if (!equiped)
         {
             equipText.SetActive(false);
         }

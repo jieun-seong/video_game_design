@@ -15,7 +15,10 @@ public class UseItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameStatus.itemEquipable)
+        {
+            //transform.GetChild(0).GetComponent<Text>().text = "Equip Item";
+        }
     }
 
     public void UseItemButton()
