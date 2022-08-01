@@ -11,6 +11,9 @@ public class AIDirector : MonoBehaviour
     public GameObject zomb;
     public int state;
     public Quest quest;
+    public GameObject door1;
+    public GameObject door2;
+    
 
     public int zombKills = 0;
     public int zombsTotal = 1;
@@ -28,8 +31,8 @@ public class AIDirector : MonoBehaviour
     {
         if (dangerLVL >= 70) {
             quest.ChangeQuest("Too many zombies! Look for a safe house!",4, new Vector3(5200, 37, 5000));
-            GameObject palettes = GameObject.Find("Palettes");
-            palettes.SetActive(true);
+            door1.SetActive(true);
+            door2.SetActive(false);
         }
         switch (state) {
             case 1:
