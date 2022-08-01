@@ -29,6 +29,8 @@ public class ZombieControlScript : MonoBehaviour
     public Quest quest;
     public bool original;
     public GameObject safeHouse;
+    public GameObject mana;
+    private Slider manaValue;
 
     //gravity
     private bool isGrounded;
@@ -51,6 +53,7 @@ public class ZombieControlScript : MonoBehaviour
         hbs = healthBar.GetComponent<HealthBarScript>();
         groundDistance = 1.5f;
         gravity = -98;
+        manaValue = mana.GetComponent<Slider>();
     }
     void Start()
     {
@@ -120,6 +123,10 @@ public class ZombieControlScript : MonoBehaviour
                     }
                     
                 }
+                if (Input.GetKeyDown(KeyCode.Alpha2) && Time.time > attackTime + 1.5f && manaValue.value > 30) {
+                    attackTime = Time.time;
+                    TakeDamage(30);
+                }
                 //if (Input.GetKeyDown(KeyCode.Alpha2) && Time.time > attackTime + 1.5f)
                 //{ //player stab
                 //    attackTime = Time.time;
@@ -128,7 +135,7 @@ public class ZombieControlScript : MonoBehaviour
             } 
             else if (distance < 15)
             { //magic attack
-                if (Input.GetKeyDown(KeyCode.Alpha2) && Time.time > attackTime + 1.5f) {
+                if (Input.GetKeyDown(KeyCode.Alpha2) && Time.time > attackTime + 1.5f && manaValue.value > 30) {
                     attackTime = Time.time;
                     TakeDamage(30);
                 }
