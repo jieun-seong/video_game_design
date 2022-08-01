@@ -18,8 +18,11 @@ public class DeathRestart : MonoBehaviour
     {
         if (gameStatus.playerDead)
         {
-            SceneManager.LoadScene("startGame");
-            Time.timeScale = 1f;
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
 
