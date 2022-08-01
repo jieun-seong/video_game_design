@@ -21,5 +21,5 @@ public class GameStatus : ScriptableObject
     public bool itemUsed;
     public int healthAdded;
     public int manaAdded;
-
+    public bool playerWon;
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 public class NPCAI : MonoBehaviour
 {
+    [SerializeField] private GameStatus gameStatus;
     private UnityEngine.AI.NavMeshAgent agent;
     private Animator anim;
     public GameObject player;
@@ -66,7 +67,7 @@ public class NPCAI : MonoBehaviour
                     standingTime = Time.time;
                     anim.SetFloat("Blend", 0f);
                 }
-                if (quest.questString == "Clear out the zombies in the town.") {
+                if (quest.questString == "Clear out the zombies.") {
                     aiState = AIState.safe;
                 }
             break;
@@ -76,7 +77,7 @@ public class NPCAI : MonoBehaviour
                     anim.SetFloat("Blend", 1f);
                     setNextWaypoint();
                 }
-                if (quest.questString == "Clear out the zombies in the town.") {
+                if (quest.questString == "Clear out the zombies.") {
                     aiState = AIState.safe;
                 }
             break;
@@ -120,6 +121,9 @@ public class NPCAI : MonoBehaviour
                         dialogueui.ShowDialogue(endingDialogue);
                     }
                     check = false; // only show dialogue once
+                    if (!dialogueBox.active) {
+                        gameStatus.playerWon = true;
+                    }
                 } else { // player needs to click E still
                     if (Input.GetKey(KeyCode.E) && Vector3.Distance(player.transform.position, endingWaypoint.transform.position) < 5) {
                         talking2 = true;

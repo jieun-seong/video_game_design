@@ -273,7 +273,6 @@ public class PlayerController2 : MonoBehaviour
             currSpeed = 0.0f;
             transform.forward = Vector3.Slerp(transform.forward, new Vector3(targetDirection.x, 0.0f, targetDirection.z), 0.03f);
         }
-
         
         anim.SetFloat("Speed", currSpeed);
 
