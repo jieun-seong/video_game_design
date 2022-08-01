@@ -10,7 +10,7 @@ public class UseItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.GetChild(0).GetComponent<Text>().text = "Use Item";
     }
 
     // Update is called once per frame
@@ -19,6 +19,10 @@ public class UseItem : MonoBehaviour
         if (gameStatus.itemEquipable)
         {
             transform.GetChild(0).GetComponent<Text>().text = "Equip Item";
+        }
+        else
+        {
+            transform.GetChild(0).GetComponent<Text>().text = "Use Item";
         }
     }
 

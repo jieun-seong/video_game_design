@@ -6031,7 +6031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2783049391207840543, guid: b22bd73cc29414f8c8a38daf70b49f9e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2783049391207840543, guid: b22bd73cc29414f8c8a38daf70b49f9e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10024,7 +10024,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6c2a56c8364e9c44095f0b5b1850e8f0, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c2a56c8364e9c44095f0b5b1850e8f0, type: 3}
       propertyPath: m_LocalScale.x
@@ -12773,7 +12773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0b920254ddaa30c4eaa9b3101dac9544, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b920254ddaa30c4eaa9b3101dac9544, type: 3}
       propertyPath: m_LocalScale.x
@@ -15649,7 +15649,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a2f7cf0f45aab494a949cad968bf384f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a2f7cf0f45aab494a949cad968bf384f, type: 3}
       propertyPath: m_LocalScale.x
@@ -33630,7 +33630,7 @@ RectTransform:
   - {fileID: 599999138161067139}
   - {fileID: 599999138654384655}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -33736,7 +33736,7 @@ Transform:
   - {fileID: 2915247624853925460}
   - {fileID: 2757527084662399729}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &980806671379280467
 MonoBehaviour:
