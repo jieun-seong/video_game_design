@@ -16,16 +16,12 @@ public class SelectItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameStatus.itemEquiped)
-        {
-            slotScript.equiped = true;
-            gameStatus.itemEquiped = false;
-            gameStatus.itemActivated = true;
-        }
+
     }
 
     public void SelectItemButton()
     {
+        slotScript.selected = true;
         gameStatus.itemSelected = true;
         gameStatus.itemID = slotScript.itemID;
         gameStatus.itemName = slotScript.itemName;

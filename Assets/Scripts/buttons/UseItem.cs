@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UseItem : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class UseItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameStatus.itemEquipable)
+        {
+            transform.GetChild(0).GetComponent<Text>().text = "Equip Item";
+        }
     }
 
     public void UseItemButton()
